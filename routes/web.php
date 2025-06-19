@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Backend\BannerController;
+
 
 
 /*
@@ -42,4 +44,7 @@ Route::middleware([
   
     // courses route
         Route::resource('courses', CourseController::class);
+
+    // courses route
+        Route::resource('banners', BannerController::class);
 });

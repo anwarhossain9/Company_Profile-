@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Course;
+use App\Models\Banner;
 
-class CourseController extends Controller
+class BannerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('backend.courses.manage',[
-            'courses'=>Course::all()]);
+        return view('backend.banner.manage',[
+            'banners'=>Banner::all()]);
     }
 
     /**
@@ -22,7 +22,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('backend.courses.form');
+         return view('backend.banner.form');
     }
 
     /**
@@ -30,8 +30,8 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        Course::saveOrUpdateCourse($request);
-        return redirect()->route('courses.index')->with('success','Course Create Successfully');
+        Banner::saveOrUpdateBanner($request);
+        return redirect()->route('banners.index')->with('success','Banner Create Successfully');
     }
 
     /**
@@ -47,8 +47,8 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        return view('backend.courses.form',[
-            'course' => Course::where('id',$id)->first(),
+        return view('backend.banner.form',[
+            'banner' => Banner::where('id',$id)->first(),
         ]);
     }
 
@@ -57,8 +57,8 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Course::saveOrUpdateCourse($request,$id);
-        return redirect()->route('courses.index')->with('success','Course Update Successfully');
+        Banner::saveOrUpdateBanner($request,$id);
+        return redirect()->route('banners.index')->with('success','Banner Update Successfully');
     }
 
     /**
@@ -66,14 +66,14 @@ class CourseController extends Controller
      */
     public function destroy(string $id)
     {
-        $course = Course::where('id',$id)->first();
-        if ($course)
+         $banner = banner::where('id',$id)->first();
+        if ($banner)
         {
-            if (file_exists($course->course_image)){
-                unlink($course->course_image);
+            if (file_exists($banner->banner_image)){
+                unlink($banner->banner_image);
             }
-            $course->delete();
+            $banner->delete();
         }
-        return redirect()->route('courses.index')->with('success','Course Delete Successfully');
+        return redirect()->route('banners.index')->with('success','banner Delete Successfully');
     }
 }
