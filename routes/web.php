@@ -5,6 +5,8 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\PartnerController;
+
 
 
 
@@ -45,6 +47,10 @@ Route::middleware([
     // courses route
         Route::resource('courses', CourseController::class);
 
-    // courses route
+    // banners route
         Route::resource('banners', BannerController::class);
+
+        
+    // partners route
+        Route::resource('partners', PartnerController::class);
 });

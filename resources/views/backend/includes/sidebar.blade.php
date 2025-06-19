@@ -40,6 +40,7 @@
                     <ul class="slide-menu">
                         <li><a href="{{route('courses.index')}}" class="slide-item">Cources</a></li>
                         <li><a href="{{route('banners.index')}}" class="slide-item">Banners</a></li>
+                        <li><a href="{{route('partners.index')}}" class="slide-item">Partners</a></li>
 
 
 
