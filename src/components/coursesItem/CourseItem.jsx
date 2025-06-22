@@ -2,7 +2,7 @@ import { GiAlarmClock } from "react-icons/gi";
 import { LuCalendarDays } from "react-icons/lu";
 function CourseItem() {
     return (
-        <div className="card bg-base-100 w-full shadow-sm">
+        <div className="card bg-base-100 w-full shadow-sm bg-base-100 card-xs shadow-sm transition-transform duration-300 hover:scale-105">
             <figure>
                 <img className='w-full'
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVJ0GrRdlLFv0IGj3kJDpFxFJ-Z94dzJHUCw&s"

@@ -32,7 +32,7 @@ function Navbar() {
               </details>
             </li>
                  <li><Link to="/rpl" >RPL</Link></li>
-                 <li><Link to="/about" >About</Link></li>
+                 <li><Link to="/about" >About Us</Link></li>
           </ul>
         </div>
        
@@ -54,14 +54,16 @@ function Navbar() {
             </ul>
           </li>
              <li><Link to="/rpl" >RPL</Link></li>
-          <li><Link to="/about">About</Link></li>
+          <li><Link to="/about">About Us</Link></li>
         </ul>
       </div>
 
       {/* End: Action Button */}
       <div className="navbar-end">
-        <a className="text-2xl pr-2 text-white"><FaUserPlus /></a>
-      </div>
+         <Link to={""}>
+         <h1 className='text-3xl font-bold text-white'>ABCD</h1>
+         </Link>
+        </div>
     </div>
   )
 }

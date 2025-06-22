@@ -1,8 +1,11 @@
 import React from 'react'
+import CourseDetails from '../courses/courseDetails/CourseDetails'
 
 function About() {
   return (
-    <div>About</div>
+   <>
+   <CourseDetails></CourseDetails>
+   </>
   )
 }
 
