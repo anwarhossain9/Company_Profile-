@@ -6,6 +6,8 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\PartnerController;
+use App\Http\Controllers\Backend\TeamMemberController;
+
 
 
 
@@ -53,4 +55,7 @@ Route::middleware([
         
     // partners route
         Route::resource('partners', PartnerController::class);
+
+   // team members route
+        Route::resource('teammembers', TeamMemberController::class);
 });
