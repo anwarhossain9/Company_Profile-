@@ -43,6 +43,8 @@
                         <li><a href="{{route('partners.index')}}" class="slide-item">Partner</a></li>
                         <li><a href="{{route('teammembers.index')}}" class="slide-item">Team Member</a></li>
                         <li><a href="{{route('contacts.index')}}" class="slide-item">Contact</a></li>
+                        <li><a href="{{route('logos.index')}}" class="slide-item">Logo</a></li>
+
 
 
 

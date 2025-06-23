@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\TeamMemberController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\LogoController;
 
 
 
@@ -62,4 +63,7 @@ Route::middleware([
 
   // contacts route
         Route::resource('contacts', ContactController::class);
+
+ // logos route
+        Route::resource('logos', LogoController::class);
 });
