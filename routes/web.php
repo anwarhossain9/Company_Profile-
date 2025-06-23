@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\TeamMemberController;
+use App\Http\Controllers\Backend\ContactController;
 
 
 
@@ -58,4 +59,7 @@ Route::middleware([
 
    // team members route
         Route::resource('teammembers', TeamMemberController::class);
+
+  // contacts route
+        Route::resource('contacts', ContactController::class);
 });
