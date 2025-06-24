@@ -49,7 +49,7 @@ class Course extends Model
             'course_type'                    => $request->course_type,
             'batch_no'                       => $request->batch_no,
             'course_name'                    => $request->course_name,
-            'course_image'                   =>fileUpload($request->file('course_image'), 'course', isset($id) ? static::find($id)->course : ''),
+            'course_image'                   =>fileUpload($request->file('course_image'), 'course', isset($id) ? static::find($id)->course_image : ''),
             'starts_date'                    => $request->starts_date,
             'deadline'                       => $request->deadline,
             'duration'                       => $request->duration,

@@ -12,10 +12,12 @@ class AssetController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {  
         return view('backend.asset.manage',[
             'assets'=>Asset::all()]);
     }
+
+    
 
     /**
      * Show the form for creating a new resource.

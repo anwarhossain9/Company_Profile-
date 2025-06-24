@@ -14,6 +14,7 @@ class Partner extends Model
     protected $fillable = [
         
         'partner_image',
+        'status'
         
     ];
 
@@ -21,7 +22,7 @@ class Partner extends Model
     {
        Partner::updateOrCreate(['id' => $id], [
             
-            'partner_image'        =>fileUpload($request->file('partner_image'), 'partner', isset($id) ? static::find($id)->partner : ''),
+            'partner_image'        =>fileUpload($request->file('partner_image'), 'partner', isset($id) ? static::find($id)->partner_image : ''),
             'status'              => $request->status == 'on' ? 1 : 0,
         ]);
 }

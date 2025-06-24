@@ -24,7 +24,8 @@ class Contact extends Model
         'linkedin_link',
         'youtube_link',
         'twitter_link',
-        'google_map_link'
+        'google_map_link',
+        'status'
         
     ];
 

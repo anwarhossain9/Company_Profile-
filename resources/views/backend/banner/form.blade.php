@@ -19,15 +19,6 @@
 
   
 
- 
-
-  
-
-  
-  <!-- Textareas -->
-  
-  
-
                         <div class="row mt-4">
                             <label for="" class="col-md-3">Image</label>
                             <div class="col-md-9">

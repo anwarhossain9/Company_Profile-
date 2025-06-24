@@ -41,6 +41,7 @@ return new class extends Migration
             $table->text('reason_of_choosing_this_course');
             $table->string('job_sectors_title');
             $table->text('job_sectors_description');
+            $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

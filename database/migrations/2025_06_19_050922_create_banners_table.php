@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('banner_title');
             $table->string('banner_description');
             $table->text('banner_image');
+            $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

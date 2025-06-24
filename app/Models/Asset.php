@@ -17,20 +17,21 @@ class Asset extends Model
         'occupation_name',
         'registration_link',
         'benefits_conditions',
-        'necessary_documents'
+        'necessary_documents',
+        'status'
         
     ];
 
      public static function saveOrUpdateAsset($request, $id = null)
-    {
+    {  
        Asset::updateOrCreate(['id' => $id], [
             
-            'top_image'           =>fileUpload($request->file('top_image'), 'asset', isset($id) ? static::find($id)->asset : ''),
+            'top_image'           =>fileUpload($request->file('top_image'), 'asset', isset($id) ? static::find($id)->top_image : ''),
             'occupation_name'     => $request->occupation_name,
             'registration_link'   => $request->registration_link,
             'benefits_conditions' => $request->benefits_conditions,
             'necessary_documents' => $request->necessary_documents,
-            'status'              => $request->status == 'on' ? 1 : 0,
+            'status'              => $request->status == 'on' ? 1 : 0
         ]);
 }
 }

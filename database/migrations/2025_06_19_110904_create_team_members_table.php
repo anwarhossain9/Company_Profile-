@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('teammember_name');
             $table->string('teammember_designation');
             $table->text('teammember_image');
+            $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -14,6 +14,7 @@ class Logo extends Model
     protected $fillable = [
         
         'logo_image',
+        'status'
         
     ];
 
@@ -21,7 +22,7 @@ class Logo extends Model
     {
        Logo::updateOrCreate(['id' => $id], [
             
-            'logo_image'   =>fileUpload($request->file('logo_image'), 'logo', isset($id) ? static::find($id)->logo : ''),
+            'logo_image'   =>fileUpload($request->file('logo_image'), 'logo', isset($id) ? static::find($id)->logo_image : ''),
             'status'       => $request->status == 'on' ? 1 : 0,
         ]);
 }

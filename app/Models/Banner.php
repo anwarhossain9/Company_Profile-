@@ -16,6 +16,7 @@ class Banner extends Model
         'banner_image',
         'banner_title',
         'banner_description',
+        'status'
         
     ];
 
@@ -23,7 +24,7 @@ class Banner extends Model
     {
        Banner::updateOrCreate(['id' => $id], [
             
-            'banner_image'        =>fileUpload($request->file('banner_image'), 'banner', isset($id) ? static::find($id)->banner : ''),
+            'banner_image'        =>fileUpload($request->file('banner_image'), 'banner', isset($id) ? static::find($id)->banner_image : ''),
             'banner_title'        => $request->banner_title,
             'banner_description'  => $request->banner_description,
             'status'              => $request->status == 'on' ? 1 : 0,

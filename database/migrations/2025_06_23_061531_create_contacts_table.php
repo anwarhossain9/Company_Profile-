@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('youtube_link');
             $table->string('twitter_link');
             $table->string('google_map_link');
+            $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

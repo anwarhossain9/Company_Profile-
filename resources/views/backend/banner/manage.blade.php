@@ -27,7 +27,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td><img src="{{ asset($banner->banner_image )}}" alt="" style="height: 60px"></td>
                                 <td>{{ $banner->banner_title }}</td> 
-                                <td>{{ $banner->banner_description }}</td> 
+                                <td>{!! $banner->banner_description !!}</td> 
                                 <td>{{ $banner->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('banners.edit', $banner->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

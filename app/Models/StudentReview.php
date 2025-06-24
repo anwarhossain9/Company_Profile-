@@ -16,6 +16,7 @@ class StudentReview extends Model
         'image',
         'name',
         'review',
+        'status'
         
     ];
 
@@ -23,7 +24,7 @@ class StudentReview extends Model
     {
        StudentReview::updateOrCreate(['id' => $id], [
             
-            'image'   =>fileUpload($request->file('image'), 'studentReview', isset($id) ? static::find($id)->studentReview : ''),
+            'image'   =>fileUpload($request->file('image'), 'studentReview', isset($id) ? static::find($id)->image : ''),
             'name'    => $request->name,
             'review'  => $request->review,
             'status'  => $request->status == 'on' ? 1 : 0,

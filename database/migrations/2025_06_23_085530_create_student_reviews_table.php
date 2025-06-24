@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('image');
             $table->text('review');
+            $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

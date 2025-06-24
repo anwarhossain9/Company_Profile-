@@ -69,14 +69,14 @@
                                 <td>{{ $course->installment2_amount }}</td> 
                                 <td>{{ $course->instructor_name }}</td> 
                                 <td>{{ $course->instructor_social_media }}</td> 
-                                <td>{{ $course->eligibility }}</td>
-                                <td>{{ $course->short_description }}</td>
-                                <td>{{ $course->long_description }}</td> 
-                                <td>{{ $course->curriculum }}</td> 
-                                <td>{{ $course->faqs }}</td> 
-                                <td>{{ $course->reason_of_choosing_this_course }}</td> 
+                                <td>{!! $course->eligibility !!}</td>
+                                <td>{!! $course->short_description !!}</td>
+                                <td>{!! $course->long_description !!}</td> 
+                                <td>{!! $course->curriculum !!}</td> 
+                                <td>{!! $course->faqs !!}</td> 
+                                <td>{!! $course->reason_of_choosing_this_course !!}</td> 
                                 <td>{{ $course->job_sectors_title }}</td> 
-                                <td>{{ $course->job_sectors_description }}</td> 
+                                <td>{!! $course->job_sectors_description !!}</td> 
                                 <td>{{ $course->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

@@ -16,6 +16,7 @@ class TeamMember extends Model
         'teammember_image',
         'teammember_name',
         'teammember_designation',
+        'status'
         
     ];
 
@@ -23,7 +24,7 @@ class TeamMember extends Model
     {
        TeamMember::updateOrCreate(['id' => $id], [
             
-            'teammember_image'       =>fileUpload($request->file('teammember_image'), 'teammember', isset($id) ? static::find($id)->teammember : ''),
+            'teammember_image'       =>fileUpload($request->file('teammember_image'), 'teammember', isset($id) ? static::find($id)->teammember_image : ''),
             'teammember_name'        => $request->teammember_name,
             'teammember_designation' => $request->teammember_designation,
             'status'                 => $request->status == 'on' ? 1 : 0,
