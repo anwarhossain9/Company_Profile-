@@ -44,6 +44,9 @@
                         <li><a href="{{route('teammembers.index')}}" class="slide-item">Team Member</a></li>
                         <li><a href="{{route('contacts.index')}}" class="slide-item">Contact</a></li>
                         <li><a href="{{route('logos.index')}}" class="slide-item">Logo</a></li>
+                        <li><a href="{{route('abouts.index')}}" class="slide-item">About</a></li>
+                        <li><a href="{{route('assets.index')}}" class="slide-item">Asset</a></li>
+                        <li><a href="{{route('student_reviews.index')}}" class="slide-item">Student Review</a></li>
 
 
 

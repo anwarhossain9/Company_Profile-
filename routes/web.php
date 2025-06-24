@@ -9,6 +9,10 @@ use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\TeamMemberController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\LogoController;
+use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\StudentReviewController;
+use App\Http\Controllers\Backend\AssetController;
+
 
 
 
@@ -61,9 +65,18 @@ Route::middleware([
    // team members route
         Route::resource('teammembers', TeamMemberController::class);
 
-  // contacts route
+   // contacts route
         Route::resource('contacts', ContactController::class);
 
- // logos route
+   // logos route
         Route::resource('logos', LogoController::class);
+
+   // abouts route
+        Route::resource('abouts', AboutController::class);
+
+   // student reviews route
+        Route::resource('student_reviews', StudentReviewController::class);
+
+  // assets route
+        Route::resource('assets', AssetController::class);
 });
