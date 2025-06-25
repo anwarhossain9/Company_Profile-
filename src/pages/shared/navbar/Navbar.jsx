@@ -54,7 +54,16 @@ function Navbar() {
             </ul>
           </li>
              <li><Link to="/rpl" >RPL</Link></li>
-          <li><Link to="/about">About Us</Link></li>
+          {/* <li><Link to="/about">About Us</Link></li> */}
+            <li className="dropdown dropdown-hover">
+            <div tabIndex={0} role="button" >About Us</div>
+            <ul className="dropdown-content menu bg-lime-100 text-black text-xl border-b-4 border-[#34A249ff] rounded-box z-[1] w-52 px-2 shadow">
+              <li><Link to="/mission">About Institute</Link></li>
+              <li><Link to="/mission">Our Story</Link></li>
+              <li><Link to="/mission">Mission & Vission</Link></li>
+              <li><Link to="/mission">Management</Link></li>
+            </ul>
+          </li>
         </ul>
       </div>
 

@@ -1,4 +1,7 @@
 import React from 'react'
+import { Rating } from '@smastrom/react-rating'
+
+import '@smastrom/react-rating/style.css'
 
 function CommentItem() {
   return (
@@ -13,6 +16,11 @@ function CommentItem() {
             />
           </div>
           <div className="flex-1">
+            <Rating
+              style={{ maxWidth: 180 }}
+              value={3}
+              readOnly
+            />
             <p className="text-gray-700 text-base mb-3 text-justify leading-relaxed">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, ratione possimus ex cumque perspiciatis voluptatum, delectus velit atque autem, veniam illum? Praesentium adipisci illo cum possimus? Repudiandae aliquam commodi deleniti.
             </p>
