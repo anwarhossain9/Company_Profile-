@@ -21,4 +21,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/about-info',[ApiController::class,'getAboutInfo']);
 
+Route::get('/asset-info',[ApiController::class,'getAssetInfo']);
+
+
+Route::get('/banner-info',[ApiController::class,'getBannerInfo']);
+
+Route::get('/contact-info',[ApiController::class,'getContactInfo']);
+
+Route::get('/course-info',[ApiController::class,'getCourseInfo']);
+
+Route::get('/logo-info',[ApiController::class,'getLogoInfo']);
+
+Route::get('/partner-info',[ApiController::class,'getPartnerInfo']);
+
+Route::get('/student-review-info',[ApiController::class,'getStudentReviewInfo']);
+
+Route::get('/team-member-info',[ApiController::class,'getTeamMemberInfo']);
+
+
+
+
+
 

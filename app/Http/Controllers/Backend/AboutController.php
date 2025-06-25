@@ -77,6 +77,10 @@ class AboutController extends Controller
                 unlink($about->story_related_image);
             }
 
+            if (file_exists($about->ceo_image)){
+                unlink($about->ceo_image);
+            }
+
 
             $about->delete();
             

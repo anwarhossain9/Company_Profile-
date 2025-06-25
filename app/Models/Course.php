@@ -38,7 +38,8 @@ class Course extends Model
         'faqs',
         'reason_of_choosing_this_course',
         'job_sectors_title',
-        'job_sectors_description'
+        'job_sectors_description',
+        'status'
     ];
 
     
