@@ -2,7 +2,7 @@ import React from 'react'
 
 function ManagementMessage() {
   return (
-    <div className="grid md:grid-cols-2 gap-6 md:space-x-10 px-2 items-center justify-center card shadow-sm py-5">
+    <div className="grid md:grid-cols-2 gap-6 md:space-x-10 px-2 items-center justify-center card shadow-sm py-5 bg-lime-50">
       {/* Card 1 */}
       <div className='mx-auto md:px-4'>
         <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 mb-4">

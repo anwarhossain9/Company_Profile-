@@ -47,12 +47,12 @@ function About() {
       </Element>
 
       <Element name="story">
-        <SectionTitle title="Our Mission & Vission" />
-        <InfoItem description={des} img={img} />
+        <SectionTitle title="Company Dream" />
+        <InfoItem description={des} img={img} bgColor="bg-lime-50"/>
       </Element>
 
       <Element name="missionVission">
-        <SectionTitle title="Our Company Dream" />
+        <SectionTitle title="Our Mission & Vission " />
         <MissionVission />
       </Element>
 
