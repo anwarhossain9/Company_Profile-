@@ -8,11 +8,57 @@ import CourseItem from '../../../components/coursesItem/CourseItem';
 import Title from '../../../components/title/Title';
 
 
-function CoursePanel() {
-    const [tabIndex, setTabIndex] = useState(0);
+const categoryData = [
+  {
+    category: "Web Development",
+    items: [
+      { title: "HTML", description: "Structure of webpages." },
+      { title: "CSS", description: "Style and layout." },
+      { title: "JavaScript", description: "Dynamic interactivity." },
+    ],
+  },
+  {
+    category: "Graphic Design",
+    items: [
+      { title: "Photoshop", description: "Image editing tool." },
+      { title: "Illustrator", description: "Vector graphics design." },
+    ],
+  },
+  {
+    category: "Marketing",
+    items: [
+      { title: "SEO", description: "Search engine optimization." },
+      { title: "SEO", description: "Search engine optimization." },
+      { title: "SEO", description: "Search engine optimization." },
+      { title: "Email Marketing", description: "Email campaigns and automation." },
+    ],
+  },
+  {
+    category: "Machine Learning",
+    items: [
+      { title: "AI", description: "Search engine optimization." },
+      { title: "ML", description: "Search engine optimization." },
+      { title: "ML", description: "Search engine optimization." },
+      { title: "Data Science", description: "Search engine optimization." },
+      { title: "Email Marketing", description: "Email campaigns and automation." },
+    ],
+  },
+  {
+    category: "Cyber Security",
+    items: [
+      { title: "Cyber Security Beggner", description: "Search engine optimization." },
+      { title: "Cyber Security Advance", description: "Search engine optimization." },
+      
+    ],
+  },
+];
 
-    const [sliderRef] = useKeenSlider({
-       slides: {
+
+function CoursePanel() {
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const [sliderRef] = useKeenSlider({
+    slides: {
       perView: 5,
       spacing: 15,
     },
@@ -42,38 +88,41 @@ function CoursePanel() {
         },
       },
     },
-    })
+  })
 
-    return (
-      <>
+  return (
+    <>
       <Title title="COURSES FROM ALL THE FIELDS" subtitle="Find all of Our Courses"></Title>
-        <section className='py-6'>
-            <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-                <TabList>
-                    <div ref={sliderRef} className="keen-slider">
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="All Courses "></CoursePanelItem></Tab>
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="Web & Software "></CoursePanelItem></Tab>
+      <section className='py-6'>
+        <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+          <TabList>
+            <div ref={sliderRef} className="keen-slider">
+              {/* <Tab className="keen-slider__slide "><CoursePanelItem title="All Courses "></CoursePanelItem></Tab> */}
+              {/* <Tab className="keen-slider__slide "><CoursePanelItem title="Web & Software "></CoursePanelItem></Tab>
                         <Tab className="keen-slider__slide "><CoursePanelItem title="Graphic Design"></CoursePanelItem></Tab>
                         <Tab className="keen-slider__slide "><CoursePanelItem title="Digital Marketing"></CoursePanelItem></Tab>
                         <Tab className="keen-slider__slide "><CoursePanelItem title="Data Science"></CoursePanelItem></Tab>
                         <Tab className="keen-slider__slide "><CoursePanelItem title="Spoken English"></CoursePanelItem></Tab>
                         <Tab className="keen-slider__slide "><CoursePanelItem title="Artificial intelligence"></CoursePanelItem></Tab>
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="Machine Learning"></CoursePanelItem></Tab>
+                        <Tab className="keen-slider__slide "><CoursePanelItem title="Machine Learning"></CoursePanelItem></Tab> */}
 
+              {
+                categoryData.map(cat => <Tab className="keen-slider__slide "><CoursePanelItem title={cat.category}></CoursePanelItem></Tab>)
+              }
 
-                    </div>
-                </TabList>
-                <div className='mt-6'>
-                    <TabPanel>
+            </div>
+          </TabList>
+          <div className='mt-6'>
+            {/* <TabPanel>
 
-                        <div className='grid md:grid-cols-3 gap-4'>
+                        <div className='grid md:grid-cols-4 gap-4'>
                             <CourseItem></CourseItem>
                             <CourseItem></CourseItem>
                             <CourseItem></CourseItem>
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid md:grid-cols-3 gap-4'>
+                        <div className='grid md:grid-cols-4 gap-4'>
                             <CourseItem></CourseItem>
                             <CourseItem></CourseItem>
                             <CourseItem></CourseItem>
@@ -83,12 +132,12 @@ function CoursePanel() {
                         </div>
 
                     </TabPanel>
-                    <TabPanel><div className='grid md:grid-cols-3 gap-4'>
+                    <TabPanel><div className='grid md:grid-cols-4 gap-4'>
                         <CourseItem></CourseItem>
                     </div>
 
                     </TabPanel>
-                    <TabPanel><div className='grid md:grid-cols-3 gap-4'>
+                    <TabPanel><div className='grid md:grid-cols-4 gap-4'>
                         <CourseItem></CourseItem>
                         <CourseItem></CourseItem>
                         <CourseItem></CourseItem>
@@ -96,29 +145,37 @@ function CoursePanel() {
 
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid md:grid-cols-3 gap-4'>
+                        <div className='grid md:grid-cols-4 gap-4'>
                             <CourseItem></CourseItem>
                         </div>
 
                     </TabPanel>
                     <TabPanel>
-                        <div className='grid md:grid-cols-3 gap-4'>
+                        <div className='grid md:grid-cols-4 gap-4'>
                             <CourseItem></CourseItem>
                             <CourseItem></CourseItem>
                         </div>
 
-                    </TabPanel>
-                    <TabPanel>
-                        <div className='grid md:grid-cols-3 gap-4'>
-                            <CourseItem></CourseItem>
-                        </div>
+                    </TabPanel> */}
 
-                    </TabPanel>
-                </div>
-            </Tabs>
-        </section>
-      </>
-    );
+            <div className='mt-6'>
+              {categoryData.map((cat, catIdx) => (
+                <TabPanel key={catIdx}>
+                  <div className='grid md:grid-cols-4 gap-4'>
+                    {cat.items.map((item, idx) => (
+                      <CourseItem key={idx} title={item.title} description={item.description} />
+                    ))}
+                  </div>
+                </TabPanel>
+              ))}
+            </div>
+
+
+          </div>
+        </Tabs>
+      </section>
+    </>
+  );
 }
 
 export default CoursePanel

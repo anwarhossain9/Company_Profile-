@@ -2,28 +2,66 @@ import InfoItem from './shared/InfoItem'
 import SectionTitle from '../../components/section/SectionTitle'
 import MissionVission from './missionVisssion/MissionVission'
 import ManagementMessage from './management/ManagementMessage'
-
+import { useLocation } from 'react-router-dom';
+import { useLayoutEffect, useEffect } from 'react';
+import { Element, scroller } from 'react-scroll';
 const des = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, nobis excepturi error voluptate sapiente ab sint velit quae fuga ut aliquid alias pariatur, nemo quaerat, itaque nam hic? Suscipit tempore veniam quibusdam esse nobis? Optio molestiae mollitia repudiandae atque! Labore suscipit nihil sequi velit cum tenetur sed accusamus molestias dignissimos fuga beatae fugit, explicabo officiis ipsum vel itaque quam eligendi consequatur qui tempora! Cum dolorem molestiae rerum modi vitae dolor error quis! Voluptatem blanditiis, sequi necessitatibus mollitia quasi vitae nisi obcaecati asperiores, odio enim cumque saepe dicta aspernatur sapiente! Ex modi iste assumenda, atque similique vel illo provident dignissimos quibusdam!"
 const img = "https://t3.ftcdn.net/jpg/01/92/95/00/360_F_192950048_PUUtUFKtCTaiCSXbDMoo7Ex8VO0TnYK2.jpg"
 
 function About() {
+  const location = useLocation();
+
+  // Scroll on navigation
+  useLayoutEffect(() => {
+    if (location.state?.scrollTo) {
+      setTimeout(() => {
+        scroller.scrollTo(location.state.scrollTo, {
+          duration: 500,
+          smooth: true,
+          offset: -70,
+        });
+      }, 300);
+    }
+  }, [location]);
+
+  // Scroll on custom event (same-page click)
+  useEffect(() => {
+    const handleManualScroll = (e) => {
+      scroller.scrollTo(e.detail, {
+        duration: 500,
+        smooth: true,
+        offset: -70,
+      });
+    };
+    window.addEventListener("scrollToSection", handleManualScroll);
+    return () => {
+      window.removeEventListener("scrollToSection", handleManualScroll);
+    };
+  }, []);
+
   return (
     <>
-      <SectionTitle title="Our Company Dream"></SectionTitle>
-      <InfoItem description={des} img={img} orderOne="md:order-1" orderTwo="md:order-2"></InfoItem>
+      <Element name="aboutInstitute">
+        <SectionTitle title="Our Company Dream" />
+        <InfoItem description={des} img={img} orderOne="md:order-1" orderTwo="md:order-2" />
+      </Element>
 
-      <SectionTitle title="Our Mission & Vission"></SectionTitle>
-      <InfoItem description={des} img={img}></InfoItem>
-      <SectionTitle title="Our Company Dream"></SectionTitle>
-      <MissionVission></MissionVission>
-      <SectionTitle title="Message Form Management"></SectionTitle>
-      <ManagementMessage></ManagementMessage>
+      <Element name="story">
+        <SectionTitle title="Our Mission & Vission" />
+        <InfoItem description={des} img={img} />
+      </Element>
 
+      <Element name="missionVission">
+        <SectionTitle title="Our Company Dream" />
+        <MissionVission />
+      </Element>
 
-
-
+      <Element name="management">
+        <SectionTitle title="Message From Management" />
+        <ManagementMessage />
+      </Element>
     </>
-  )
+  );
 }
 
 export default About
