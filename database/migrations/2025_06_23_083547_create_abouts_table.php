@@ -23,6 +23,9 @@ return new class extends Migration
             $table->text('ceo_image');
             $table->string('ceo_name');
             $table->string('ceo_word');
+            $table->text('director_image');
+            $table->string('director_name');
+            $table->string('director_word');
             $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();

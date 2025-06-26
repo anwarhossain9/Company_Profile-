@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('course_category');
+            $table->unsignedBigInteger('course_category_id');
             $table->string('course_type');
             $table->string('batch_no');
             $table->string('course_name');

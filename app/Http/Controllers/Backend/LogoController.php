@@ -32,7 +32,7 @@ class LogoController extends Controller
     {
         
         Logo::saveOrUpdatelogo($request);
-        return redirect()->route('logos.index')->with('success','logo Create Successfully');
+        return redirect()->route('logos.index')->with('success','Logo Create Successfully');
     }
 
     /**
@@ -59,7 +59,7 @@ class LogoController extends Controller
     public function update(Request $request, string $id)
     {
         Logo::saveOrUpdatelogo($request,$id);
-        return redirect()->route('logos.index')->with('success','logo Update Successfully');
+        return redirect()->route('logos.index')->with('success','Logo Update Successfully');
     }
 
     /**
@@ -75,6 +75,6 @@ class LogoController extends Controller
             }
             $logo->delete();
         }
-        return redirect()->route('logos.index')->with('success','logoDelete Successfully');
+        return redirect()->route('logos.index')->with('success','Logo Delete Successfully');
     }
 }

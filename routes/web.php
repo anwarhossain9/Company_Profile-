@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\CourseCategoryController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\PartnerController;
@@ -52,6 +53,11 @@ Route::middleware([
     Route::post('/users/{id}/restore', [UserController::class, 'restore'])->name('users.restore');
     Route::delete('/users/{id}/force', [UserController::class, 'forceDelete'])->name('users.forceDelete');
   
+     // courses route
+        Route::resource('course_categories', CourseCategoryController::class);
+
+    
+    
     // courses route
         Route::resource('courses', CourseController::class);
 

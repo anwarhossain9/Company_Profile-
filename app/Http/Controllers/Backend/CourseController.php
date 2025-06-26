@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\CourseCategory;
 
 class CourseController extends Controller
 {
@@ -14,6 +15,7 @@ class CourseController extends Controller
     public function index()
     {
         return view('backend.courses.manage',[
+            'courseCategories' =>CourseCategory::all(),
             'courses'=>Course::all()]);
     }
 
@@ -22,7 +24,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('backend.courses.form');
+        return view('backend.courses.form',[
+            'courseCategories' =>CourseCategory::all(),
+        ]);
     }
 
     /**
@@ -48,7 +52,8 @@ class CourseController extends Controller
     public function edit(string $id)
     {
         return view('backend.courses.form',[
-            'course' => Course::where('id',$id)->first(),
+            'courseCategories' =>CourseCategory::all(),
+            'course'           => Course::where('id',$id)->first(),
         ]);
     }
 

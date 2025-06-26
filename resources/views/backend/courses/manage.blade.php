@@ -15,7 +15,7 @@
                     <table class="table" id="file-datatable">
                         <thead>
                         <th>#</th>
-                        <th>Course Category</th>
+                        <th>Course Category Name</th>
                         <th>Course Type</th>
                         <th>Batch No</th>
                         <th>Course Name</th>
@@ -50,7 +50,7 @@
                         @foreach($courses as $course)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $course->course_category }}</td>
+                                <td>{{ $course->courseCategory->name ?? ''}}</td>
                                 <td>{{ $course->course_type }}</td>
                                 <td>{{ $course->batch_no }}</td>
                                 <td><img src="{{ asset($course->course_image )}}" alt="" style="height: 60px"></td>

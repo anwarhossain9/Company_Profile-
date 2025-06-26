@@ -8,6 +8,7 @@ use App\Models\About;
 use App\Models\Asset;
 use App\Models\Banner;
 use App\Models\Contact;
+use App\Models\CourseCategory;
 use App\Models\Course;
 use App\Models\Logo;
 use App\Models\Partner;
@@ -105,13 +106,38 @@ public function getContactInfo()
     return response()->json($cleanedContacts);
 }
 
+public function getCourseCategoryInfo()
+{
+    $courseCategories = CourseCategory::all();
+
+    $cleanedcourseCategories = $courseCategories->map(function($item) {
+        return [
+             'name'          => strip_tags($item->name,'<b><i>'),
+             'status'        => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedcourseCategories);
+}
+
+public function categoryWiseCourses()
+{
+    $categories = CourseCategory::with('courses')->get();
+
+    return response()->json([
+        'success' => true,
+        'data' => $categories
+    ]);
+}
+
 public function getCourseInfo()
 {
     $courses = Course::all();
 
     $cleanedCourses = $courses->map(function($item) {
         return [
-            'course_category'               => strip_tags($item->course_category,'<b><i>'),
+            'course_category_name'            => strip_tags($item->courseCategory->name,'<b><i>'),
             'course_type'                   => strip_tags($item->course_type,'<b><i>'),
             'batch_no'                      => strip_tags($item->batch_no,'<b><i>'),
             'course_name'                   => strip_tags($item->course_name,'<b><i>'),

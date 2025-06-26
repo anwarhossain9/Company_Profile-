@@ -11,7 +11,7 @@ class Course extends Model
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'course_category',
+        'course_category_id',
         'course_type',
         'batch_no',
         'course_name',
@@ -46,7 +46,7 @@ class Course extends Model
     public static function saveOrUpdateCourse($request, $id = null)
     {
         Course::updateOrCreate(['id' => $id], [
-            'course_category'                => $request->course_category,
+            'course_category_id'             => $request->course_category_id,
             'course_type'                    => $request->course_type,
             'batch_no'                       => $request->batch_no,
             'course_name'                    => $request->course_name,
@@ -77,5 +77,11 @@ class Course extends Model
             'status'                         => $request->status == 'on' ? 1 : 0,
         ]);
 }
+
+
+public function courseCategory()
+    {
+        return $this->belongsTo(CourseCategory::class);
+    }
 
 }

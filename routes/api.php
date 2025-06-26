@@ -28,6 +28,12 @@ Route::get('/banner-info',[ApiController::class,'getBannerInfo']);
 
 Route::get('/contact-info',[ApiController::class,'getContactInfo']);
 
+Route::get('/course-category-info',[ApiController::class,'getCourseCategoryInfo']);
+
+Route::get('/courses/category-wise', [ApiController::class, 'categoryWiseCourses']);
+
+
+
 Route::get('/course-info',[ApiController::class,'getCourseInfo']);
 
 Route::get('/logo-info',[ApiController::class,'getLogoInfo']);

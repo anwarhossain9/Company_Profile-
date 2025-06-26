@@ -17,17 +17,20 @@
                             @method('put')
                         @endif
 
-                         <div class="row mt-4">
-    <label class="col-md-3">Course Category</label>
-    <div class="col-md-9">
-      <select name="course_category" class="form-control" required>
-    <option value="">-- Select Category --</option>
-    <option value="Web Development" {{ (isset($course) && $course->course_category == 'Web Development') ? 'selected' : '' }}>Web Development</option>
-    <option value="Graphic Design" {{ (isset($course) && $course->course_category == 'Graphic Design') ? 'selected' : '' }}>Graphic Design</option>
-    <option value="Digital Marketing" {{ (isset($course) && $course->course_category == 'Digital Marketing') ? 'selected' : '' }}>Digital Marketing</option>
-    <option value="Data Science" {{ (isset($course) && $course->course_category == 'Data Science') ? 'selected' : '' }}>Data Science</option>
-</select>
-    </div>
+  <div class="row mt-3">
+
+      <label for="" class="col-md-3"> Course Category Name</label>
+      <div class="col-md-9">
+          <select name="course_category_id" class=" form-control " data-toggle="select"
+              data-placeholder="Choose ...">
+              <option value="">Select a course category</option>
+              @foreach ($courseCategories as $coursecategory)
+                  <option value="{{ $coursecategory->id }}"
+                      {{ $errors->any() ? old('course_category_id') : (isset($course) && $course->course_category_id == $coursecategory->id ? 'selected' : '') }}>
+                      {{ $coursecategory->name }}</option>
+              @endforeach
+          </select>
+      </div>
   </div>
 
   <!-- Course Type -->
