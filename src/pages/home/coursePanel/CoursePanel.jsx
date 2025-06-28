@@ -6,6 +6,7 @@ import "keen-slider/keen-slider.min.css"
 import CoursePanelItem from './shared/CoursePanelItem';
 import CourseItem from '../../../components/coursesItem/CourseItem';
 import Title from '../../../components/title/Title';
+import useRegularDataLoader from '../../../hooks/useRegularDataLoader';
 
 
 const categoryData = [
@@ -48,15 +49,16 @@ const categoryData = [
     items: [
       { title: "Cyber Security Beggner", description: "Search engine optimization." },
       { title: "Cyber Security Advance", description: "Search engine optimization." },
-      
+
     ],
   },
 ];
 
 
 function CoursePanel() {
-  const [tabIndex, setTabIndex] = useState(0);
 
+  const [regularCourses, loader] = useRegularDataLoader();
+  const [tabIndex, setTabIndex] = useState(0);
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 5,
@@ -90,6 +92,15 @@ function CoursePanel() {
     },
   })
 
+
+  if (loader) {
+    return <div className='text-center'> <span className="loading loading-spinner text-success mx-auto"></span></div>
+  }
+
+  const { data } = regularCourses
+  const categories = data.map(dta => dta.course_category_name)
+  
+
   return (
     <>
       <Title title="COURSES FROM ALL THE FIELDS" subtitle="Find all of Our Courses"></Title>
@@ -97,81 +108,47 @@ function CoursePanel() {
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <div ref={sliderRef} className="keen-slider">
-              {/* <Tab className="keen-slider__slide "><CoursePanelItem title="All Courses "></CoursePanelItem></Tab> */}
-              {/* <Tab className="keen-slider__slide "><CoursePanelItem title="Web & Software "></CoursePanelItem></Tab>
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="Graphic Design"></CoursePanelItem></Tab>
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="Digital Marketing"></CoursePanelItem></Tab>
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="Data Science"></CoursePanelItem></Tab>
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="Spoken English"></CoursePanelItem></Tab>
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="Artificial intelligence"></CoursePanelItem></Tab>
-                        <Tab className="keen-slider__slide "><CoursePanelItem title="Machine Learning"></CoursePanelItem></Tab> */}
 
               {
-                categoryData.map(cat => <Tab className="keen-slider__slide "><CoursePanelItem title={cat.category}></CoursePanelItem></Tab>)
+                categories.map(cat => <Tab className="keen-slider__slide "><CoursePanelItem title={cat}></CoursePanelItem></Tab>)
               }
 
             </div>
           </TabList>
-          <div className='mt-6'>
-            {/* <TabPanel>
-
-                        <div className='grid md:grid-cols-4 gap-4'>
-                            <CourseItem></CourseItem>
-                            <CourseItem></CourseItem>
-                            <CourseItem></CourseItem>
-                        </div>
-                    </TabPanel>
-                    <TabPanel>
-                        <div className='grid md:grid-cols-4 gap-4'>
-                            <CourseItem></CourseItem>
-                            <CourseItem></CourseItem>
-                            <CourseItem></CourseItem>
-                            <CourseItem></CourseItem>
-                            <CourseItem></CourseItem>
-                            <CourseItem></CourseItem>
-                        </div>
-
-                    </TabPanel>
-                    <TabPanel><div className='grid md:grid-cols-4 gap-4'>
-                        <CourseItem></CourseItem>
+         
+            {
+              <div className='mt-6'>
+                {data.map((category, catIdx) => (
+                  <TabPanel key={catIdx}>
+                    <div className='grid md:grid-cols-4 gap-4'>
+                      {category.courses.map(course => (
+                        <CourseItem
+                         key={course.id} 
+                         course_name={course.course_name} 
+                         course_image={course.course_image} 
+                         deadline = {course.deadline} 
+                         duration = {course.duration}
+                         total_hours = {course.total_hours}
+                         total_class = {course.total_class}
+                         available_seat = {course.available_seat}
+                         schedule = {course.schedule}
+                         venue = {course.venue}
+                         instructor_name = {course.instructor_name}
+                         previous_price = {course.previous_price}
+                         current_price = {course.current_price}
+                         eligibility = {course.eligibility}
+                         short_description = {course.short_description}
+                         long_description = {course.long_description}
+                         
+                         />
+                      ))}
                     </div>
+                  </TabPanel>
+                ))}
+              </div>
+            }
 
-                    </TabPanel>
-                    <TabPanel><div className='grid md:grid-cols-4 gap-4'>
-                        <CourseItem></CourseItem>
-                        <CourseItem></CourseItem>
-                        <CourseItem></CourseItem>
-                    </div>
-
-                    </TabPanel>
-                    <TabPanel>
-                        <div className='grid md:grid-cols-4 gap-4'>
-                            <CourseItem></CourseItem>
-                        </div>
-
-                    </TabPanel>
-                    <TabPanel>
-                        <div className='grid md:grid-cols-4 gap-4'>
-                            <CourseItem></CourseItem>
-                            <CourseItem></CourseItem>
-                        </div>
-
-                    </TabPanel> */}
-
-            <div className='mt-6'>
-              {categoryData.map((cat, catIdx) => (
-                <TabPanel key={catIdx}>
-                  <div className='grid md:grid-cols-4 gap-4'>
-                    {cat.items.map((item, idx) => (
-                      <CourseItem key={idx} title={item.title} description={item.description} />
-                    ))}
-                  </div>
-                </TabPanel>
-              ))}
-            </div>
-
-
-          </div>
+       
         </Tabs>
       </section>
     </>

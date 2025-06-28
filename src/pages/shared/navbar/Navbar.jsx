@@ -23,7 +23,8 @@ const names = courses.reduce((acc, course) => {
   return acc;
 }, []);
 
-console.log(names)
+// console.log(names)
+
 
   const x = names
   const courseItems = (

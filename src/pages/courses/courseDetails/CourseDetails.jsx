@@ -4,15 +4,22 @@ import { IoMdClock } from "react-icons/io"
 import { MdGroups } from "react-icons/md"
 import { SlCalender } from "react-icons/sl"
 import Comment from "../../home/comment/Comment"
+import { useLocation } from "react-router-dom"
+import parse from 'html-react-parser';
 
 function CourseDetails() {
+
+    const location = useLocation()
+   const { course_name, course_image, deadline, duration, total_hours,total_class,available_seat,schedule, venue,instructor_name,previous_price,current_price, eligibility, short_description, long_description} = location.state.courseDetails
+
     return (
         <div className="py-4">
             {/* title and short description */}
             <div>
-                <h1 className="text-2xl font-bold">Web Design & Development</h1>
-                <p className="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia error consequuntur aut, explicabo veritatis inventore veniam provident. Adipisci, repellat non doloribus maxime eligendi iste fugit voluptas similique, quidem rerum minima.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quas tempore laboriosam corrupti quaerat. Repellat similique sapiente eligendi tempora quis quidem, qui totam at ducimus. Laborum magni odit nihil aperiam!
+                <h1 className="text-2xl font-bold">{course_name}</h1>
+                <p className="text-justify">{
+                    parse(short_description)
+                    }
                 </p>
             </div>
             {/* short info */}
@@ -23,17 +30,17 @@ function CourseDetails() {
                     <div className="grid md:grid-cols-3 gap-3">
                         <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
-                                <FaList /> Total Class: 72
+                                <FaList /> Total Class: {total_class}
                             </span>
                         </div>
                         <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
-                                <IoMdClock /> Total Hours: 72
+                                <IoMdClock /> Total Hours: {total_hours}
                             </span>
                         </div>
                         <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
-                                <MdGroups /> Available Seats: 72
+                                <MdGroups /> Available Seats: {available_seat}
                             </span>
                         </div>
                     </div>
@@ -42,24 +49,25 @@ function CourseDetails() {
                     <div className="grid md:grid-cols-3 gap-3">
                         <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
-                                <FaUserClock /> Class Starts: 5 July
+                                <FaUserClock /> Class Starts: {deadline}
                             </span>
                         </div>
                         <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
-                                <SlCalender /> Schedule: Sun, Tue, Thu
+                                <SlCalender /> Schedule: {schedule}
                             </span>
                         </div>
                         <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
-                                <GiVikingLonghouse /> Venue: DCIT Campus
+                                <GiVikingLonghouse /> Venue: {venue}
                             </span>
                         </div>
                     </div>
 
                     {/* Course Fee and Button */}
                     <div className="flex flex-col sm:flex-row justify-between items-center bg-base-200 px-4 py-3 rounded-xl shadow-md">
-                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Course Fee: TK. 42,900</h1>
+                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Regular Fee: TK. <del> {previous_price}</del></h1>
+                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Discount Fee: TK. {current_price}</h1>
                         <button className="btn btn-info w-full sm:w-auto">Enroll Now</button>
                     </div>
                 </div>
@@ -68,7 +76,7 @@ function CourseDetails() {
                 <div className="order-1 md:order-2">
                     <img
                         className="w-full rounded-xl shadow-md"
-                        src="https://img.freepik.com/free-photo/ui-ux-representations-with-laptop_23-2150201871.jpg?semt=ais_hybrid&w=740"
+                        src={course_image}
                         alt="Course Preview"
                     />
                 </div>
@@ -79,8 +87,7 @@ function CourseDetails() {
                 {/* Left Section: Course Details */}
                 <div className="md:col-span-2 space-y-4">
                     <h1 className="text-2xl font-bold text-lime-600">Course Details</h1>
-                    <p className="text-justify text-gray-700 leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab pariatur minima ea veritatis natus quae voluptate qui doloremque...
+                    <p className="text-justify text-gray-700 leading-relaxed">{parse(long_description)}
                     </p>
                 </div>
 
@@ -98,7 +105,7 @@ function CourseDetails() {
                                     alt="Instructor"
                                 />
                                 <div>
-                                    <h1 className="text-lg font-bold text-gray-800">Md. Anwar Hossain</h1>
+                                    <h1 className="text-lg font-bold text-gray-800">{instructor_name}</h1>
                                     <p className="text-sm text-gray-600">Senior Instructor</p>
                                 </div>
                             </div>
@@ -122,7 +129,7 @@ function CourseDetails() {
                     <div>
                         <h1 className="text-2xl font-bold text-lime-600 mb-3">Who Can Join?</h1>
                         <p className="text-justify text-gray-700 leading-relaxed">
-                            Anyone with at least a Bachelor’s degree from a UGC-approved university in any discipline. No prior Photoshop or Illustrator experience required. This course is ideal for aspiring designers in graphics, web, or motion design.
+                          {eligibility}
                         </p>
                     </div>
                 </div>

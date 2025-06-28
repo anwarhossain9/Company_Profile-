@@ -4,16 +4,20 @@ import AllCourses from './allCourses/AllCourses'
 import AboutOverview from './aboutOverview/AboutOverview'
 import Comment from './comment/Comment'
 import CoursePanel from './coursePanel/CoursePanel'
+import useAboutLoaderData from '../../hooks/useAboutLoaderData'
+import InfoItem from '../about/shared/InfoItem'
 
 
 
 function Home() {
+
   return (
     <>
       <BannerSlider></BannerSlider>
       <CoursePanel></CoursePanel>
       {/* <AllCourses></AllCourses> */}
       <AboutOverview></AboutOverview>
+     
       <Comment></Comment>
       {/* <Partner></Partner> */}
     </>

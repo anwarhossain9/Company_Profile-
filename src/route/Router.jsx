@@ -8,6 +8,7 @@ import RPL from "../pages/rpl/RPL";
 import Login from "../pages/login/login/Login";
 import Register from "../pages/login/register/Register";
 import CourseDetails from "../pages/courses/courseDetails/CourseDetails";
+import Test from "../test"
 
 
 export const router = createBrowserRouter([
@@ -34,6 +35,9 @@ export const router = createBrowserRouter([
       }, {
         path: 'courseDetails',
         element: <CourseDetails></CourseDetails>
+      }, {
+        path: 'test',
+        element: <Test></Test>
       }
     ]
   },
