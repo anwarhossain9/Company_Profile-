@@ -43,19 +43,20 @@ export default () => {
     ]
   )
 
+
   return (
     <>
       <div ref={sliderRef} className="keen-slider">
-        {/* <div className="keen-slider__slide"><img className="w-full h-[250px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRtyR3_sCX3Wykik-F1_IFir4fylyGuzDHgw&s" alt="" /></div>
-        <div className="keen-slider__slide"><img className="w-full h-[250px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT90vnfhupbIMjrWYiYNhE606hbX-F853jckQ&s" alt="" /></div>
-        <div className="keen-slider__slide"><img className="w-full h-[250px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9xUI945Eqj3DNLh4LX2fmQSCLm7HaZoKqNA&s" alt="" /></div> */}
-      
+
         {
-        
-        banner.map(ban => <div className="keen-slider__slide"><img className="w-full h-[250px]" src={ban.banner_image} alt="" /></div>)
-          
+          banner?.length > 0 &&
+          banner.map(ban => (
+            <div key={ban.id} className="keen-slider__slide">
+              <img className="w-full h-[250px]" src={ban.banner_image} alt="" />
+            </div>
+          ))
         }
-    
+
       </div>
     </>
   )

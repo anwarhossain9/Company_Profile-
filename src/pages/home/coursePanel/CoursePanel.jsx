@@ -7,52 +7,8 @@ import CoursePanelItem from './shared/CoursePanelItem';
 import CourseItem from '../../../components/coursesItem/CourseItem';
 import Title from '../../../components/title/Title';
 import useRegularDataLoader from '../../../hooks/useRegularDataLoader';
+import SectionTitle from '../../../components/section/SectionTitle';
 
-
-const categoryData = [
-  {
-    category: "Web Development",
-    items: [
-      { title: "HTML", description: "Structure of webpages." },
-      { title: "CSS", description: "Style and layout." },
-      { title: "JavaScript", description: "Dynamic interactivity." },
-    ],
-  },
-  {
-    category: "Graphic Design",
-    items: [
-      { title: "Photoshop", description: "Image editing tool." },
-      { title: "Illustrator", description: "Vector graphics design." },
-    ],
-  },
-  {
-    category: "Marketing",
-    items: [
-      { title: "SEO", description: "Search engine optimization." },
-      { title: "SEO", description: "Search engine optimization." },
-      { title: "SEO", description: "Search engine optimization." },
-      { title: "Email Marketing", description: "Email campaigns and automation." },
-    ],
-  },
-  {
-    category: "Machine Learning",
-    items: [
-      { title: "AI", description: "Search engine optimization." },
-      { title: "ML", description: "Search engine optimization." },
-      { title: "ML", description: "Search engine optimization." },
-      { title: "Data Science", description: "Search engine optimization." },
-      { title: "Email Marketing", description: "Email campaigns and automation." },
-    ],
-  },
-  {
-    category: "Cyber Security",
-    items: [
-      { title: "Cyber Security Beggner", description: "Search engine optimization." },
-      { title: "Cyber Security Advance", description: "Search engine optimization." },
-
-    ],
-  },
-];
 
 
 function CoursePanel() {
@@ -101,16 +57,19 @@ function CoursePanel() {
   const categories = data.map(dta => dta.course_category_name)
   
 
+
+  
   return (
     <>
       <Title title="COURSES FROM ALL THE FIELDS" subtitle="Find all of Our Courses"></Title>
       <section className='py-6'>
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
+         
             <div ref={sliderRef} className="keen-slider">
 
               {
-                categories.map(cat => <Tab className="keen-slider__slide "><CoursePanelItem title={cat}></CoursePanelItem></Tab>)
+                categories.map(cat => <Tab className="keen-slider__slide card"><CoursePanelItem title={cat}></CoursePanelItem></Tab>)
               }
 
             </div>
@@ -121,7 +80,10 @@ function CoursePanel() {
                 {data.map((category, catIdx) => (
                   <TabPanel key={catIdx}>
                     <div className='grid md:grid-cols-4 gap-4'>
-                      {category.courses.map(course => (
+                      { 
+                      (category.courses && (category.courses).length > 0) ?
+                      
+                      category.courses.map(course => (
                         <CourseItem
                          key={course.id} 
                          course_name={course.course_name} 
@@ -141,7 +103,12 @@ function CoursePanel() {
                          long_description = {course.long_description}
                          
                          />
-                      ))}
+                      ))
+                      :
+                    <SectionTitle title="No courses found!"></SectionTitle>
+                      
+                      
+                      }
                     </div>
                   </TabPanel>
                 ))}

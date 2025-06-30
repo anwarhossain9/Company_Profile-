@@ -4,21 +4,29 @@ import { IoMdClock } from "react-icons/io"
 import { MdGroups } from "react-icons/md"
 import { SlCalender } from "react-icons/sl"
 import Comment from "../../home/comment/Comment"
-import { useLocation } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import parse from 'html-react-parser';
+import { useContext } from "react"
+import { AllCoursesContext } from "../../../assets/context/CourseContext"
 
 function CourseDetails() {
 
-    const location = useLocation()
-   const { course_name, course_image, deadline, duration, total_hours,total_class,available_seat,schedule, venue,instructor_name,previous_price,current_price, eligibility, short_description, long_description} = location.state.courseDetails
 
+    const{details} = useParams()
+   
+
+    const courseInf = useContext(AllCoursesContext)
+    const allCategories = courseInf.data
+    const allCourse = allCategories.flatMap(category => category.courses)
+    const course = allCourse.find( course => course.course_name === details)
+    console.log(course)
     return (
-        <div className="py-4">
+        <div className="py-4 px-4">
             {/* title and short description */}
             <div>
-                <h1 className="text-2xl font-bold">{course_name}</h1>
+                <h1 className="text-2xl font-bold">{course.course_name}</h1>
                 <p className="text-justify">{
-                    parse(short_description)
+                    parse(course.short_description)
                     }
                 </p>
             </div>
@@ -30,17 +38,17 @@ function CourseDetails() {
                     <div className="grid md:grid-cols-3 gap-3">
                         <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
-                                <FaList /> Total Class: {total_class}
+                                <FaList /> Total Class: {course.total_class}
                             </span>
                         </div>
                         <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
-                                <IoMdClock /> Total Hours: {total_hours}
+                                <IoMdClock /> Total Hours: {course.total_hours}
                             </span>
                         </div>
                         <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
-                                <MdGroups /> Available Seats: {available_seat}
+                                <MdGroups /> Available Seats: {course.available_seat}
                             </span>
                         </div>
                     </div>
@@ -49,25 +57,25 @@ function CourseDetails() {
                     <div className="grid md:grid-cols-3 gap-3">
                         <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
-                                <FaUserClock /> Class Starts: {deadline}
+                                <FaUserClock /> Class Starts: {course.deadline}
                             </span>
                         </div>
                         <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
-                                <SlCalender /> Schedule: {schedule}
+                                <SlCalender /> Schedule: {course.schedule}
                             </span>
                         </div>
                         <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
-                                <GiVikingLonghouse /> Venue: {venue}
+                                <GiVikingLonghouse /> Venue: {course.venue}
                             </span>
                         </div>
                     </div>
 
                     {/* Course Fee and Button */}
                     <div className="flex flex-col sm:flex-row justify-between items-center bg-base-200 px-4 py-3 rounded-xl shadow-md">
-                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Regular Fee: TK. <del> {previous_price}</del></h1>
-                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Discount Fee: TK. {current_price}</h1>
+                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Regular Fee: TK. <del> {course.previous_price}</del></h1>
+                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Discount Fee: TK. {course.current_price}</h1>
                         <button className="btn btn-info w-full sm:w-auto">Enroll Now</button>
                     </div>
                 </div>
@@ -76,7 +84,7 @@ function CourseDetails() {
                 <div className="order-1 md:order-2">
                     <img
                         className="w-full rounded-xl shadow-md"
-                        src={course_image}
+                        src={course.course_image}
                         alt="Course Preview"
                     />
                 </div>
@@ -87,7 +95,7 @@ function CourseDetails() {
                 {/* Left Section: Course Details */}
                 <div className="md:col-span-2 space-y-4">
                     <h1 className="text-2xl font-bold text-lime-600">Course Details</h1>
-                    <p className="text-justify text-gray-700 leading-relaxed">{parse(long_description)}
+                    <p className="text-justify text-gray-700 leading-relaxed">{parse(course.long_description)}
                     </p>
                 </div>
 
@@ -105,7 +113,7 @@ function CourseDetails() {
                                     alt="Instructor"
                                 />
                                 <div>
-                                    <h1 className="text-lg font-bold text-gray-800">{instructor_name}</h1>
+                                    <h1 className="text-lg font-bold text-gray-800">{course.instructor_name}</h1>
                                     <p className="text-sm text-gray-600">Senior Instructor</p>
                                 </div>
                             </div>
@@ -117,7 +125,7 @@ function CourseDetails() {
                                 <form method="dialog">
                                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 </form>
-                                <h3 className="font-bold text-lg text-lime-600">Md. Anwar Hossain</h3>
+                                <h3 className="font-bold text-lg text-lime-600">{course.instructor_name}</h3>
                                 <p className="py-4 text-justify text-gray-700">
                                     Md. Anwar Hossain is an experienced instructor with a strong background in graphics and web design...
                                 </p>
@@ -129,7 +137,7 @@ function CourseDetails() {
                     <div>
                         <h1 className="text-2xl font-bold text-lime-600 mb-3">Who Can Join?</h1>
                         <p className="text-justify text-gray-700 leading-relaxed">
-                          {eligibility}
+                          {course.eligibility}
                         </p>
                     </div>
                 </div>
@@ -140,6 +148,8 @@ function CourseDetails() {
             
 
         </div>
+
+       
     )
 }
 

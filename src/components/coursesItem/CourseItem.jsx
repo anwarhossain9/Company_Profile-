@@ -1,13 +1,14 @@
 import { GiAlarmClock } from "react-icons/gi";
 import { LuCalendarDays } from "react-icons/lu";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { Link } from "react-scroll";
-function CourseItem({course_name, course_image, deadline,duration, total_hours,available_seat,schedule,venue,instructor_name,total_class,previous_price,current_price, eligibility, short_description,long_description}) {
-    const courseDetails = {
-        course_name, course_image, deadline, duration, total_hours,available_seat,schedule, venue,previous_price,instructor_name,total_class,previous_price,current_price, eligibility, short_description,long_description
-    }
+function CourseItem({course_image,course_name,deadline, duration, current_price}) {
+    
+    const{category} = useParams()
+
+
     return (
-      <NavLink to="courseDetails" state={{courseDetails}}>
+      <NavLink to={`/${category || 'courses'}/${course_name}`} >
           <div className="card bg-base-100 w-full shadow-sm bg-base-100 card-xs shadow-sm transition-transform duration-300 hover:scale-105">
             <figure>
                 <img className='w-full'
@@ -29,7 +30,7 @@ function CourseItem({course_name, course_image, deadline,duration, total_hours,a
                 </div>
                 <div className="flex justify-between bg-green-50 items-center">
                     <div className="">
-                        <p className='p-2 text-xl'>TK.50000</p>
+                        <p className='p-2 text-xl'>TK. {current_price}</p>
                     </div>
                     <div className="btn btn-info">Enroll Now</div>
                 </div>

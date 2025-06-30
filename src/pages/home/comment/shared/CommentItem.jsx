@@ -3,7 +3,10 @@ import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
 
-function CommentItem() {
+function CommentItem({name ,review, image}) {
+
+ 
+
   return (
     <div className="keen-slider__slide py-2">
       <div className=" px-4 md:px-10 flex items-center">
@@ -11,20 +14,20 @@ function CommentItem() {
           <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-lime-500 shadow-md flex-shrink-0">
             <img
               className="w-full h-full object-cover"
-              src="https://thumbs.dreamstime.com/b/child-girl-schoolgirl-elementary-school-student-123686003.jpg"
-              alt={`Photo of`}
+              src={image}
+              alt={name}
             />
           </div>
           <div className="flex-1">
             <Rating
               style={{ maxWidth: 180 }}
-              value={3}
+              value={1}
               readOnly
             />
             <p className="text-gray-700 text-base mb-3 text-justify leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, ratione possimus ex cumque perspiciatis voluptatum, delectus velit atque autem, veniam illum? Praesentium adipisci illo cum possimus? Repudiandae aliquam commodi deleniti.
+              {review}
             </p>
-            <h2 className="text-lg font-semibold text-lime-600">{"name"}</h2>
+            <h2 className="text-lg font-semibold text-lime-600">{name}</h2>
           </div>
         </div>
       </div>

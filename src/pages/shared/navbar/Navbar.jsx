@@ -1,52 +1,46 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useRegularDataLoader from "../../../hooks/useRegularDataLoader";
 
 
 
 
 function Navbar() {
 
-   const [courses, setCourses] = useState([]);
-   const [category, setCcategory] = useState([]);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users') // path is relative to `public/`
-      .then((response) => response.json())
-      .then((data) => setCourses(data))
-      .catch((error) => console.error('Error fetching courses:', error));
-  }, []);
+  const [courses, setCourses] = useState([]);
+  const [regularCourses, loader] = useRegularDataLoader();
 
 
-
-const names = courses.reduce((acc, course) => {
-  acc.push(course.name);
-  return acc;
-}, []);
-
-// console.log(names)
-
-
-  const x = names
-  const courseItems = (
-    <>
-      {
-        x.map(abc => <li><a>{abc}</a></li>)
-      }
-    </>
-  );
 
   const navigate = useNavigate();
 
-const handleScrollTo = (target) => {
-  if (window.location.pathname === "/about") {
-    const event = new CustomEvent("scrollToSection", { detail: target });
-    window.dispatchEvent(event);
-  } else {
-    navigate("/about", { state: { scrollTo: target } });
+  const handleScrollTo = (target) => {
+    if (window.location.pathname === "/about") {
+      const event = new CustomEvent("scrollToSection", { detail: target });
+      window.dispatchEvent(event);
+    } else {
+      navigate("/about", { state: { scrollTo: target } });
+    }
+  };
+
+
+  if (loader) {
+    return <p>loading</p>
   }
-};
+  const { data } = regularCourses
+  const categories = data.map(dta => dta.course_category_name)
 
 
+
+
+
+  const courseItems = 
+    <>
+      {
+        categories.map(category => <li><Link to={`/${category}`} state={{category: category}}>{category}</Link></li>)
+      }
+    </>
+  ;
   return (
     <div className="navbar bg-[#34A249ff] shadow-sm sticky top-0 z-50">
       {/* Start: Logo & Mobile Menu */}

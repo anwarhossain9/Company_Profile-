@@ -6,21 +6,22 @@ import Comment from './comment/Comment'
 import CoursePanel from './coursePanel/CoursePanel'
 import useAboutLoaderData from '../../hooks/useAboutLoaderData'
 import InfoItem from '../about/shared/InfoItem'
+import Partner from './partner/Partner'
 
 
 
 function Home() {
 
   return (
-    <>
+    <div className='px-4'>
       <BannerSlider></BannerSlider>
       <CoursePanel></CoursePanel>
       {/* <AllCourses></AllCourses> */}
       <AboutOverview></AboutOverview>
      
       <Comment></Comment>
-      {/* <Partner></Partner> */}
-    </>
+      <Partner></Partner>
+    </div>
   )
 }
 

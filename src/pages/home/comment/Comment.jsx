@@ -4,7 +4,13 @@ import "keen-slider/keen-slider.min.css"
 import { useState } from "react"
 import CommentItem from "./shared/CommentItem"
 import Title from "../../../components/title/Title"
+import useCommentLoader from "../../../hooks/useCommentLoader"
 function Comment() {
+
+    const [comments, loader] = useCommentLoader()
+  
+
+
     const [currentSlide, setCurrentSlide] = useState(0)
     const [loaded, setLoaded] = useState(false)
     const [sliderRef, instanceRef] = useKeenSlider({
@@ -17,22 +23,22 @@ function Comment() {
         },
     })
 
+    
+    if(loader){
+        return <p>Loadinger ...</p>
+    }
+ 
+
     return (
         <>
-        
-        <Title title="Testimonials" subtitle="What Our Students Say"></Title>
+
+            <Title title="Testimonials" subtitle="What Our Students Say"></Title>
             <div className="navigation-wrapper py-4">
                 {/* slide item here */}
                 <div ref={sliderRef} className="keen-slider">
-                   <CommentItem></CommentItem>
-                   <CommentItem></CommentItem>
-                   <CommentItem></CommentItem>
-                   <CommentItem></CommentItem>
-                   <CommentItem></CommentItem>
-                   <CommentItem></CommentItem>
-                   <CommentItem></CommentItem>
-                   <CommentItem></CommentItem>
-                   <CommentItem></CommentItem>
+                   {
+                    comments.map(comment => <CommentItem image = {comment.image} name = {comment.name} review = {comment.review}></CommentItem>)
+                   }
                 </div>
 
                 {loaded && instanceRef.current && (

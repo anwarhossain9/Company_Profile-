@@ -5,7 +5,7 @@ function useRPLLoaderData() {
     const [loader, setLoader] = useState(true)
 
     useEffect(()=>{
-        fetch("https://jsonplaceholder.typicode.com/users")
+        fetch("https://institute.dcitinstitute.com.bd/api/rpl-info")
         .then(res => res.json())
         .then(data => {
             setRplData(data)

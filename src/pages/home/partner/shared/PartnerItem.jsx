@@ -1,9 +1,9 @@
 import React from 'react'
 
-function PartnerItem() {
+function PartnerItem({partner_image}) {
     return (
         <div>
-            <img className='p-2 w-[100px] card mx-auto' src="https://bwcci-bd.org/wp-content/uploads/2021/09/bwcci-logo.png" alt="" />
+            <img className='w-full p-2 mx-auto' src={partner_image} alt="" />
         </div>
     )
 }
