@@ -44,6 +44,9 @@ Route::get('/student-review-info',[ApiController::class,'getStudentReviewInfo'])
 
 Route::get('/team-member-info',[ApiController::class,'getTeamMemberInfo']);
 
+Route::get('/rpl-info',[ApiController::class,'getRplInfo']);
+
+
 
 
 

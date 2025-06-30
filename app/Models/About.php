@@ -19,10 +19,16 @@ class About extends Model
         'story_related_image',
         'goal',
         'purpose',
-        'mission_vission',
+        'mission',
+        'vission',
         'ceo_image',
         'ceo_name',
+        'ceo_designation',
         'ceo_word',
+        'director_image',
+        'director_name',
+        'director_designation' ,
+        'director_word',
         'status'
         
     ];
@@ -37,10 +43,16 @@ class About extends Model
             'company_story'         => $request->company_story,
             'goal'                  => $request->goal,
             'purpose'               => $request->purpose,
-            'mission_vission'       => $request->mission_vission,
+            'vission'               =>$request->vission,
+            'mission'               => $request->mission,
             'ceo_name'              => $request->ceo_name,
+            'ceo_designation'       => $request->ceo_designation,
             'ceo_image'             =>fileUpload($request->file('ceo_image'), 'about', isset($id) ? static::find($id)->ceo_image : ''),
             'ceo_word'              => $request->ceo_word,
+            'director_name'         => $request->director_name,
+            'director_designation'  => $request->director_designation,
+            'director_image'        =>fileUpload($request->file('director_image'), 'about', isset($id) ? static::find($id)->director_image : ''),
+            'director_word'         => $request->director_word,
             'status'                => $request->status == 'on' ? 1 : 0,
         ]);
 }

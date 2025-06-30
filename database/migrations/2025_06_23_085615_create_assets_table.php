@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('occupation_name');
             $table->string('registration_link');
             $table->text('benefits_conditions');
-            $table->string('necessary_documents');
+            $table->text('necessary_documents');
             $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();

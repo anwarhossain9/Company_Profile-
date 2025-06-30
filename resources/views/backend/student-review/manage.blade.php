@@ -17,6 +17,7 @@
                         <th>#</th>
                         <th>Image</th>
                         <th>Name</th>
+                        <th>Rate</th>
                         <th>Review</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -26,7 +27,8 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td><img src="{{ asset($studentReview->image )}}" alt="" style="height: 60px"></td>
-                                <td>{{ $studentReview->name }}</td> 
+                                <td>{{ $studentReview->name }}</td>
+                                <td>{{ $studentReview->rate }}</td>  
                                 <td>{!! $studentReview->review !!}</td> 
                                 <td>{{ $studentReview->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">

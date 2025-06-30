@@ -14,6 +14,7 @@ use App\Models\Logo;
 use App\Models\Partner;
 use App\Models\StudentReview;
 use App\Models\TeamMember;
+use App\Models\Rpl;
 
 
 class ApiController extends Controller
@@ -31,10 +32,16 @@ class ApiController extends Controller
             'story_related_image'  => $item->story_related_image ? asset($item->story_related_image) : null,
             'goal'                 => strip_tags($item->goal,'<b><i>'),
             'purpose'              => strip_tags($item->purpose,'<b><i>'),
-            'mission_vission'      => strip_tags($item->mission_vission,'<b><i>'),
+            'mission'              => strip_tags($item->mission,'<b><i>'),
+            'vission'              => strip_tags($item->vission,'<b><i>'),
             'ceo_image'            => $item->ceo_image ? asset($item->ceo_image) : null,
             'ceo_name'             => strip_tags($item->ceo_name,'<b><i>'),
+            'ceo_designation'      => strip_tags($item->ceo_designation,'<b><i>'),
             'ceo_word'             => strip_tags($item->ceo_word,'<b><i>'),
+            'director_image'       => $item->director_image ? asset($item->director_image) : null,
+            'director_name'        => strip_tags($item->director_name,'<b><i>'),
+            'director_designation' => strip_tags($item->director_designation,'<b><i>'),
+            'director_word'        => strip_tags($item->director_word,'<b><i>'),
             'status'               => $item->status,
       
         ];
@@ -112,8 +119,8 @@ public function getCourseCategoryInfo()
 
     $cleanedcourseCategories = $courseCategories->map(function($item) {
         return [
-             'name'          => strip_tags($item->name,'<b><i>'),
-             'status'        => $item->status,
+             'course_category_name' => strip_tags($item->course_category_name,'<b><i>'),
+             'status'               => $item->status,
       
         ];
     });
@@ -125,11 +132,24 @@ public function categoryWiseCourses()
 {
     $categories = CourseCategory::with('courses')->get();
 
+    foreach ($categories as $category) {
+        foreach ($category->courses as $course) {
+            if ($course->course_image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($course->course_image, '/');
+                $course->course_image = asset($cleanPath);
+            } else {
+                $course->course_image = asset('default/no-image.png');
+            }
+        }
+    }
+
     return response()->json([
         'success' => true,
         'data' => $categories
     ]);
 }
+
 
 public function getCourseInfo()
 {
@@ -137,7 +157,7 @@ public function getCourseInfo()
 
     $cleanedCourses = $courses->map(function($item) {
         return [
-            'course_category_name'            => strip_tags($item->courseCategory->name,'<b><i>'),
+            'course_category_name'          => strip_tags($item->courseCategory->course_category_name,'<b><i>'),
             'course_type'                   => strip_tags($item->course_type,'<b><i>'),
             'batch_no'                      => strip_tags($item->batch_no,'<b><i>'),
             'course_name'                   => strip_tags($item->course_name,'<b><i>'),
@@ -156,7 +176,11 @@ public function getCourseInfo()
             'installment1_amount'           => strip_tags($item->installment1_amount,'<b><i>'),
             'installment2_amount'           => strip_tags($item->installment2_amount,'<b><i>'),
             'instructor_name'               => strip_tags($item->instructor_name,'<b><i>'),
-            'instructor_social_media'       => strip_tags($item->instructor_social_media,'<b><i>'),
+            'instructor_designation'        => strip_tags($item->instructor_designation,'<b><i>'),
+            'instructor_email_link'         => strip_tags($item->instructor_email_link,'<b><i>'),
+            'instructor_facebook_link'      => strip_tags($item->instructor_facebook_link,'<b><i>'),
+            'instructor_linkdin_link'       => strip_tags($item->instructor_linkdin_link,'<b><i>'),
+            'instructor_twiter_link'        => strip_tags($item->instructor_twiter_link,'<b><i>'),
             'eligibility'                   => strip_tags($item->eligibility,'<b><i>'),
             'short_description'             => strip_tags($item->short_description,'<b><i>'),
             'long_description'              => strip_tags($item->long_description,'<b><i>'),
@@ -173,6 +197,53 @@ public function getCourseInfo()
     return response()->json($cleanedCourses);
 }
 
+
+
+public function getRplInfo()
+{
+    $rpls = Rpl::all();
+
+    $cleanedRpls = $rpls->map(function($item) {
+        return [
+            'batch_no'                      => strip_tags($item->batch_no,'<b><i>'),
+            'rpl_subject_name'              => strip_tags($item->rpl_subject_name,'<b><i>'),
+            'rpl_image'                     => $item->rpl_image ? asset($item->rpl_image) : null,
+            'starts_date'                   => strip_tags($item->starts_date,'<b><i>'),
+            'deadline'                      => strip_tags($item->deadline,'<b><i>'),
+            'duration'                      => strip_tags($item->duration,'<b><i>'),
+            'class_per_week'                => strip_tags($item->class_per_week,'<b><i>'),
+            'previous_price'                => strip_tags($item->previous_price,'<b><i>'),
+            'current_price'                 => strip_tags($item->current_price,'<b><i>'),
+            'total_class'                   => strip_tags($item->total_class,'<b><i>'),
+            'total_hours'                   => strip_tags($item->total_hours,'<b><i>'),
+            'available_seat'                => strip_tags($item->available_seat,'<b><i>'),
+            'schedule'                      => strip_tags($item->schedule,'<b><i>'),
+            'venue'                         => strip_tags($item->venue,'<b><i>'),
+            'installment1_amount'           => strip_tags($item->installment1_amount,'<b><i>'),
+            'installment2_amount'           => strip_tags($item->installment2_amount,'<b><i>'),
+            'instructor_name'               => strip_tags($item->instructor_name,'<b><i>'),
+            'instructor_designation'        => strip_tags($item->instructor_designation,'<b><i>'),
+            'instructor_email_link'         => strip_tags($item->instructor_email_link,'<b><i>'),
+            'instructor_facebook_link'      => strip_tags($item->instructor_facebook_link,'<b><i>'),
+            'instructor_linkdin_link'       => strip_tags($item->instructor_linkdin_link,'<b><i>'),
+            'instructor_twiter_link'        => strip_tags($item->instructor_twiter_link,'<b><i>'),
+            'eligibility'                   => strip_tags($item->eligibility,'<b><i>'),
+            'short_description'             => strip_tags($item->short_description,'<b><i>'),
+            'long_description'              => strip_tags($item->long_description,'<b><i>'),
+            'curriculum'                    => strip_tags($item->curriculum,'<b><i>'),
+            'faqs'                          => strip_tags($item->faqs,'<b><i>'),
+            'reason_of_choosing_this_rpl'   => strip_tags($item->reason_of_choosing_this_rpl,'<b><i>'),
+            'job_sectors_title'             => strip_tags($item->job_sectors_title,'<b><i>'),
+            'job_sectors_description'       => strip_tags($item->job_sectors_description,'<b><i>'),
+            'status'                        => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedRpls);
+}
+
+
 public function getLogoInfo()
 {
     $logos = Logo::all();
@@ -188,9 +259,13 @@ public function getLogoInfo()
     return response()->json($cleanedlogos);
 }
 
+
+
+
+
 public function getPartnerInfo()
 {
-    $abouts = About::all();
+    $partners = Partner::all();
 
     $cleanedPartners = $partners->map(function($item) {
         return [
@@ -212,6 +287,7 @@ public function getStudentReviewInfo()
              'company_dream' => strip_tags($item->company_dream,'<b><i>'),
              'image'         =>$item->image ? asset($item->image) : null,
              'name'          => strip_tags($item->name,'<b><i>'),
+             'rate'          =>$item->rate,
              'review'        => strip_tags($item->review,'<b><i>'),
              'status'        => $item->status,
       

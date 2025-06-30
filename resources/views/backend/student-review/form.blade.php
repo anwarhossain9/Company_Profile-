@@ -37,6 +37,14 @@
                             </div>
                        </div>
 
+
+                       <div class="row mt-4">
+                            <label class="col-md-3">Rate</label>
+                            <div class="col-md-9">
+                                <input type="number" name="rate" class="form-control" placeholder="Rate" value="{{ isset($studentReview) ? $studentReview->rate: '' }}" />
+                            </div>
+                       </div>
+
                         <div class="row mt-4">
                             <label for="" class="col-md-3">Review</label>
                            

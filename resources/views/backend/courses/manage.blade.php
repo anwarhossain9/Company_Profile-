@@ -1,6 +1,6 @@
 @extends('backend.master')
 
-@section('title', 'Manage course')
+@section('title', 'Manage Course')
 
 @section('body')
     <div class="row mt-5">
@@ -34,7 +34,11 @@
                         <th>Installment 1 Amount</th>
                         <th>Installment 2 Amount</th>
                         <th>Instructor Name</th>
-                        <th>Instructor Social Media</th>
+                        <th>Instructor Designation</th>
+                        <th>Instructor Email Link</th>
+                        <th>Instructor Facebook Link</th>
+                        <th>Instructor Linkdin Link</th>
+                        <th>Instructor Twiter Link</th>
                         <th>Eligibility</th>
                         <th>Short Description</th>
                         <th>Long Description</th>
@@ -67,8 +71,12 @@
                                 <td>{{ $course->venue }}</td> 
                                 <td>{{ $course->installment1_amount }}</td> 
                                 <td>{{ $course->installment2_amount }}</td> 
-                                <td>{{ $course->instructor_name }}</td> 
-                                <td>{{ $course->instructor_social_media }}</td> 
+                                <td>{{ $course->instructor_name }}</td>
+                                <td>{{ $course->instructor_designation }}</td>
+                                <td>{{ $course->instructor_email_link}}</td>  
+                                <td>{{ $course->instructor_facebook_link}}</td> 
+                                <td>{{ $course->instructor_linkdin_link}}</td> 
+                                <td>{{ $course->instructor_twiter_link}}</td> 
                                 <td>{!! $course->eligibility !!}</td>
                                 <td>{!! $course->short_description !!}</td>
                                 <td>{!! $course->long_description !!}</td> 

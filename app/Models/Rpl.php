@@ -6,16 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Course extends Model
+class Rpl extends Model
 {
     use HasFactory;
     use SoftDeletes;
     protected $fillable = [
-        'course_category_id',
-        'course_type',
         'batch_no',
-        'course_name',
-        'course_image',
+        'rpl_subject_name',
+        'rpl_image',
         'starts_date',
         'deadline',
         'duration',
@@ -40,21 +38,19 @@ class Course extends Model
         'long_description',
         'curriculum',
         'faqs',
-        'reason_of_choosing_this_course',
+        'reason_of_choosing_this_rpl',
         'job_sectors_title',
         'job_sectors_description',
         'status'
     ];
 
     
-    public static function saveOrUpdateCourse($request, $id = null)
+    public static function saveOrUpdateRpl($request, $id = null)
     {
-        Course::updateOrCreate(['id' => $id], [
-            'course_category_id'             => $request->course_category_id,
-            'course_type'                    => $request->course_type,
+        Rpl::updateOrCreate(['id' => $id], [
             'batch_no'                       => $request->batch_no,
-            'course_name'                    => $request->course_name,
-            'course_image'                   =>fileUpload($request->file('course_image'), 'course', isset($id) ? static::find($id)->course_image : ''),
+            'rpl_subject_name'               => $request->rpl_subject_name,
+            'rpl_image'                      =>fileUpload($request->file('rpl_image'), 'course', isset($id) ? static::find($id)->rpl_image : ''),
             'starts_date'                    => $request->starts_date,
             'deadline'                       => $request->deadline,
             'duration'                       => $request->duration,
@@ -77,7 +73,7 @@ class Course extends Model
             'eligibility'                    => $request->eligibility,
             'curriculum'                     => $request->curriculum,
             'faqs'                           => $request->faqs,
-            'reason_of_choosing_this_course' => $request->reason_of_choosing_this_course,
+            'reason_of_choosing_this_rpl' => $request->reason_of_choosing_this_rpl,
             'job_sectors_title'              => $request->job_sectors_title,
             'job_sectors_description'        => $request->job_sectors_description,
             'short_description'              => $request->short_description,
@@ -85,11 +81,4 @@ class Course extends Model
             'status'                         => $request->status == 'on' ? 1 : 0,
         ]);
 }
-
-
-public function courseCategory()
-    {
-        return $this->belongsTo(CourseCategory::class);
-    }
-
 }

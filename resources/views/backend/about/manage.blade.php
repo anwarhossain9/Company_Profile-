@@ -21,10 +21,16 @@
                         <th>Story Related Image</th>
                         <th>Goal</th>
                         <th>Purpose</th>
-                        <th>Mission & Vission</th>
+                        <th>Mission </th>
+                        <th>Vission</th>
                         <th>Ceo Name</th>
-                        <th>Ceo Image</th>
+                        <th>Ceo Designation</th>
                         <th>Ceo Word</th>
+                        <th>Ceo Image</th>
+                        <th>Director Name</th>
+                        <th>Director Designation</th>
+                        <th>Director Word</th>
+                        <th>Director Image</th>
                         <th>Status</th>
                         <th>Action</th>
                         </thead>
@@ -38,10 +44,16 @@
                                 <td><img src="{{ asset($about->story_related_image )}}" alt="" style="height: 60px"></td>
                                 <td>{!! $about->goal !!}</td>
                                 <td>{!! $about->purpose !!}</td>
-                                <td>{!! $about->mission_vission !!}</td>
+                                <td>{!! $about->mission !!}</td>
+                                <td>{!! $about->vission !!}</td>
                                 <td>{{ $about->ceo_name }}</td>
+                                <td>{{ $about->ceo_designation }}</td>
                                 <td>{!! $about->ceo_word !!}</td>
                                 <td><img src="{{ asset($about->ceo_image )}}" alt="" style="height: 60px"></td>
+                                <td>{{ $about->director_name }}</td>
+                                <td>{{ $about->director_designation }}</td>
+                                <td>{!! $about->director_word !!}</td>
+                                <td><img src="{{ asset($about->director_image )}}" alt="" style="height: 60px"></td>
                                 <td>{{ $about->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('abouts.edit', $about->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

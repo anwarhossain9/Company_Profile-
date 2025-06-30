@@ -15,6 +15,7 @@ class StudentReview extends Model
         
         'image',
         'name',
+        'rate',
         'review',
         'status'
         
@@ -26,6 +27,7 @@ class StudentReview extends Model
             
             'image'   =>fileUpload($request->file('image'), 'studentReview', isset($id) ? static::find($id)->image : ''),
             'name'    => $request->name,
+            'rate'    => $request->rate,
             'review'  => $request->review,
             'status'  => $request->status == 'on' ? 1 : 0,
         ]);

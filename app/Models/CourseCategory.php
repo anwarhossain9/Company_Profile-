@@ -11,15 +11,15 @@ class CourseCategory extends Model
     use HasFactory;
      use SoftDeletes;
     protected $fillable = [
-        'name',
+        'course_category_name',
         'status'
     ];
 
     public static function saveOrUpdateCourseCategory($request, $id = null)
     {
         CourseCategory::updateOrCreate(['id' => $id], [
-            'name'             => $request->name,
-            'status'           => $request->status == 'on' ? 1 : 0,
+            'course_category_name' => $request->course_category_name,
+            'status'               => $request->status == 'on' ? 1 : 0,
         ]);
 }
 

@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('rpls', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('course_category_id');
-            $table->string('course_type');
             $table->string('batch_no');
-            $table->string('course_name');
-            $table->text('course_image');
+            $table->string('rpl_subject_name');
+            $table->text('rpl_image');
             $table->string('starts_date');
             $table->string('deadline');
             $table->string('duration');
@@ -36,13 +34,13 @@ return new class extends Migration
             $table->string('instructor_email_link');
             $table->string('instructor_facebook_link');
             $table->string('instructor_linkdin_link');
-            $table->string('instructor_twiter_link');          
+            $table->string('instructor_twiter_link');
             $table->text('eligibility');
             $table->text('short_description');
             $table->text('long_description');
             $table->text('curriculum');
             $table->text('faqs');
-            $table->text('reason_of_choosing_this_course');
+            $table->text('reason_of_choosing_this_rpl');
             $table->string('job_sectors_title');
             $table->text('job_sectors_description');
             $table->tinyInteger('status')->default(0);
@@ -56,6 +54,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('rpls');
     }
 };

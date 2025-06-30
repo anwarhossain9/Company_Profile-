@@ -27,7 +27,7 @@
               @foreach ($courseCategories as $coursecategory)
                   <option value="{{ $coursecategory->id }}"
                       {{ $errors->any() ? old('course_category_id') : (isset($course) && $course->course_category_id == $coursecategory->id ? 'selected' : '') }}>
-                      {{ $coursecategory->name }}</option>
+                      {{ $coursecategory->course_category_name }}</option>
               @endforeach
           </select>
       </div>
@@ -130,10 +130,37 @@
     <div class="col-md-9"><input type="text" name="instructor_name" class="form-control" placeholder="Instructor Name" value="{{ isset($course) ? $course->instructor_name: '' }}"/>
 </div>
 </div>
+
+<div class="row mt-4">
+    <label class="col-md-3">Instructor Designation</label>
+    <div class="col-md-9"><input type="text" name="instructor_designation" class="form-control" placeholder="Instructor Designation" value="{{ isset($course) ? $course->instructor_designation: '' }}"/>
+</div>
+</div>
   <div class="row mt-4">
-    <label class="col-md-3">Instructor Social Media</label>
+    <label class="col-md-3">Instructor Email Link</label>
     <div class="col-md-9">
-        <input type="text" name="instructor_social_media" class="form-control" placeholder="Instructor Social Media" value="{{ isset($course) ? $course->instructor_social_media: '' }}"/>
+        <input type="text" name="instructor_email_link" class="form-control" placeholder="Instructor Email Link" value="{{ isset($course) ? $course->instructor_email_link: '' }}"/>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <label class="col-md-3">Instructor FaceBook Link</label>
+    <div class="col-md-9">
+        <input type="text" name="instructor_facebook_link" class="form-control" placeholder="Instructor Facebook Link" value="{{ isset($course) ? $course->instructor_facebook_link: '' }}"/>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <label class="col-md-3">Instructor linkdin Link</label>
+    <div class="col-md-9">
+        <input type="text" name="instructor_linkdin_link" class="form-control" placeholder="Instructor Linkdin Link" value="{{ isset($course) ? $course->instructor_linkdin_link: '' }}"/>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <label class="col-md-3">Instructor Twiter Link</label>
+    <div class="col-md-9">
+        <input type="text" name="instructor_twiter_link" class="form-control" placeholder="Instructor Twiter Link" value="{{ isset($course) ? $course->instructor_twiter_link: '' }}"/>
     </div>
 </div>
   <div class="row mt-4">

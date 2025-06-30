@@ -22,7 +22,7 @@
                         <div class="row mt-4">
                             <label class="col-md-3">Course Category Name</label>
                             <div class="col-md-9">
-                                <input type="text" name="name" class="form-control" placeholder="Course Category Name" value="{{ isset($courseCategory) ? $courseCategory->name: '' }}" />
+                                <input type="text" name="course_category_name" class="form-control" placeholder="Course Category Name" value="{{ isset($courseCategory) ? $courseCategory->course_category_name: '' }}" />
                             </div>
                        </div>
 

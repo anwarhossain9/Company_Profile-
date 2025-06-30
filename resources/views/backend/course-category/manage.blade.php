@@ -23,7 +23,7 @@
                         @foreach($courseCategories as $courseCategory)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $courseCategory->name }}</td> 
+                                <td>{{ $courseCategory->course_category_name }}</td> 
                                 <td>{{ $courseCategory->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('course_categories.edit', $courseCategory->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

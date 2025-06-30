@@ -39,8 +39,9 @@
                         <span class="side-menu__label">Institute</span><i class="angle fa fa-angle-right"></i>
                     </a>
                     <ul class="slide-menu">
-                        <li><a href="{{route('course_categories.index')}}" class="slide-item">Cource Category</a></li>
-                        <li><a href="{{route('courses.index')}}" class="slide-item">Cource</a></li>
+                        <li><a href="{{route('course_categories.index')}}" class="slide-item">Course Category</a></li>
+                        <li><a href="{{route('courses.index')}}" class="slide-item">Course</a></li>
+                        <li><a href="{{route('rpls.index')}}" class="slide-item">Rpl</a></li>
                         <li><a href="{{route('banners.index')}}" class="slide-item">Banner</a></li>
                         <li><a href="{{route('partners.index')}}" class="slide-item">Partner</a></li>
                         <li><a href="{{route('teammembers.index')}}" class="slide-item">Team Member</a></li>

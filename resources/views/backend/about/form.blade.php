@@ -80,10 +80,20 @@
                         </div>
 
                          <div class="row mt-4">
-                            <label for="" class="col-md-3">Mission & Vission</label>
+                            <label for="" class="col-md-3">Mission</label>
                            
                             <div class="col-md-9">
-                                <textarea name="mission_vission" id="" class="form-control ckeditor" placeholder=" Mission & Vission">{{ isset($about) ? $about->mission_vission : '' }}</textarea>
+                                <textarea name="mission" id="" class="form-control ckeditor" placeholder=" Mission">{{ isset($about) ? $about->mission : '' }}</textarea>
+                            </div>
+
+                         </div>
+
+
+                         <div class="row mt-4">
+                            <label for="" class="col-md-3">Vission</label>
+                           
+                            <div class="col-md-9">
+                                <textarea name="vission" id="" class="form-control ckeditor" placeholder="Vission">{{ isset($about) ? $about->vission : '' }}</textarea>
                             </div>
 
                          </div>
@@ -93,6 +103,13 @@
                             <label class="col-md-3">Ceo Name</label>
                             <div class="col-md-9">
                                 <input type="text" name="ceo_name" class="form-control" placeholder="Ceo Name" value="{{ isset($about) ? $about->ceo_name: '' }}" />
+                            </div>
+                       </div>
+
+                       <div class="row mt-4">
+                            <label class="col-md-3">Ceo Designation</label>
+                            <div class="col-md-9">
+                                <input type="text" name="ceo_designation" class="form-control" placeholder="Ceo Name" value="{{ isset($about) ? $about->ceo_designation: '' }}" />
                             </div>
                        </div>
 
@@ -119,6 +136,47 @@
                             </div>
                             
                         </div>
+
+
+                          <div class="row mt-4">
+                            <label class="col-md-3">Director Name</label>
+                            <div class="col-md-9">
+                                <input type="text" name="director_name" class="form-control" placeholder="Ceo Name" value="{{ isset($about) ? $about->director_name: '' }}" />
+                            </div>
+                       </div>
+
+                       <div class="row mt-4">
+                            <label class="col-md-3">Director Designation</label>
+                            <div class="col-md-9">
+                                <input type="text" name="director_designation" class="form-control" placeholder="Ceo Name" value="{{ isset($about) ? $about->director_designation: '' }}" />
+                            </div>
+                       </div>
+
+
+                        <div class="row mt-4">
+                            <label for="" class="col-md-3">Director Image</label>
+                            <div class="col-md-9">
+                                <input type="file" name="director_image" class="form-control" accept="image/*" id="imagez" />
+                                @if(isset($about))
+                                    <img src="{{ asset($about->director_image) }}" alt="" style="height: 80px" />
+                                @endif
+                            </div>
+                            
+                        </div>
+
+                            
+                       
+
+                         <div class="row mt-4">
+                            <label for="" class="col-md-3">Director's Word</label>
+                           
+                            <div class="col-md-9">
+                                <textarea name="director_word" id="" class="form-control ckeditor" placeholder="Director Word">{{ isset($about) ? $about->director_word : '' }}</textarea>
+                            </div>
+                            
+                        </div>
+
+
 
 
                         
