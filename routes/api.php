@@ -46,6 +46,12 @@ Route::get('/team-member-info',[ApiController::class,'getTeamMemberInfo']);
 
 Route::get('/rpl-info',[ApiController::class,'getRplInfo']);
 
+Route::get('/statistic-info',[ApiController::class,'getStatisticInfo']);
+
+Route::get('/courses/by-type', [ApiController::class, 'getCoursesByType']);
+
+
+
 
 
 

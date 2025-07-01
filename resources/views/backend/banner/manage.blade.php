@@ -12,35 +12,56 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive export-table">
-                    <table class="table" id="file-datatable">
-                        <thead>
-                        <th>#</th>
-                        <th>Banner Image</th>
-                        <th>Banner Title</th>
-                        <th>Banner Description</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                        </thead>
-                        <tbody> 
-                        @foreach($banners as $banner)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td><img src="{{ asset($banner->banner_image )}}" alt="" style="height: 60px"></td>
-                                <td>{{ $banner->banner_title }}</td> 
-                                <td>{!! $banner->banner_description !!}</td> 
-                                <td>{{ $banner->status == 1 ? 'Published' : 'Unpublished' }}</td>
-                                <td class="d-flex">
-                                    <a href="{{ route('banners.edit', $banner->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                    <form action="{{ route('banners.destroy', $banner->id) }}" method="post" id="deleteItem">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-sm btn-danger ms-1 delete-item"><i class="fa fa-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+
+                   
+                  <table class="table" id="file-datatable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Banner Image</th>
+            <th>Banner Title</th>
+            <th>Banner Description</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody> 
+    @foreach($banners as $banner)
+        @php
+            $images = json_decode($banner->banner_image, true);
+            $titles = explode(',', $banner->banner_title);
+            $descriptions = explode(',', $banner->banner_description);
+        @endphp
+
+        @foreach ($images as $index => $image)
+            <tr>
+                <td>{{ $loop->parent->iteration }}{{ count($images) > 1 ? '-' . ($index + 1) : '' }}</td>
+                <td>
+                    <img src="{{ asset($image) }}" alt="Banner Image" style="height: 60px">
+                </td>
+                <td>{{ $titles[$index] ?? '—' }}</td>
+                <td>{!! $descriptions[$index] ?? '—' !!}</td>
+                <td>{{ $banner->status == 1 ? 'Published' : 'Unpublished' }}</td>
+                @if ($index === 0) {{-- only show actions on first row --}}
+                    <td class="d-flex" rowspan="{{ count($images) }}">
+                        <a href="{{ route('banners.edit', $banner->id) }}" class="btn btn-sm btn-primary">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <form action="{{ route('banners.destroy', $banner->id) }}" method="post" id="deleteItem">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-sm btn-danger ms-1 delete-item">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                @endif
+            </tr>
+        @endforeach
+    @endforeach
+    </tbody>
+</table>
+
                 </div>
             </div>
         </div>

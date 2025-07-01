@@ -54,9 +54,10 @@
                         @foreach($courses as $course)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $course->courseCategory->name ?? ''}}</td>
+                                <td>{{ $course->courseCategory->course_category_name ?? ''}}</td>
                                 <td>{{ $course->course_type }}</td>
                                 <td>{{ $course->batch_no }}</td>
+                                <td>{{ $course->course_name }}</td>
                                 <td><img src="{{ asset($course->course_image )}}" alt="" style="height: 60px"></td>
                                 <td>{{ $course->starts_date }}</td>
                                 <td>{{ $course->deadline }}</td>
@@ -94,6 +95,7 @@
                                         <button type="submit" class="btn btn-sm btn-danger ms-1 delete-item"><i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
+                               
                             </tr>
                         @endforeach
                         </tbody>

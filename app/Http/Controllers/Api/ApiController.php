@@ -15,6 +15,7 @@ use App\Models\Partner;
 use App\Models\StudentReview;
 use App\Models\TeamMember;
 use App\Models\Rpl;
+use App\Models\Statistic;
 
 
 class ApiController extends Controller
@@ -72,20 +73,55 @@ public function getAssetInfo()
 
 public function getBannerInfo()
 {
-    $banners = Banner::all();
+    $banners = Banner::all()->map(function ($banner) {
+        // Decode JSON array of images
+        $images = json_decode($banner->banner_image, true);
 
-    $cleanedBanners = $banners->map(function($item) {
+        // Explode titles and descriptions into arrays
+        $titles = explode(',', $banner->banner_title);
+        $descriptions = explode(',', $banner->banner_description);
+
+        // Combine images, titles, and descriptions by index
+        $items = [];
+        foreach ($images as $index => $image) {
+            $items[] = [
+                'image_url' => asset($image),
+                'title' => $titles[$index] ?? null,
+                'description' => $descriptions[$index] ?? null,
+            ];
+        }
+
         return [
-            'banner_title'      => strip_tags($item->banner_title,'<b><i>'),
-            'banner_image'      => $item->banner_image ? asset($item->banner_image) : null,
-            'banner_description'=> strip_tags($item->banner_description,'<b><i>'),
-            'status'            => $item->status,
-      
+            'id' => $banner->id,
+            'status' => $banner->status,
+            'banners' => $items,
+            'created_at' => $banner->created_at,
+            'updated_at' => $banner->updated_at,
         ];
     });
 
-    return response()->json($cleanedBanners);
+    return response()->json([
+        'success' => true,
+        'data' => $banners,
+    ]);
 }
+
+// public function getBannerInfo()
+// {
+//     $banners = Banner::all();
+
+//     $cleanedBanners = $banners->map(function($item) {
+//         return [
+//             'banner_title'      => strip_tags($item->banner_title,'<b><i>'),
+//             'banner_image'      => $item->banner_image ? asset($item->banner_image) : null,
+//             'banner_description'=> strip_tags($item->banner_description,'<b><i>'),
+//             'status'            => $item->status,
+      
+//         ];
+//     });
+
+//     return response()->json($cleanedBanners);
+// }
 
 public function getContactInfo()
 {
@@ -297,6 +333,17 @@ public function getStudentReviewInfo()
     return response()->json($cleanedStudentReviews);
 }
 
+public function getCoursesByType(){
+  $courses = Course::all()->groupBy('course_type');
+
+    return response()->json([
+        'success' => true,
+        'data' => $courses,
+    ]);
+    
+    
+}
+
 public function getTeamMemberInfo()
 {
     $teamMembers = TeamMember::all();
@@ -314,6 +361,26 @@ public function getTeamMemberInfo()
 
     return response()->json($cleanedTeamMembers);
 }
+
+
+ public function getStatisticInfo()
+{
+    $statistics = Statistic::all();
+
+    $cleanedStatistics = $statistics->map(function($item) {
+
+        return [
+            
+            'title'  => $item->title,
+            'count'  => $item->count,
+            'status' => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedStatistics);
+}
+
 
 
 }

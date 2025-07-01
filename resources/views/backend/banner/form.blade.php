@@ -22,7 +22,7 @@
                         <div class="row mt-4">
                             <label for="" class="col-md-3">Image</label>
                             <div class="col-md-9">
-                                <input type="file" name="banner_image" class="form-control" accept="image/*" id="imagez" />
+                                <input type="file" name="banner_image[]" multiple class="form-control" accept="image/*" id="imagez" />
                                 @if(isset($banner))
                                     <img src="{{ asset($banner->banner_image) }}" alt="" style="height: 80px" />
                                 @endif
@@ -33,7 +33,7 @@
                         <div class="row mt-4">
                             <label class="col-md-3">Banner Title</label>
                             <div class="col-md-9">
-                                <input type="text" name="banner_title" class="form-control" placeholder="Banner Title" value="{{ isset($banner) ? $banner->banner_title: '' }}" />
+                                <input type="text" name="banner_title[]" multiple class="form-control" placeholder="Banner Title" value="{{ isset($banner) ? $banner->banner_title: '' }}" />
                             </div>
                        </div>
 
@@ -41,7 +41,7 @@
                             <label for="" class="col-md-3">Banner Description</label>
                            
                             <div class="col-md-9">
-                                <textarea name="banner_description" id="" class="form-control ckeditor" placeholder=" banner description">{{ isset($banner) ? $banner->banner_description : '' }}</textarea>
+                                <textarea name="banner_description[]" multiple id="" class="form-control ckeditor" placeholder=" banner description">{{ isset($banner) ? $banner->banner_description : '' }}</textarea>
                             </div>
                             
                         </div>

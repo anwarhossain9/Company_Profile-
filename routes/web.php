@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\StudentReviewController;
 use App\Http\Controllers\Backend\AssetController;
 use App\Http\Controllers\Backend\RplController;
+use App\Http\Controllers\Backend\StatisticController;
 
 
 
@@ -85,8 +86,11 @@ Route::middleware([
         Route::resource('student_reviews', StudentReviewController::class);
 
   // assets route
-        Route::resource('assets', AssetController::class);
-
-        // assets route
+         Route::resource('assets', AssetController::class);
+  
+  // assets route
         Route::resource('rpls', RplController::class);
+
+    // statistics route
+        Route::resource('statistics', StatisticController::class);
 });
