@@ -7,7 +7,7 @@ import usePartnerLoader from "../../../hooks/usePartnerLoader"
 function Partner() {
     const [partners, loader] = usePartnerLoader();
     const [sliderRef] = useKeenSlider({
-         loop: true,
+        loop: true,
         breakpoints: {
             "(min-width: 400px)": {
                 slides: { perView: 2, spacing: 5 },
@@ -18,19 +18,21 @@ function Partner() {
         },
         slides: { perView: 1 },
     })
-    if(loader){
+    if (loader) {
         return <p>Data is loading...</p>
     }
     return (
-       <div className="bg-lime-50 py-4">
-       <Title title="Our partner" subtitle=" Together, we grow stronger"></Title>
-        <div ref={sliderRef} className="keen-slider my-4">
-          
-          {
-            partners.map(partner =>   <div className="keen-slider__slide card shadow-lg bg-white"><PartnerItem partner_image = {partner.partner_image}></PartnerItem></div>)
-          }
-        </div>
-       </div>
+        <section>
+            <div className=" py-4 md:px-4 lg:px-8 mx-auto">
+                <Title title="Our partner" subtitle=" Together, we grow stronger"></Title>
+                <div ref={sliderRef} className="keen-slider my-4">
+
+                    {
+                        partners.map(partner => <div className="keen-slider__slide card shadow-lg bg-white"><PartnerItem partner_image={partner.partner_image}></PartnerItem></div>)
+                    }
+                </div>
+            </div>
+        </section>
     )
 }
 

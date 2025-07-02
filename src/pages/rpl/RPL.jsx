@@ -1,6 +1,7 @@
 import CourseItem from '../../components/coursesItem/CourseItem'
 import Title from '../../components/title/Title'
 import useRPLLoaderData from '../../hooks/useRPLLoaderData'
+import RplCourseItem from './shared/RplCourseItem';
 
 function RPL() {
 
@@ -14,29 +15,33 @@ function RPL() {
 
   console.log(rplData)
   return (
-    <div className='px-4'>
-      <Title title="Recognition of Prior Learning (RPL)" subtitle="Your Skills, Your Future — Recognized Today!"></Title>
-      <div className='grid md:grid-cols-4 gap-4 py-5'>
-
-        {
-          rplData.map(rpl =>
-            <CourseItem
-              key={rpl.rpl_subject_name}   // ✅ add key
-              course_image={rpl.rpl_image}
-              course_name={rpl.rpl_subject_name}
-              deadline={rpl.deadline}
-              duration={rpl.duration}
-              current_price={rpl.current_price}
-            />
-          )
-
-        }
+    <section className='my-4 bg-[#F9FAFB]'>
 
 
+      <div className='px-4 '>
+        <Title title="Recognition of Prior Learning (RPL)" subtitle="Your Skills, Your Future — Recognized Today!"></Title>
+        <div className='grid md:grid-cols-4 gap-4'>
+
+          {
+            rplData.map(rpl =>
+              <RplCourseItem
+                key={rpl.rpl_subject_name}   // ✅ add key
+                course_image={rpl.rpl_image}
+                course_name={rpl.rpl_subject_name}
+                deadline={rpl.deadline}
+                duration={rpl.duration}
+                current_price={rpl.current_price}
+              />
+            )
+
+          }
 
 
+
+
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 

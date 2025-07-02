@@ -10,6 +10,7 @@ import Register from "../pages/login/register/Register";
 import CourseDetails from "../pages/courses/courseDetails/CourseDetails";
 import Test from "../test"
 import AllCourses from "../pages/courses/allCourses/AllCourses";
+import RplDetails from "../pages/rpl/rplDetails/RplDetails";
 
 
 
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       }, {
         path: 'rpl',
         element: <RPL></RPL>
+      }, {
+      }, {
+        path: 'rpl/:title',
+        element: <RplDetails></RplDetails>
       }, {
         path: 'login',
         element: <Login></Login>

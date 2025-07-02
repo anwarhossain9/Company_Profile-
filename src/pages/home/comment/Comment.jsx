@@ -30,7 +30,8 @@ function Comment() {
  
 
     return (
-        <>
+      <section className="bg-[#F9FAFB]">
+          <div className='px-2 md:px-4 lg:px-8'>
 
             <Title title="Testimonials" subtitle="What Our Students Say"></Title>
             <div className="navigation-wrapper py-4">
@@ -80,7 +81,8 @@ function Comment() {
                     })}
                 </div>
             )}
-        </>
+        </div>
+      </section>
     )
 }
 

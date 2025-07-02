@@ -53,25 +53,31 @@ function About() {
   console.log(about)
 
   return (
-    <div className='px-4'>
+    <div className=''>
       <Element name="aboutInstitute">
+
         <SectionTitle title="Our Dream" />
         <InfoItem description={about[0].company_dream} img={about[0].image_related_company} orderOne="md:order-1" orderTwo="md:order-2" />
+
       </Element>
 
       <Element name="story">
-        <SectionTitle title="Our Story" />
-        <InfoItem description={about[0].company_story} img={about[0].story_related_image} bgColor="bg-lime-50" />
+        <section className='bg-[#F9FAFB] pb-6'>
+          <SectionTitle title="Our Story" />
+          <InfoItem description={about[0].company_story} img={about[0].story_related_image} bgColor="bg-[#F9FAFB]" />
+        </section>
       </Element>
 
       <Element name="missionVission">
         <SectionTitle title="Our Mission & Vission " />
-        <MissionVission   purpose = {about[0].purpose} goal={about[0].goal} />
+        <MissionVission purpose={about[0].purpose} goal={about[0].goal} />
       </Element>
 
       <Element name="management">
-        <SectionTitle title="Message From Management" />
-        <ManagementMessage ceo_name = {about[0].ceo_name} ceo_image={about[0].ceo_image}  ceo_word={about[0].ceo_word}  director_image={about[0].director_image}   director_name={about[0].director_name}   director_word={about[0].director_word} />
+        <section className='bg-[#F9FAFB] pb-6'>
+          <SectionTitle title="Message From Management" />
+          <ManagementMessage ceo_name={about[0].ceo_name} ceo_image={about[0].ceo_image} ceo_word={about[0].ceo_word} director_image={about[0].director_image} director_name={about[0].director_name} director_word={about[0].director_word} />
+        </section>
         <Partner></Partner>
       </Element>
     </div>

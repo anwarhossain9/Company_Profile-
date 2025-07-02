@@ -12,7 +12,8 @@ function Topbar() {
     return <p>Data is loading...</p>
   }
   return (
-    <div className='flex justify-between items-center py-1 mx-2 px-4'>
+      <section>
+    <div className='flex justify-between items-center py-2 px-4 px-2 md:px-4 lg:px-8 mx-auto'>
       {/* Left side: Contact info (only shown on md+) */}
       <div className='hidden md:flex gap-3'>
         <span className='flex items-center text-md'>
@@ -37,6 +38,7 @@ function Topbar() {
         </span>
       </div>
     </div>
+    </section>
 
   )
 }

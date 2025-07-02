@@ -54,60 +54,62 @@ function CoursePanel() {
   }
 
   const { data } = regularCourses
+  console.log("data from testing", typeof data)
   const categories = data.map(dta => dta.course_category_name)
-  
 
 
-  
+
+
   return (
     <>
-      <Title title="COURSES FROM ALL THE FIELDS" subtitle="Find all of Our Courses"></Title>
-      <section className='py-6'>
-        <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-          <TabList>
-         
-            <div ref={sliderRef} className="keen-slider">
+      <section className='bg-[#F9FAFB]'>
+        <div className='py-6 px-4 mx-auto'>
+          <Title title="COURSES FROM ALL THE FIELDS" subtitle="Find all of Our Courses"></Title>
+          <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+            <TabList>
 
-              {
-                categories.map(cat => <Tab className="keen-slider__slide card"><CoursePanelItem title={cat}></CoursePanelItem></Tab>)
-              }
+              <div ref={sliderRef} className="keen-slider">
 
-            </div>
-          </TabList>
-         
+                {
+                  categories.map(cat => <Tab className="keen-slider__slide card"><CoursePanelItem title={cat}></CoursePanelItem></Tab>)
+                }
+
+              </div>
+            </TabList>
+
             {
               <div className='mt-6'>
                 {data.map((category, catIdx) => (
                   <TabPanel key={catIdx}>
                     <div className='grid md:grid-cols-4 gap-4'>
-                      { 
-                      (category.courses && (category.courses).length > 0) ?
-                      
-                      category.courses.map(course => (
-                        <CourseItem
-                         key={course.id} 
-                         course_name={course.course_name} 
-                         course_image={course.course_image} 
-                         deadline = {course.deadline} 
-                         duration = {course.duration}
-                         total_hours = {course.total_hours}
-                         total_class = {course.total_class}
-                         available_seat = {course.available_seat}
-                         schedule = {course.schedule}
-                         venue = {course.venue}
-                         instructor_name = {course.instructor_name}
-                         previous_price = {course.previous_price}
-                         current_price = {course.current_price}
-                         eligibility = {course.eligibility}
-                         short_description = {course.short_description}
-                         long_description = {course.long_description}
-                         
-                         />
-                      ))
-                      :
-                    <SectionTitle title="No courses found!"></SectionTitle>
-                      
-                      
+                      {
+                        (category.courses && (category.courses).length > 0) ?
+
+                          category.courses.map(course => (
+                            <CourseItem
+                              key={course.id}
+                              course_name={course.course_name}
+                              course_image={course.course_image}
+                              deadline={course.deadline}
+                              duration={course.duration}
+                              total_hours={course.total_hours}
+                              total_class={course.total_class}
+                              available_seat={course.available_seat}
+                              schedule={course.schedule}
+                              venue={course.venue}
+                              instructor_name={course.instructor_name}
+                              previous_price={course.previous_price}
+                              current_price={course.current_price}
+                              eligibility={course.eligibility}
+                              short_description={course.short_description}
+                              long_description={course.long_description}
+
+                            />
+                          ))
+                          :
+                          <SectionTitle title="No courses found!"></SectionTitle>
+
+
                       }
                     </div>
                   </TabPanel>
@@ -115,8 +117,9 @@ function CoursePanel() {
               </div>
             }
 
-       
-        </Tabs>
+
+          </Tabs>
+        </div>
       </section>
     </>
   );

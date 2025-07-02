@@ -9,11 +9,10 @@ import Root from './root/Root.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Root>
-      <div className='container mx-auto'>
+
         <RouterProvider router={router}>
-          
         </RouterProvider>
-      </div>
+
     </Root>
   </StrictMode>,
 )

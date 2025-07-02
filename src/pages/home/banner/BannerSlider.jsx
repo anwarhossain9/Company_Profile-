@@ -7,6 +7,12 @@ export default () => {
 
   const [banner, loader] = useBannerDataLoader();
 
+
+  console.log(banner)
+
+
+
+
   const [sliderRef] = useKeenSlider(
     {
       loop: true,
@@ -43,21 +49,26 @@ export default () => {
     ]
   )
 
+  if (loader) {
+    return <p>loading...</p>
+  }
 
   return (
     <>
-      <div ref={sliderRef} className="keen-slider">
+      <section>
+        <div ref={sliderRef} className="keen-slider shadow-xl">
 
-        {
-          banner?.length > 0 &&
-          banner.map(ban => (
-            <div key={ban.id} className="keen-slider__slide">
-              <img className="w-full h-[250px]" src={ban.banner_image} alt="" />
-            </div>
-          ))
-        }
+          {
+            banner?.length > 0 &&
+            banner.map(ban => (
+              <div key={ban.id} className="keen-slider__slide">
+                <img className="w-full md:max-h-[400px] lg:max-h-[400px]" src={ban.image_url} alt="" />
+              </div>
+            ))
+          }
 
-      </div>
+        </div>
+      </section>
     </>
   )
 }

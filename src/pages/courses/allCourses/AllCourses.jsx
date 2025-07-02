@@ -20,9 +20,10 @@ console.log(allCourse);
 
 
   return (
-    <div className='px-4'>
+    <section className='bg-[#F9FAFB] py-4'>
+      <div className=' px-2 md:px-4 lg:px-8 mx-auto'>
           <Title title={category} subtitle="Find all of Our Courses"></Title>
-            <div className='grid md:grid-cols-4 gap-4'>
+            <div className='grid md:grid-cols-4 gap-4 '>
                 
                 {
                  (allCourse && allCourse.length > 0) ?  allCourse.map(course => <CourseItem course_name = {course.course_name} deadline = {course.deadline} duration = { course.duration} course_image = {course.course_image} current_price = {course.current_price}></CourseItem>)
@@ -32,6 +33,7 @@ console.log(allCourse);
                 
             </div>
     </div>
+    </section>
   )
 }
 

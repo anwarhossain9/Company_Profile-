@@ -1,15 +1,14 @@
-import { GiAlarmClock } from "react-icons/gi";
-import { LuCalendarDays } from "react-icons/lu";
-import { NavLink, useParams } from "react-router-dom";
-import { Link } from "react-scroll";
-function CourseItem({course_image,course_name,deadline, duration, current_price}) {
-    
-    const{category} = useParams()
+import React from 'react'
+import { GiAlarmClock } from 'react-icons/gi'
+import { LuCalendarDays } from 'react-icons/lu'
+import { NavLink, useParams } from 'react-router-dom'
 
-
-    return (
-      <NavLink to={`/${category || 'courses'}/${course_name}`} >
-          <div className="card bg-base-100 hover:border hover:border-[#57B87A] w-full shadow-sm bg-base-100 card-xs shadow-sm transition-transform duration-300 hover:scale-105">
+function RplCourseItem({course_image,course_name,deadline, duration, current_price}) {
+     
+    const{title} = useParams()
+ return(
+    <NavLink to={`/rpl/${course_name}`} >
+          <div className="card bg-base-100 w-full shadow-sm bg-base-100 card-xs shadow-sm hover:border hover:border-[#57B87A] transition-transform duration-300 hover:scale-105">
             <figure>
                 <img className='w-full'
                     src={course_image}
@@ -32,12 +31,12 @@ function CourseItem({course_image,course_name,deadline, duration, current_price}
                     <div className="">
                         <p className='p-2 text-xl'>TK. {current_price}</p>
                     </div>
-                    <div className="btn bg-[#6FCF97] hover:bg-[#57B87A] text-white">Enroll Now</div>
+                    <div className="btn bg-[#6FCF97] text-white">Enroll Now</div>
                 </div>
             </div>
         </div>
       </NavLink>
-    )
+ )
 }
 
-export default CourseItem
+export default RplCourseItem

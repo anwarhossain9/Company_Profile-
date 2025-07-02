@@ -4,7 +4,7 @@ import { IoMdClock } from "react-icons/io"
 import { MdGroups } from "react-icons/md"
 import { SlCalender } from "react-icons/sl"
 import Comment from "../../home/comment/Comment"
-import { useLocation, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import parse from 'html-react-parser';
 import { useContext } from "react"
 import { AllCoursesContext } from "../../../assets/context/CourseContext"
@@ -21,10 +21,10 @@ function CourseDetails() {
     const course = allCourse.find( course => course.course_name === details)
     console.log(course)
     return (
-        <div className="py-4 px-4">
+        <div className="py-4  px-2 md:px-4 lg:px-8 mx-auto">
             {/* title and short description */}
             <div>
-                <h1 className="text-2xl font-bold">{course.course_name}</h1>
+                <h1 className="text-2xl  bg-[#6FCF97] text-white px-2 py-1 text-bold">{course.course_name}</h1>
                 <p className="text-justify">{
                     parse(course.short_description)
                     }
@@ -36,17 +36,17 @@ function CourseDetails() {
                 <div className="space-y-4 order-2 md:order-1">
                     {/* Stats */}
                     <div className="grid md:grid-cols-3 gap-3">
-                        <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
+                        <div className="card px-2 bg-[#6FCF97] text-white px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
                                 <FaList /> Total Class: {course.total_class}
                             </span>
                         </div>
-                        <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
+                        <div className="card px-2 bg-[#6FCF97] text-white px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
                                 <IoMdClock /> Total Hours: {course.total_hours}
                             </span>
                         </div>
-                        <div className="card bg-lime-600 px-2 py-5 shadow-md hover:shadow-lg transition">
+                        <div className="card px-2 bg-[#6FCF97] text-white px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-white font-semibold">
                                 <MdGroups /> Available Seats: {course.available_seat}
                             </span>
@@ -55,17 +55,17 @@ function CourseDetails() {
 
                     {/* Schedule Info */}
                     <div className="grid md:grid-cols-3 gap-3">
-                        <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
+                        <div className="card  bg-[#F9FAFB] text-[#333333] px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
                                 <FaUserClock /> Class Starts: {course.deadline}
                             </span>
                         </div>
-                        <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
+                        <div className="card  bg-[#F9FAFB] text-[#333333] px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
                                 <SlCalender /> Schedule: {course.schedule}
                             </span>
                         </div>
-                        <div className="card border border-red-700 bg-blue-200 px-2 py-5 shadow-md hover:shadow-lg transition">
+                        <div className="card  bg-[#F9FAFB] text-[#333333] px-2 py-5 shadow-md hover:shadow-lg transition">
                             <span className="flex gap-2 items-center justify-center text-gray-500 font-semibold">
                                 <GiVikingLonghouse /> Venue: {course.venue}
                             </span>
@@ -73,10 +73,10 @@ function CourseDetails() {
                     </div>
 
                     {/* Course Fee and Button */}
-                    <div className="flex flex-col sm:flex-row justify-between items-center bg-base-200 px-4 py-3 rounded-xl shadow-md">
-                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Regular Fee: TK. <del> {course.previous_price}</del></h1>
-                        <h1 className="text-lg font-semibold text-gray-800 mb-2 sm:mb-0">Discount Fee: TK. {course.current_price}</h1>
-                        <button className="btn btn-info w-full sm:w-auto">Enroll Now</button>
+                    <div className="flex flex-col sm:flex-row justify-between items-center bg-[#F9FAFB] text-[#333333] px-4 py-3 rounded-xl shadow-md">
+                        <h1 className="text-lg  text-[#333333] mb-2 sm:mb-0">Regular Fee: TK. <del> {course.previous_price}</del></h1>
+                        <h1 className="text-lg  text-[#333333] mb-2 sm:mb-0">Discount Fee: TK. {course.current_price}</h1>
+                        <button className="btn bg-[#6FCF97] text-white hover:bg-[#57B87A] w-full sm:w-auto">Enroll Now</button>
                     </div>
                 </div>
 
@@ -94,7 +94,7 @@ function CourseDetails() {
             <div className="grid md:grid-cols-3 gap-6 py-6">
                 {/* Left Section: Course Details */}
                 <div className="md:col-span-2 space-y-4">
-                    <h1 className="text-2xl font-bold text-lime-600">Course Details</h1>
+                    <h1 className="text-2xl font-bold px-2  bg-[#6FCF97] text-white">Course Details</h1>
                     <p className="text-justify text-gray-700 leading-relaxed">{parse(course.long_description)}
                     </p>
                 </div>
@@ -103,7 +103,7 @@ function CourseDetails() {
                 <div className="space-y-6">
                     {/* Instructors */}
                     <div>
-                        <h1 className="text-2xl font-bold text-lime-600 mb-3">Instructors</h1>
+                        <h1 className="text-2xl font-bold px-2  bg-[#6FCF97] text-white mb-3">Instructors</h1>
 
                         <div onClick={() => document.getElementById('my_modal_3').showModal()}>
                             <div className="flex items-center gap-4 p-4 bg-base-100 rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
@@ -125,7 +125,7 @@ function CourseDetails() {
                                 <form method="dialog">
                                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 </form>
-                                <h3 className="font-bold text-lg text-lime-600">{course.instructor_name}</h3>
+                                <h3 className="font-bold text-lg px-2  bg-[#6FCF97] text-white">{course.instructor_name}</h3>
                                 <p className="py-4 text-justify text-gray-700">
                                     Md. Anwar Hossain is an experienced instructor with a strong background in graphics and web design...
                                 </p>
@@ -135,7 +135,7 @@ function CourseDetails() {
 
                     {/* Who Can Join */}
                     <div>
-                        <h1 className="text-2xl font-bold text-lime-600 mb-3">Who Can Join?</h1>
+                        <h1 className="text-2xl font-bold px-2  bg-[#6FCF97] text-white mb-3">Who Can Join?</h1>
                         <p className="text-justify text-gray-700 leading-relaxed">
                           {course.eligibility}
                         </p>
