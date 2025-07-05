@@ -15,21 +15,21 @@ function RplCourseItem({course_image,course_name,deadline, duration, current_pri
                     alt="Web design and Development" />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">
+                <h2 className="text-[20px]">
                    {course_name}
                 </h2>
                 <div>
-                    <p className="flex items-center gap-1 text-xl">
-                        <LuCalendarDays className="text-xl" /> Deadline: {deadline}
+                    <p className="flex items-center gap-1 text-base">
+                        <LuCalendarDays className="text-base" /> Deadline: {deadline}
                     </p>
-                    <p className="flex items-center gap-1 text-xl">
-                        <GiAlarmClock className="text-xl" /> Duration: {duration}
+                    <p className="flex items-center gap-1 text-base">
+                        <GiAlarmClock className="text-base" /> Duration: {duration}
                     </p>
 
                 </div>
                 <div className="flex justify-between bg-green-50 items-center">
                     <div className="">
-                        <p className='p-2 text-xl'>TK. {current_price}</p>
+                        <p className='p-2 text-base'>TK. {current_price}</p>
                     </div>
                     <div className="btn bg-[#6FCF97] text-white">Enroll Now</div>
                 </div>

@@ -8,7 +8,7 @@ function InfoItem({ description, img, orderOne, orderTwo,bgColor }) {
                 <img className='w-full rounded' src={img} alt="" />
             </div>
             <div className={`flex md:w-1/2 mx-auto md:px-4 ${orderOne}`}>
-                <p className='text-justify'>{description}</p>
+                <p className='text-justify text-base'>{description}</p>
             </div>
 
 

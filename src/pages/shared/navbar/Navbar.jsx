@@ -37,7 +37,7 @@ function Navbar() {
   const courseItems =
     <>
       {
-        categories.map(category => <li><Link className="text-lg" to={`/${category}`} state={{ category: category }}>{category}</Link></li>)
+        categories.map(category => <li><Link className="text-[17px]" to={`/${category}`} state={{ category: category }}>{category}</Link></li>)
       }
     </>
     ;
@@ -56,22 +56,22 @@ function Navbar() {
               </svg>
             </div>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 ">
-              <li><Link to="/" className="text-xl">Home</Link></li>
+              <li><Link to="/" className="text-[16px]">Home</Link></li>
               <li tabIndex={0}>
                 <details>
-                  <summary className="text-xl">Regular Courses</summary>
+                  <summary className="text-[16px]">Regular Courses</summary>
                   <ul className="p-2">
                     {courseItems}
                   </ul>
                 </details>
               </li>
-              <li><Link to="/rpl" className="text-xl">RPL</Link></li>
-              <li><Link to="/about" className="text-xl">About Us</Link></li>
+              <li><Link to="/rpl" className="text-[16px]">RPL</Link></li>
+              <li><Link to="/about" className="text-[16px]">About Us</Link></li>
             </ul>
           </div>
 
           <div>
-            <Link to={""}>
+            <Link to={"/"}>
               <h1 className='text-3xl font-bold text-white'>ABCD</h1>
             </Link>
           </div>
@@ -79,11 +79,11 @@ function Navbar() {
 
         {/* Center: Desktop Menu */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-lg text-white">
+          <ul className="menu menu-horizontal px-1 text-[17px] text-white">
             <li><Link to="/">Home</Link></li>
             <li className="dropdown dropdown-hover">
               <div tabIndex={0} role="button" >Regular Courses</div>
-              <ul className="dropdown-content menu bg-white text-black text-xl border-b-4 border-[#0056D2] rounded-box z-[1] w-52 px-2 shadow">
+              <ul className="dropdown-content menu bg-white text-black text-[16px] border-b-4 border-[#0056D2] rounded-box z-[1] w-68  shadow">
                 {courseItems}
               </ul>
             </li>
@@ -91,7 +91,7 @@ function Navbar() {
             {/* <li><Link to="/about">About Us</Link></li> */}
             <li className="dropdown dropdown-hover">
               <div tabIndex={0} role="button" >About Us</div>
-              <ul className="dropdown-content menu bg-white text-black text-lg border-b-4  border-[#0056D2] rounded-box z-[1] w-52 px-2 shadow">
+              <ul className="dropdown-content menu bg-white text-black text-[16px] border-b-4  border-[#0056D2] rounded-box z-[1] w-52 px-2 shadow">
                 <li><a onClick={() => handleScrollTo("aboutInstitute")}>About Institute</a></li>
                 <li><a onClick={() => handleScrollTo("story")}>Our Story</a></li>
                 <li><a onClick={() => handleScrollTo("missionVission")}>Mission & Vission</a></li>
@@ -104,7 +104,7 @@ function Navbar() {
 
         {/* End: Action Button */}
         <div className="navbar-end">
-          <Link to={""}>
+          <Link to={"/"}>
             <h1 className='text-3xl font-bold text-white'>ABCD</h1>
           </Link>
         </div>

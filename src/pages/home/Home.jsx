@@ -4,7 +4,7 @@ import BannerSlider from './banner/BannerSlider'
 import AboutOverview from './aboutOverview/AboutOverview'
 import Comment from './comment/Comment'
 import CoursePanel from './coursePanel/CoursePanel'
-import Partner from './partner/Partner'
+import Partners from '../partners/Partners'
 
 
 
@@ -23,7 +23,7 @@ function Home() {
         <AboutOverview></AboutOverview>
 
         <Comment></Comment>
-        <Partner></Partner>
+        <Partners></Partners>
       </section>
     </>
   )
