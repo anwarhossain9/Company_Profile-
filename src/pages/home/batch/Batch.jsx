@@ -8,7 +8,7 @@ function Batch() {
         return <p>Data is loading...</p>
     }
     return (
-        <div className='grid md:grid-cols-4 gap-1 md:gap-10 lg:gap-10 my-6'>
+        <div className='grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-10 lg:gap-10 my-6'>
             {
                 batches.map(batch => <BatchItem title={batch.title} count={batch.count}></BatchItem>)
             }

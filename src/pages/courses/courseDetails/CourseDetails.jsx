@@ -1,33 +1,35 @@
 import { FaList, FaUserClock } from "react-icons/fa"
 import { GiVikingLonghouse } from "react-icons/gi"
 import { IoMdClock } from "react-icons/io"
-import { MdGroups } from "react-icons/md"
+import { MdGroups, MdOutlineMail } from "react-icons/md"
 import { SlCalender } from "react-icons/sl"
-import Comment from "../../home/comment/Comment"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import parse from 'html-react-parser';
 import { useContext } from "react"
 import { AllCoursesContext } from "../../../assets/context/CourseContext"
+import StudentReview from "../../../components/review/StudentReview"
+import { CiFacebook } from "react-icons/ci"
+import { TiSocialLinkedinCircular, TiSocialTwitterCircular } from "react-icons/ti"
 
 function CourseDetails() {
 
 
-    const{details} = useParams()
-   
+    const { details } = useParams()
+
 
     const courseInf = useContext(AllCoursesContext)
     const allCategories = courseInf.data
     const allCourse = allCategories.flatMap(category => category.courses)
-    const course = allCourse.find( course => course.course_name === details)
+    const course = allCourse.find(course => course.course_name === details)
     console.log(course)
     return (
-        <div className="py-4  px-2 md:px-4 lg:px-8 mx-auto">
+        <div className="py-4  px-2 md:px-4 lg:px-8 mx-auto " >
             {/* title and short description */}
             <div>
-                <h1 className="text-2xl  bg-[#6FCF97] text-white px-2 py-1 text-bold">{course.course_name}</h1>
+                <h1 className="text-2xl  bg-[#6FCF97] text-white px-2 py-1 text-bold mb-4">{course.course_name}</h1>
                 <p className="text-justify">{
                     parse(course.short_description)
-                    }
+                }
                 </p>
             </div>
             {/* short info */}
@@ -114,7 +116,7 @@ function CourseDetails() {
                                 />
                                 <div>
                                     <h1 className="text-lg font-bold text-gray-800">{course.instructor_name}</h1>
-                                    <p className="text-sm text-gray-600">Senior Instructor</p>
+                                    <p className="text-sm text-gray-600">{course.instructor_designation}</p>
                                 </div>
                             </div>
                         </div>
@@ -125,10 +127,34 @@ function CourseDetails() {
                                 <form method="dialog">
                                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 </form>
-                                <h3 className="font-bold text-lg px-2  bg-[#6FCF97] text-white">{course.instructor_name}</h3>
-                                <p className="py-4 text-justify text-gray-700">
-                                    Md. Anwar Hossain is an experienced instructor with a strong background in graphics and web design...
-                                </p>
+                                <div>
+                                    <h3 className="font-bold text-lg px-2  bg-[#6FCF97] text-white">{course.instructor_name}</h3>
+                                    <p className="py-4 text-justify text-gray-700">
+                                        {
+                                            course.instructor_designation
+                                        }
+
+                                    </p>
+                                    <p className="py-4 text-justify text-gray-700">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, dolorem?
+                                    </p>
+                                    <div className="md:col-span-1 w-full">
+
+                                        <div>
+                                            <img className="w-[80px] card shadow-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5pempmAZwoM_R2cnyMh4UxYqu9S2aqnHRQ&s" alt="" />
+
+                                            <div className="flex gap-1 mt-1 w-full">
+                                                <Link target="_blank" to={course.instructor_email_link} ><MdOutlineMail className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                <Link target="_blank" to={course.instructor_facebook_link} ><CiFacebook className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                <Link target="_blank" to={course.instructor_linkdin_link} ><TiSocialLinkedinCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                <Link target="_blank" to={course.instructor_twiter_link}><TiSocialTwitterCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
                             </div>
                         </dialog>
                     </div>
@@ -137,19 +163,23 @@ function CourseDetails() {
                     <div>
                         <h1 className="text-2xl font-bold px-2  bg-[#6FCF97] text-white mb-3">Who Can Join?</h1>
                         <p className="text-justify text-gray-700 leading-relaxed">
-                          {course.eligibility}
+                            {course.eligibility}
                         </p>
                     </div>
                 </div>
             </div>
-            {/* comment */}
-            <Comment></Comment>
 
-            
+            <div className="py-6">
+                <StudentReview></StudentReview>
+            </div>
+            {/* Student comment */}
+
+
+
 
         </div>
 
-       
+
     )
 }
 

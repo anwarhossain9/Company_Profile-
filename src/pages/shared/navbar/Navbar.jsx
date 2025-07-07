@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useRegularDataLoader from "../../../hooks/useRegularDataLoader";
-
+import dcit from "../../../assets/images/DCIT Logo.png"
+import nsda from "../../../assets/images/NSDA.png"
 
 
 
@@ -72,7 +73,8 @@ function Navbar() {
 
           <div>
             <Link to={"/"}>
-              <h1 className='text-3xl font-bold text-white'>ABCD</h1>
+              {/* <h1 className='text-3xl font-bold text-white'>ABCD</h1> */}
+              <img className="w-[60px]" src={dcit} alt="DCIT Institute" />
             </Link>
           </div>
         </div>
@@ -96,6 +98,13 @@ function Navbar() {
                 <li><a onClick={() => handleScrollTo("story")}>Our Story</a></li>
                 <li><a onClick={() => handleScrollTo("missionVission")}>Mission & Vission</a></li>
                 <li><a onClick={() => handleScrollTo("management")}>Management</a></li>
+                <li><a
+                  href="NSDA Certificate_DCIT Institute.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  NSDA Certificate
+                </a></li>
 
               </ul>
             </li>
@@ -104,8 +113,11 @@ function Navbar() {
 
         {/* End: Action Button */}
         <div className="navbar-end">
-          <Link to={"/"}>
-            <h1 className='text-3xl font-bold text-white'>ABCD</h1>
+          <Link target="_blank" to="https://nsda.gov.bd/">
+            {/* <h1 className='text-3xl font-bold text-white'>ABCD</h1> */}
+
+            <img className="w-[60px]" src={nsda} alt="NSDA" />
+
           </Link>
         </div>
       </div>

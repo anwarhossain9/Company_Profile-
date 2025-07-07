@@ -57,14 +57,15 @@ function About() {
       <Element name="aboutInstitute">
 
         <SectionTitle title="Our Dream" />
-        <InfoItem description={about[0].company_dream} img={about[0].image_related_company} orderOne="md:order-1" orderTwo="md:order-2" />
+        <InfoItem description={about[0].purpose} img={about[0].image_related_company} orderOne="md:order-1" orderTwo="md:order-2" />
 
       </Element>
 
+      {/* our story */}
       <Element name="story">
-        <section className='bg-[#F9FAFB] pb-6'>
+        <section className='bg-[#EEF3F9] pb-6'>
           <SectionTitle title="Our Story" />
-          <InfoItem description={about[0].company_story} img={about[0].story_related_image} bgColor="bg-[#F9FAFB]" />
+          <InfoItem description={about[0].company_story} img={about[0].story_related_image} bgColor="bg-[#EEF3F9]" />
         </section>
       </Element>
 
@@ -74,11 +75,11 @@ function About() {
       </Element>
 
       <Element name="management">
-        <section className='bg-[#F9FAFB] pb-6'>
+        <section className='bg-[#EEF3F9] pb-6'>
           <SectionTitle title="Message From Management" />
           <ManagementMessage ceo_name={about[0].ceo_name} ceo_image={about[0].ceo_image} ceo_word={about[0].ceo_word} director_image={about[0].director_image} director_name={about[0].director_name} director_word={about[0].director_word} />
         </section>
-       <Partners></Partners>
+        <Partners></Partners>
       </Element>
     </div>
   );

@@ -10,12 +10,15 @@ import parse from 'html-react-parser';
 
 function RplDetails() {
 
-    const { details } = useParams()
 
+    const { title } = useParams()
+    console.log("title ", title)
+
+ 
 
 
     const [rplData, loader] = useRPLLoaderData();
-    const course = rplData.find(course => course.course_name === details)
+    const course = rplData.find(course => course.rpl_subject_name === title)
 
     if (loader) {
         return <div className='text-center'> <span className="loading loading-spinner text-success mx-auto"></span></div>
@@ -29,7 +32,7 @@ function RplDetails() {
             <div className="py-4 px-2 md:px-4 lg:px-8 mx-auto">
                 {/* title and short description */}
                 <div>
-                    <h1 className="text-2xl   text-white px-2 py-1 bg-[#6FCF97] text-bold">{course.rpl_subject_name}</h1>
+                    <h1 className="text-2xl   text-white px-2 py-1 bg-[#6FCF97] text-bold mb-4">{course.rpl_subject_name}</h1>
                     <p className="text-justify">{
                         parse(course.short_description)
                     }

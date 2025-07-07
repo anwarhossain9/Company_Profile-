@@ -55,11 +55,11 @@ function CoursePanel() {
   ];
 
   return (
-    <section className='bg-[#F9FAFB]'>
-      <div className='py-6 px-4 mx-auto'>
+    <section className=' bg-[#EEF3F9]'>
+      <div className='py-6 px-2 md:px-4 mx-auto'>
         <Title title="COURSES FROM ALL THE FIELDS" subtitle="Find all of Our Courses" />
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-          <TabList>
+          <TabList className="border-0 bg-[#F9FAFB] ">
             <div ref={sliderRef} className="keen-slider">
               {categories.map((cat, idx) => (
                 <Tab key={idx} className="keen-slider__slide card">
@@ -69,9 +69,9 @@ function CoursePanel() {
             </div>
           </TabList>
 
-          <div className='mt-6'>
+          <div className='px-2 md:px-4 md:py-6 py-4 bg-[#F9FAFB]'>
             {categories.map((category, catIdx) => (
-              <TabPanel key={catIdx}>
+              <TabPanel key={catIdx} className=" ">
                 <div className='grid md:grid-cols-4 gap-4 '>
                   {category.courses && category.courses.length > 0 ? (
                     category.courses.map(course => (
