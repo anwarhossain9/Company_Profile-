@@ -6,37 +6,42 @@ import usePartnerLoader from "../../hooks/usePartnerLoader";
 import Title from "../../components/title/Title";
 
 function Partners() {
+  // Load partner data & loading state
   const [partners, loader] = usePartnerLoader();
 
+  // Slick slider settings
   const settings = {
-    // dots: true,
     infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
     autoplay: true,
-    speed: 5000,
-    autoplaySpeed: 5000,
+    speed: 3000,
+    autoplaySpeed: 3000,
     cssEase: "linear",
+    slidesToShow: 4,
+    slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280, // large screens
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
-          infinite: true,
-          dots: true,
+          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1024, // tablets & small laptops
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
-          initialSlide: 3,
+          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 768, // tablets
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480, // mobile
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -45,6 +50,7 @@ function Partners() {
     ],
   };
 
+  // Show loading state while fetching partners
   if (loader) {
     return (
       <div className="flex justify-center items-center min-h-[200px]">
@@ -54,17 +60,21 @@ function Partners() {
   }
 
   return (
-    <div className="slider-container max-w-7xl mx-auto px-4 py-8">
-       <Title title="Our partner" subtitle=" Together, we grow stronger"></Title>
+    <div className="slider-container mx-auto py-8 px-2 md:px-4 lg:px-8">
+      {/* Title */}
+      <Title title="Our partner" subtitle="Together, we grow stronger" />
+
+      {/* Slider */}
       <Slider {...settings}>
         {partners.map((partner, index) => (
-          <div key={index}>
-            <div className="bg-white rounded-xl border border-[#0056D2] shadow-md p-4 mx-2 hover:shadow-xl transition-shadow duration-300">
+          <div key={index} className="px-1 sm:px-2">
+            <div className="bg-white rounded-xl border border-[#0056D2] shadow-md p-2 sm:p-4 hover:shadow-xl transition-shadow duration-300 flex items-center justify-center min-h-[100px]">
               <img
                 src={partner.partner_image}
                 alt="Partner"
-                className="mx-auto h-24 object-contain "
+                className="w-full max-h-20 sm:max-h-24 md:max-h-28 lg:max-h-32 object-contain"
               />
+               
             </div>
           </div>
         ))}

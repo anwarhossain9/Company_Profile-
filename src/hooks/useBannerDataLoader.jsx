@@ -8,8 +8,9 @@ function useBannerDataLoader() {
         fetch("https://institute.dcitinstitute.com.bd/api/banner-info")
             .then(res => res.json())
             .then(data => {
-                setBanner(data.data[1].banners)
+                setBanner(data)
                 setLoader(false)
+               
             })
     }, [])
 

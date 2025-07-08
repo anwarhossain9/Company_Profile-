@@ -79,8 +79,12 @@ function About() {
           <SectionTitle title="Message From Management" />
           <ManagementMessage ceo_name={about[0].ceo_name} ceo_image={about[0].ceo_image} ceo_word={about[0].ceo_word} director_image={about[0].director_image} director_name={about[0].director_name} director_word={about[0].director_word} />
         </section>
+
         <Partners></Partners>
       </Element>
+
+    
+    
     </div>
   );
 }

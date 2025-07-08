@@ -6,8 +6,8 @@ function MissionVission({ purpose, goal }) {
     return (
         <div className='grid md:grid-cols-2 gap-6 md:space-x-10  items-center justify-center card shadow-sm py-5 '>
 
-            <div className='px-2 md:px-4 lg:px-8 mx-auto'>
-                <span className='flex text-2xl  items-center gap-4 justify-center my-2'><FaEye className=' text-3xl font-semibold text-green-500' />Our Mission</span>
+            <div className='pb-2 px-2 md:px-4 lg:px-8 mx-auto'>
+                <span className='flex text-2xl  items-center gap-4 justify-center my-2 '><FaEye className=' text-3xl font-semibold text-green-500' />Our Mission</span>
                 <p className='text-justify'>
                     {
                         purpose
@@ -15,7 +15,7 @@ function MissionVission({ purpose, goal }) {
                 </p>
             </div>
 
-            <div className=' px-2 md:px-4 lg:px-8 mx-auto'>
+            <div className='pb-2 px-2 md:px-4 lg:px-8 mx-auto '>
                 <span className='flex text-2xl items-center gap-4 justify-center my-2'><TbTargetArrow className=' text-3xl text-red-600' />Our Vission</span>
                 <p className='text-justify'>
                     {
