@@ -8,7 +8,7 @@ import Batch from '../batch/Batch'
 function AboutOverview() {
     const [about, loader] = useAboutLoaderData()
     if (loader) {
-        return <p>data is loading...</p>
+        return <p>loading...</p>
     }
     return (
       <>

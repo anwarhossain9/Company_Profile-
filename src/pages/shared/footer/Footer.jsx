@@ -6,6 +6,7 @@ import { CiFacebook } from "react-icons/ci";
 import useContactLoader from "../../../hooks/useContactLoader";
 import { HiMiniArrowSmallRight } from "react-icons/hi2";
 import payment from "../../../assets/images/payment.png"
+import { AiFillTikTok } from "react-icons/ai";
 function Footer() {
   const [contacts, loader] = useContactLoader()
 
@@ -30,6 +31,7 @@ function Footer() {
                 <Link target="_blank" to={contacts[0].facebook_link} ><CiFacebook className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
                 <Link target="_blank" to={contacts[0].linkedin_link} ><TiSocialLinkedinCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
                 <Link target="_blank" to={contacts[0].twitter_link} ><TiSocialTwitterCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                <Link target="_blank" to={contacts[0].twitter_link} ><AiFillTikTok className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
               </div>
             </nav>
 

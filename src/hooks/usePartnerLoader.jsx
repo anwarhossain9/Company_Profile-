@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 
 function usePartnerLoader() {
-  const [partners, setPartners] = useState([])
+  const [allPartners, setAllPartners] = useState([])
      const [loader, setLoader] = useState(true)
  
      useEffect(()=>{
          fetch("https://institute.dcitinstitute.com.bd/api/partner-info")
          .then(res => res.json())
          .then(data => {
-             setPartners(data)
+             setAllPartners(data)
              setLoader(false)
          })
      }, [])
  
-   return [partners, loader]
+   return [allPartners, loader]
  }
 export default usePartnerLoader

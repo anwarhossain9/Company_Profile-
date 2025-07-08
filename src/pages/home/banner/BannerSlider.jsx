@@ -58,14 +58,14 @@ export default function BannerSlider() {
               alt={ban.banner_title}
             />
 
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 
-                bg-black/50 px-2 sm:px-4 py-2 rounded-md shadow-md max-w-[90%] sm:max-w-[80%]">
-              <h1 className="text-white text-center text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 
+                bg-black/50 px-2 sm:px-4 py-2 rounded-md shadow-md max-w-[90%] sm:max-w-[80%] ">
+              <h1 className="text-white text-center text-base  md:text-2xl lg:text-xl font-semibold">
                 {ban.banner_title}
               </h1>
-              <p className="text-white text-center text-xs sm:text-sm md:text-base mt-1">
+              {/* <p className="text-white text-justify text-xs sm:text-sm md:text-base mt-1">
                 {parse(ban.banner_description)}
-              </p>
+              </p> */}
             </div>
           </div>
         ))}

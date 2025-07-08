@@ -2,79 +2,66 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import usePartnerLoader from "../../hooks/usePartnerLoader";
 import Title from "../../components/title/Title";
+import img1 from "../../assets/images/DCIT Logo.png";
+import img2 from "../../assets/images/NSDA.png";
+import img3 from "../../assets/images/payment.png";
+import usePartnerLoader from "../../hooks/usePartnerLoader";
 
 function Partners() {
-  // Load partner data & loading state
-  const [partners, loader] = usePartnerLoader();
 
-  // Slick slider settings
+  const [allPartners, loader] = usePartnerLoader();
+  console.log(allPartners);
+
+
+  if(loader){
+    return <p></p>
+  }
+
   const settings = {
     infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     autoplay: true,
     speed: 3000,
     autoplaySpeed: 3000,
     cssEase: "linear",
-    slidesToShow: 4,
-    slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 1280, // large screens
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 1024, // tablets & small laptops
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 768, // tablets
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480, // mobile
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
         },
       },
     ],
   };
 
-  // Show loading state while fetching partners
-  if (loader) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <p className="text-lg text-gray-500">Loading partners...</p>
-      </div>
-    );
-  }
+  const partners = [img1, img2, img3, img1, img2, img3];
 
   return (
-    <div className="slider-container mx-auto py-8 px-2 md:px-4 lg:px-8">
-      {/* Title */}
+    <div className="slider-container max-w-7xl mx-auto px-4 py-8 overflow-hidden">
       <Title title="Our partner" subtitle="Together, we grow stronger" />
-
-      {/* Slider */}
       <Slider {...settings}>
-        {partners.map((partner, index) => (
-          <div key={index} className="px-1 sm:px-2">
-            <div className="bg-white rounded-xl border border-[#0056D2] shadow-md p-2 sm:p-4 hover:shadow-xl transition-shadow duration-300 flex items-center justify-center min-h-[100px]">
+        {allPartners.map((img, index) => (
+          <div key={index} className="px-2">
+            <div className="bg-white rounded-xl border border-[#0056D2] shadow-md p-4 h-full flex items-center justify-center hover:shadow-xl transition-shadow duration-300">
               <img
-                src={partner.partner_image}
-                alt="Partner"
-                className="w-full max-h-20 sm:max-h-24 md:max-h-28 lg:max-h-32 object-contain"
+                src={img.partner_image}
+                alt={"abc"}
+                className="max-h-24 w-auto object-contain"
               />
-               
             </div>
           </div>
         ))}
