@@ -17,6 +17,8 @@ use App\Http\Controllers\Backend\RplController;
 use App\Http\Controllers\Backend\StatisticController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\GalleryCategoryController;
+use App\Http\Controllers\Backend\AssetCategoryController;
+use App\Http\Controllers\Backend\ServiceCategoryController;
 
 
 
@@ -106,7 +108,12 @@ Route::middleware([
     // gallerie categories route
         Route::resource('gallery_categories', GalleryCategoryController::class);
 
+     // asset categories route
+        Route::resource('asset_categories', AssetCategoryController::class);
 
+
+   // service categories route
+        Route::resource('service_categories', ServiceCategoryController::class);
 
 
 });

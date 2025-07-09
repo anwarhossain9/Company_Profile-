@@ -58,6 +58,9 @@ Route::get('/gallery-category-info',[ApiController::class,'getGalleryCategoryInf
 
 Route::get('/gallaries/category-wise', [ApiController::class, 'categoryWiseGalleries']);
 
+Route::get('/asset-category-info',[ApiController::class,'getAssetCategoryInfo']);
+
+Route::get('/service-category-info',[ApiController::class,'getServiceCategoryInfo']);
 
 Route::post('/visitor', [ApiController::class, 'store']);
 

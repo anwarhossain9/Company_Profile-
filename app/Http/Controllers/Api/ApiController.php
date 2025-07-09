@@ -497,8 +497,36 @@ public function categoryWiseGalleries()
     ]);
 }
 
+public function getAssetCategoryInfo()
+{
+    $assetCategories = AssetCategory::all();
 
-    
+    $cleanedAssetCategories = $assetCategories->map(function($item) {
+        return [
+             'asset_category_name' => $item->asset_category_name,
+             'status'               => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedAssetCategories);
+}
+   
+
+public function getServiceCategoryInfo()
+{
+    $serviceCategories = ServiceCategory::all();
+
+    $cleanedServiceCategories = $serviceCategories->map(function($item) {
+        return [
+             'service_category_name' => $item->service_category_name,
+             'status'               => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedServiceCategories);
+}
 
 
 }
