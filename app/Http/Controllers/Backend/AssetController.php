@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Asset;
+use App\Models\AssetCategory;
 
 class AssetController extends Controller
 {
@@ -14,6 +15,7 @@ class AssetController extends Controller
     public function index()
     {  
         return view('backend.asset.manage',[
+            'assetCategories' =>AssetCategory::all(),
             'assets'=>Asset::all()]);
     }
 
@@ -24,7 +26,9 @@ class AssetController extends Controller
      */
     public function create()
     {
-         return view('backend.asset.form');
+         return view('backend.asset.form',[
+            'assetCategories' =>AssetCategory::all(),
+        ]);
     }
 
     /**
@@ -50,6 +54,7 @@ class AssetController extends Controller
     public function edit(string $id)
     {
         return view('backend.asset.form',[
+            'assetCategories' =>AssetCategory::all(),
             'asset' => Asset::where('id',$id)->first(),
         ]);
     }
@@ -71,8 +76,8 @@ class AssetController extends Controller
         $asset = Asset::where('id',$id)->first();
         if ($asset)
         {
-            if (file_exists($asset->asset_image)){
-                unlink($asset->asset_image);
+            if (file_exists($asset->top_image)){
+                unlink($asset->top_image);
             }
             $asset->delete();
         }

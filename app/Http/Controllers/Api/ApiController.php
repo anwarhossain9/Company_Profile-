@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\About;
+use App\Models\AssetCategory;
 use App\Models\Asset;
 use App\Models\Banner;
 use App\Models\Contact;
@@ -20,6 +21,7 @@ use App\Models\Statistic;
 use App\Models\Visitor;
 use App\Models\GalleryCategory;
 use App\Models\Gallery;
+use App\Models\ServiceCategory;
 
 
 class ApiController extends Controller
@@ -62,7 +64,10 @@ public function getAssetInfo()
 
     $cleanedAssets = $assets->map(function($item) {
         return [
-             'occupation_name'    =>strip_tags($item-> occupation_name,'<b><i>'),
+             'asset_category_name'=> strip_tags($item->assetCategory->asset_category_name,'<b><i>'),
+             'title'              =>$item->title,
+             'short_description'  =>strip_tags($item->short_description,'<b><i>'),
+             'occupation_name'    =>$item->occupation_name,
              'registration_link'  =>strip_tags($item->registration_link ,'<b><i>'),
              'benefits_conditions'=>strip_tags($item->benefits_conditions ,'<b><i>'),
              'necessary_documents'=>strip_tags($item->necessary_documents ,'<b><i>'),
@@ -526,6 +531,31 @@ public function getServiceCategoryInfo()
     });
 
     return response()->json($cleanedServiceCategories);
+}
+
+
+public function categoryWiseAssets()
+{
+    $assetCategories = AssetCategory::with('assets')->get();
+
+    foreach ($assetCategories as $assetCategory) {
+        foreach ($assetCategory->assets as $asset) {
+            if ($asset->top_image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($asset->top_image, '/');
+                $asset->top_image = asset($cleanPath);
+            } else {
+                $asset->asset_image = asset('default/no-image.png');
+            }
+
+           
+        }
+    }
+
+    return response()->json([
+        'success' => true,
+        'data' => $assetCategories
+    ]);
 }
 
 

@@ -17,7 +17,10 @@
                     <table class="table" id="file-datatable">
                         <thead>
                         <th>#</th>
+                        <th>Asset category Name</th>
                         <th>Top Image</th>
+                        <th>Title</th>
+                        <th>Short Description</th>
                         <th>Occupation Name</th>
                         <th>Registration Link</th>
                         <th>Benfits & Conditions</th>
@@ -29,7 +32,10 @@
                         @foreach($assets as $asset)
                             <tr>   
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{ $asset->assetCategory->asset_category_name ?? ''}}</td>
                                 <td><img src="{{ asset($asset->top_image )}}" alt="" style="height: 60px"></td>
+                                <td>{{ $asset->title }}</td> 
+                                <td>{!! $asset->short_description !!}</td> 
                                 <td>{{ $asset->occupation_name }}</td> 
                                 <td>{{ $asset->registration_link}}</td>
                                 <td>{!! $asset->benefits_conditions!!}</td>

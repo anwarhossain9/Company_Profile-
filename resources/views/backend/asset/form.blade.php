@@ -17,7 +17,21 @@
                             @method('put')
                         @endif
 
-  
+                        <div class="row mt-3">
+
+      <label for="" class="col-md-3"> Asset Category Name</label>
+      <div class="col-md-9">
+          <select name="asset_category_id" class=" form-control " data-toggle="select"
+              data-placeholder="Choose ...">
+              <option value="">Select a asset category</option>
+              @foreach ($assetCategories as $assetCategory)
+                  <option value="{{ $assetCategory->id }}"
+                      {{ $errors->any() ? old('asset_category_id') : (isset($asset) && $asset->asset_category_id == $assetCategory->id ? 'selected' : '') }}>
+                      {{ $assetCategory->asset_category_name }}</option>
+              @endforeach
+          </select>
+      </div>
+  </div>
 
                         <div class="row mt-4">
                             <label for="" class="col-md-3">Top Image</label>
@@ -30,12 +44,32 @@
                             
                         </div>
 
+
+                        <div class="row mt-4">
+                            <label class="col-md-3">Title</label>
+                            <div class="col-md-9">
+                                <input type="text" name="title" class="form-control" placeholder="Title" value="{{ isset($asset) ? $asset->title: '' }}" />
+                            </div>
+                       </div>
+
+
+                        <div class="row mt-4">
+                            <label for="" class="col-md-3">Short Description</label>
+                           
+                            <div class="col-md-9">
+                                <textarea name="short_description" id="" class="form-control ckeditor" placeholder="Short Description">{{ isset($asset) ? $asset->short_description : '' }}</textarea>
+                            </div>
+                            
+                        </div>
+
                         <div class="row mt-4">
                             <label class="col-md-3">Occupation Name</label>
                             <div class="col-md-9">
                                 <input type="text" name="occupation_name" class="form-control" placeholder="Occupation Name" value="{{ isset($asset) ? $asset->occupation_name: '' }}" />
                             </div>
                        </div>
+
+
 
 
                        <div class="row mt-4">

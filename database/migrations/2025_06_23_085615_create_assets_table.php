@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('asset_category_id');
             $table->text('top_image');
+            $table->text('title');
+            $table->text('short_description');
             $table->string('occupation_name');
             $table->text('registration_link');
             $table->text('benefits_conditions');
