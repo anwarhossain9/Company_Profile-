@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { MdAddIcCall, MdOutlineEmail } from "react-icons/md";
-import { TiSocialLinkedinCircular, TiSocialTwitterCircular } from "react-icons/ti";
+import { TiSocialLinkedinCircular, TiSocialTwitterCircular, TiSocialYoutubeCircular } from "react-icons/ti";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { CiFacebook } from "react-icons/ci";
 import useContactLoader from "../../../hooks/useContactLoader";
@@ -19,21 +19,24 @@ function Footer() {
     <>
 
 
-      <section className="bg-[#0056D2]">
+      
+        <section className="bg-[#0056D2]">
         {/* footer */}
         <div className="grid md:grid-cols-4 text-base-content pt-10 text-white px-2 md:px-4 lg:px-8 mx-auto w-full gap-6">
-          <div className="md:col-span-1 w-full">
+        
+          <div className="md:col-span-1 w-full flex jusity-start">
 
-            <nav>
-              <img className="w-[80px] card shadow-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5pempmAZwoM_R2cnyMh4UxYqu9S2aqnHRQ&s" alt="" />
+            <div >
+              <img className="w-[80px] mx-auto card shadow-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5pempmAZwoM_R2cnyMh4UxYqu9S2aqnHRQ&s" alt="" />
 
-              <div className="flex gap-1 mt-1 w-full">
+              <div className="flex gap-1 mt-1 w-full flex justify-center">
                 <Link target="_blank" to={contacts[0].facebook_link} ><CiFacebook className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
                 <Link target="_blank" to={contacts[0].linkedin_link} ><TiSocialLinkedinCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
                 <Link target="_blank" to={contacts[0].twitter_link} ><TiSocialTwitterCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
                 <Link target="_blank" to={contacts[0].twitter_link} ><AiFillTikTok className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                <Link target="_blank" to={contacts[0].youtube_link} ><TiSocialYoutubeCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
               </div>
-            </nav>
+            </div>
 
           </div>
           <div className="md:col-span-3">

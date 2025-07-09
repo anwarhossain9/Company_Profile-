@@ -1,12 +1,14 @@
 import React from 'react'
 import useRPLLoaderData from '../../../hooks/useRPLLoaderData';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FaList, FaUserClock } from 'react-icons/fa';
-import { IoMdClock } from 'react-icons/io';
+import { IoMdClock, IoMdMail } from 'react-icons/io';
 import { MdGroups } from 'react-icons/md';
 import { SlCalender } from 'react-icons/sl';
 import { GiVikingLonghouse } from 'react-icons/gi';
 import parse from 'html-react-parser';
+import { CiFacebook } from 'react-icons/ci';
+import { TiSocialLinkedinCircular, TiSocialTwitterCircular } from 'react-icons/ti';
 
 function RplDetails() {
 
@@ -14,7 +16,7 @@ function RplDetails() {
     const { title } = useParams()
     console.log("title ", title)
 
- 
+
 
 
     const [rplData, loader] = useRPLLoaderData();
@@ -133,10 +135,62 @@ function RplDetails() {
                                     <form method="dialog">
                                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                     </form>
-                                    <h3 className="font-bold text-lg px-2  bg-[#6FCF97] text-white">{course.instructor_name}</h3>
-                                    <p className="py-4 text-justify text-gray-700">
-                                        Md. Anwar Hossain is an experienced instructor with a strong background in graphics and web design...
-                                    </p>
+                                    {/* <div>
+                                                           <h3 className="font-bold text-lg px-2  bg-[#6FCF97] text-white my-5">{course.instructor_name}</h3>
+                                                           <p className="py-4 text-justify text-gray-700">
+                                                               {
+                                                                   course.instructor_designation
+                                                               }
+                       
+                                                           </p>
+                                                           <p className="py-4 text-justify text-gray-700">
+                                                               Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, dolorem?
+                                                           </p>
+                                                           <div className="md:col-span-1 w-full">
+                       
+                                                               <div>
+                                                                   <img className="w-[80px] card shadow-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk5pempmAZwoM_R2cnyMh4UxYqu9S2aqnHRQ&s" alt="" />
+                       
+                                                                   <div className="flex gap-1 mt-1 w-full">
+                                                                       <Link target="_blank" to={course.instructor_email_link} ><MdOutlineMail className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                                       <Link target="_blank" to={course.instructor_facebook_link} ><CiFacebook className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                                       <Link target="_blank" to={course.instructor_linkdin_link} ><TiSocialLinkedinCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                                       <Link target="_blank" to={course.instructor_twiter_link}><TiSocialTwitterCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                                   </div>
+                                                               </div>
+                       
+                                                           </div>
+                                                       </div> */}
+
+                                    <div>
+                                        <h1>Instructor Information </h1>
+                                        <div className="card card-side bg-base-100 shadow-sm">
+                                            <figure className="w-[100px]">
+                                                <img className="rounded-full w-[100px] h-[100px]"
+                                                    src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                                                    alt="Movie" />
+                                            </figure>
+                                            <div className="card-body">
+                                                <h2 className="card-title">{course.instructor_name}</h2>
+                                                <p>{course.instructor_designation}</p>
+                                                <div className="card-actions justify-end">
+                                                    <div className="flex gap-1 mt-1 w-full r">
+                                                        <Link target="_blank" to={course.instructor_email_link} ><IoMdMail className="text-[20px] md:text-[24px] p-1 hover:text-[#6FCF97] border-2 rounded-full" /></Link>
+                                                        <Link target="_blank" to={course.instructor_facebook_link} ><CiFacebook className="text-[24px] md:text-[28px] hover:text-[#6FCF97]" /></Link>
+                                                        <Link target="_blank" to={course.instructor_linkdin_link} ><TiSocialLinkedinCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                        <Link target="_blank" to={course.instructor_twiter_link} ><TiSocialTwitterCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div className="text-justify mt-2">
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, veniam animi in eveniet necessitatibus omnis corporis quam? Doloremque inventore voluptas temporibus natus, exercitationem sint culpa. Facere dicta repellat
+                                    </div>
+
+
                                 </div>
                             </dialog>
                         </div>

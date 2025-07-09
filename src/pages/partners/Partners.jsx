@@ -48,7 +48,7 @@ function Partners() {
     ],
   };
 
-  const partners = [img1, img2, img3, img1, img2, img3];
+ 
 
   return (
     <div className="slider-container max-w-7xl mx-auto px-4 py-8 overflow-hidden">

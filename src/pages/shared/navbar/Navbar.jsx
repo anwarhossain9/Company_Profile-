@@ -26,12 +26,19 @@ function Navbar() {
 
 
   if (loader) {
-    return <p>loading</p>
+    return <p></p>
   }
   const { data } = regularCourses
   const categories = data.map(dta => dta.course_category_name)
 
+// Build "All Courses" category by flattening all courses
+  //  const allCourses = data.flatMap(category => category.courses || []);
 
+  // Build categories array with "All Courses" at the beginning
+  // const categories = [
+  //   { course_category_name: 'All Courses', courses: allCourses },
+  //   ...data
+  // ];
 
 
 
@@ -67,6 +74,8 @@ function Navbar() {
                 </details>
               </li>
               <li><Link to="/rpl" className="text-[16px]">RPL</Link></li>
+              <li><Link to="/assect-project" className="text-[16px]">Assect Project</Link></li>
+              <li><Link to="/gallery" className="text-[16px]">Gallery</Link></li>
               <li><Link to="/about" className="text-[16px]">About Us</Link></li>
             </ul>
           </div>
@@ -90,6 +99,8 @@ function Navbar() {
               </ul>
             </li>
             <li><Link to="/rpl" >RPL</Link></li>
+            <li><Link to="/assect-project" >Assect Project</Link></li>
+            <li><Link to="/gallery" >Gallery</Link></li>
             {/* <li><Link to="/about">About Us</Link></li> */}
             <li className="dropdown dropdown-hover">
               <div tabIndex={0} role="button" >About Us</div>

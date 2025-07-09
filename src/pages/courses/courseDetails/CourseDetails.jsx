@@ -1,7 +1,7 @@
 import { FaList, FaUserClock } from "react-icons/fa"
 import { GiVikingLonghouse } from "react-icons/gi"
-import { IoMdClock } from "react-icons/io"
-import { MdGroups, MdOutlineMail } from "react-icons/md"
+import { IoMdClock, IoMdMail } from "react-icons/io"
+import { MdGroups, MdOutlineMail, MdOutlineMarkEmailRead } from "react-icons/md"
 import { SlCalender } from "react-icons/sl"
 import { Link, useParams } from "react-router-dom"
 import parse from 'html-react-parser';
@@ -10,6 +10,7 @@ import { AllCoursesContext } from "../../../assets/context/CourseContext"
 import StudentReview from "../../../components/review/StudentReview"
 import { CiFacebook } from "react-icons/ci"
 import { TiSocialLinkedinCircular, TiSocialTwitterCircular } from "react-icons/ti"
+import { ImMail } from "react-icons/im"
 
 function CourseDetails() {
 
@@ -127,8 +128,8 @@ function CourseDetails() {
                                 <form method="dialog">
                                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                 </form>
-                                <div>
-                                    <h3 className="font-bold text-lg px-2  bg-[#6FCF97] text-white">{course.instructor_name}</h3>
+                                {/* <div>
+                                    <h3 className="font-bold text-lg px-2  bg-[#6FCF97] text-white my-5">{course.instructor_name}</h3>
                                     <p className="py-4 text-justify text-gray-700">
                                         {
                                             course.instructor_designation
@@ -152,6 +153,34 @@ function CourseDetails() {
                                         </div>
 
                                     </div>
+                                </div> */}
+
+                                <div>
+                                    <h1>Instructor Information </h1>
+                                    <div className="card card-side bg-base-100 shadow-sm">
+                                        <figure className="w-[100px]">
+                                            <img className="rounded-full w-[100px] h-[100px]"
+                                                src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                                                alt="Movie" />
+                                        </figure>
+                                        <div className="card-body">
+                                            <h2 className="card-title">{course.instructor_name}</h2>
+                                            <p>{course.instructor_designation}</p>
+                                            <div className="card-actions justify-end">
+                                                <div className="flex gap-1 mt-1 w-full r">
+                                                    <Link target="_blank" to={course.instructor_email_link} ><IoMdMail className="text-[20px] md:text-[24px] p-1 hover:text-[#6FCF97] border-2 rounded-full" /></Link>
+                                                    <Link target="_blank" to={course.instructor_facebook_link} ><CiFacebook className="text-[24px] md:text-[28px] hover:text-[#6FCF97]" /></Link>
+                                                    <Link target="_blank" to={course.instructor_linkdin_link} ><TiSocialLinkedinCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+                                                    <Link target="_blank" to={course.instructor_twiter_link} ><TiSocialTwitterCircular className="text-[26px] md:text-[30px] hover:text-[#6FCF97]" /></Link>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className="text-justify mt-2">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, veniam animi in eveniet necessitatibus omnis corporis quam? Doloremque inventore voluptas temporibus natus, exercitationem sint culpa. Facere dicta repellat
                                 </div>
 
 

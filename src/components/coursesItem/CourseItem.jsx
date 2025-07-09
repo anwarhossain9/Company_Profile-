@@ -16,10 +16,10 @@ function CourseItem({course_image,course_name,deadline, duration, current_price}
                     alt="Web design and Development" />
             </figure>
             <div className="flex flex-col h-full justify-between">
-                <h2 className="text-[20px]">
+                <h2 className="text-[20px] px-1">
                    {course_name}
                 </h2>
-                <div>
+                <div className="px-2">
                     <p className="flex items-center gap-1 text-base">
                         <LuCalendarDays className="text-base" /> Deadline: {deadline}
                     </p>
@@ -29,8 +29,8 @@ function CourseItem({course_image,course_name,deadline, duration, current_price}
 
                 </div>
                 <div className="flex justify-between bg-green-50 items-center">
-                    <div className="">
-                        <p className='p-2 text-base'>TK. {current_price}</p>
+                    <div className="pl-2">
+                        <p className='py-2 text-base'>TK. {current_price}</p>
                     </div>
                     <div className="btn bg-[#6FCF97] hover:bg-[#57B87A] text-white">Enroll Now</div>
                 </div>

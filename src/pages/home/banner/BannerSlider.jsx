@@ -43,7 +43,7 @@ export default function BannerSlider() {
   )
 
   if (loader) {
-    return <p className="text-center text-gray-500 py-6">Loading...</p>
+    return <p></p>
   }
 
   return (
