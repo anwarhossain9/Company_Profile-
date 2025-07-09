@@ -24,6 +24,7 @@ class Contact extends Model
         'linkedin_link',
         'youtube_link',
         'twitter_link',
+        'tictok_link',
         'google_map_link',
         'status'
         
@@ -43,6 +44,7 @@ class Contact extends Model
             'linkedin_link'              => $request->linkedin_link,
             'youtube_link'               => $request->youtube_link,
             'twitter_link'               => $request->twitter_link,
+            'tictok_link'                => $request->tictok_link,
             'google_map_link'            => $request->google_map_link,
             'status'                     => $request->status == 'on' ? 1 : 0,
         ]);

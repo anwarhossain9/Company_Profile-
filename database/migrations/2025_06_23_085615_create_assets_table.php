@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('top_image');
             $table->string('occupation_name');
-            $table->string('registration_link');
+            $table->text('registration_link');
             $table->text('benefits_conditions');
             $table->text('necessary_documents');
             $table->tinyInteger('status')->default(0);

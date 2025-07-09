@@ -18,6 +18,8 @@ use App\Models\TeamMember;
 use App\Models\Rpl;
 use App\Models\Statistic;
 use App\Models\Visitor;
+use App\Models\GalleryCategory;
+use App\Models\Gallery;
 
 
 class ApiController extends Controller
@@ -142,6 +144,7 @@ public function getContactInfo()
             'linkedin_link'              => strip_tags($item->linkedin_link,'<b><i>'),
             'youtube_link'               => strip_tags($item->youtube_link,'<b><i>'),
             'twitter_link'               => strip_tags($item->twitter_link,'<b><i>'),
+            'tictok_link'                => strip_tags($item->tictok_link,'<b><i>'),
             'google_map_link'            => strip_tags($item->google_map_link,'<b><i>'),    
             'status'                     => $item->status,
       
@@ -179,6 +182,14 @@ public function categoryWiseCourses()
             } else {
                 $course->course_image = asset('default/no-image.png');
             }
+
+            if ($course->instructor_image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($course->instructor_image, '/');
+                $course->instructor_image = asset($cleanPath);
+            } else {
+                $course->instructor_image = asset('default/no-image.png');
+            }
         }
     }
 
@@ -214,6 +225,8 @@ public function getCourseInfo()
             'installment1_amount'           => strip_tags($item->installment1_amount,'<b><i>'),
             'installment2_amount'           => strip_tags($item->installment2_amount,'<b><i>'),
             'instructor_name'               => strip_tags($item->instructor_name,'<b><i>'),
+            'instructor_image'              => $item->instructor_image ? asset($item->instructor_image) : null,
+            'instructor_description'        => strip_tags($item->instructor_description,'<b><i>'),
             'instructor_designation'        => strip_tags($item->instructor_designation,'<b><i>'),
             'instructor_email_link'         => strip_tags($item->instructor_email_link,'<b><i>'),
             'instructor_facebook_link'      => strip_tags($item->instructor_facebook_link,'<b><i>'),
@@ -260,6 +273,8 @@ public function getRplInfo()
             'installment1_amount'           => strip_tags($item->installment1_amount,'<b><i>'),
             'installment2_amount'           => strip_tags($item->installment2_amount,'<b><i>'),
             'instructor_name'               => strip_tags($item->instructor_name,'<b><i>'),
+            'instructor_image'              => $item->instructor_image ? asset($item->instructor_image) : null,
+            'instructor_description'        => strip_tags($item->instructor_description,'<b><i>'),
             'instructor_designation'        => strip_tags($item->instructor_designation,'<b><i>'),
             'instructor_email_link'         => strip_tags($item->instructor_email_link,'<b><i>'),
             'instructor_facebook_link'      => strip_tags($item->instructor_facebook_link,'<b><i>'),
@@ -421,6 +436,67 @@ public function count()
         'today_visitors' => $todayCount,
     ]);
     }
+
+
+    public function getGalleryCategoryInfo()
+{
+    $galleryCategories = GalleryCategory::all();
+
+    $cleanedGalleryCategories = $galleryCategories->map(function($item) {
+        return [
+             'gallery_category_name'   =>$item->gallery_category_name,
+             'gallery_category_image'  =>$item->gallery_category_image ? asset($item->gallery_category_image) : null,
+             'status'                  => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedGalleryCategories);
+}
+
+
+public function getGalleryInfo()
+{
+    $galleries = Gallery::all();
+
+    $cleanedGalleries = $galleries->map(function($item) {
+        return [
+             'gallery_title'   =>$item->gallery_title,
+             'gallery_image'   =>$item->gallery_image ? asset($item->gallery_image) : null,
+             'description'     => strip_tags($item->description,'<b><i>'),
+             'status'          => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedGalleries);
+}
+
+
+public function categoryWiseGalleries()
+{
+    $gallerycategories = GalleryCategory::with('galleries')->get();
+
+    foreach ($galleryCategories as $galleryCategory) {
+        foreach ($galleryCategory->galleries as $gallery) {
+            if ($gallery->gallery_image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($gallery->gallery_image, '/');
+                $gallery->gallery_image = asset($cleanPath);
+            } else {
+                $gallery->gallery_image = asset('default/no-image.png');
+            }
+
+            
+        }
+    }
+
+    return response()->json([
+        'success' => true,
+        'data'    => $galleryCategories
+    ]);
+}
+
 
     
 

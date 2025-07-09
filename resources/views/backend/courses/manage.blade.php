@@ -34,6 +34,8 @@
                         <th>Installment 1 Amount</th>
                         <th>Installment 2 Amount</th>
                         <th>Instructor Name</th>
+                        <th>Instructor Image</th>
+                        <th>Instructor Description</th>
                         <th>Instructor Designation</th>
                         <th>Instructor Email Link</th>
                         <th>Instructor Facebook Link</th>
@@ -73,6 +75,8 @@
                                 <td>{{ $course->installment1_amount }}</td> 
                                 <td>{{ $course->installment2_amount }}</td> 
                                 <td>{{ $course->instructor_name }}</td>
+                                <td><img src="{{ asset($course->instructor_image )}}" alt="" style="height: 60px"></td>
+                                <td>{!! $course->instructor_description !!}</td>
                                 <td>{{ $course->instructor_designation }}</td>
                                 <td>{{ $course->instructor_email_link}}</td>  
                                 <td>{{ $course->instructor_facebook_link}}</td> 

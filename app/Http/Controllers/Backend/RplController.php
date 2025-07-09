@@ -72,6 +72,10 @@ class RplController extends Controller
             if (file_exists($rpl->rpl_image)){
                 unlink($rpl->rpl_image);
             }
+
+             if (file_exists($rpl->instructor_image)){
+                unlink($rpl->instructor_image);
+            }
             $rpl->delete();
         }
         return redirect()->route('rpls.index')->with('success','Rpl Delete Successfully');

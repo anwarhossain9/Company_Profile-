@@ -52,6 +52,13 @@ Route::get('/statistic-info',[ApiController::class,'getStatisticInfo']);
 
 Route::get('/courses/by-type', [ApiController::class, 'getCoursesByType']);
 
+Route::get('/gallery-info',[ApiController::class,'getGalleryInfo']);
+
+Route::get('/gallery-category-info',[ApiController::class,'getGalleryCategoryInfo']);
+
+Route::get('/gallaries/category-wise', [ApiController::class, 'categoryWiseGalleries']);
+
+
 Route::post('/visitor', [ApiController::class, 'store']);
 
 Route::get('/visitor/count', [ApiController::class, 'count']);

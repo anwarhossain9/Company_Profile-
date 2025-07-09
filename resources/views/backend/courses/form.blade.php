@@ -171,6 +171,25 @@
 </div>
 
   <!-- Textareas -->
+
+  <div class="row mt-4">
+    <label class="col-md-3">Instructor Description</label>
+    <div class="col-md-9">
+       <textarea name="instructor_description" class="form-control" rows="4" placeholder="Instructor Description">{{ isset($course) ? $course->instructor_description: '' }}</textarea>
+</div>
+</div>
+
+<div class="row mt-4">
+    <label for="" class="col-md-3">Instructor Image</label>
+    <div class="col-md-9">
+        <input type="file" name="instructor_image" class="form-control" accept="image/*" id="imagez" />
+        @if(isset($course))
+            <img src="{{ asset($course->instructor_image) }}" alt="" style="height: 80px" />
+         @endif
+    </div>
+                            
+</div>
+
   <div class="row mt-4">
     <label class="col-md-3">Eligibility</label>
     <div class="col-md-9"><textarea name="eligibility" class="form-control" rows="4" placeholder="Eligibility">{{ isset($course) ? $course->eligibility: '' }}</textarea>
@@ -200,54 +219,54 @@
     </div>
 </div>
 
-                        <div class="row mt-4">
-                            <label for="" class="col-md-3">Image</label>
-                            <div class="col-md-9">
-                                <input type="file" name="course_image" class="form-control" accept="image/*" id="imagez" />
-                                @if(isset($course))
-                                    <img src="{{ asset($course->course_image) }}" alt="" style="height: 80px" />
-                                @endif
-                            </div>
+<div class="row mt-4">
+    <label for="" class="col-md-3"> Course Image</label>
+    <div class="col-md-9">
+        <input type="file" name="course_image" class="form-control" accept="image/*" id="imagez" />
+        @if(isset($course))
+            <img src="{{ asset($course->course_image) }}" alt="" style="height: 80px" />
+         @endif
+    </div>
                             
-                        </div>
+</div>
 
-                        <div class="row mt-4">
-                            <label for="" class="col-md-3">Short Description</label>
+    <div class="row mt-4">
+        <label for="" class="col-md-3">Short Description</label>
                            
-                            <div class="col-md-9">
-                                <textarea name="short_description" id="" class="form-control ckeditor" placeholder=" short description">{{ isset($course) ? $course->short_description : '' }}</textarea>
-                            </div>
+        <div class="col-md-9">
+            <textarea name="short_description" id="" class="form-control ckeditor" placeholder=" short description">{{ isset($course) ? $course->short_description : '' }}</textarea>
+         </div>
                             
-                        </div>
+     </div>
 
-                        <div class="row mt-4">
-                            <label for="" class="col-md-3">Long Description</label>
-                            <div class="col-md-9">
-                                <textarea name="long_description" id="" class="form-control ckeditor" placeholder=" long description">{{ isset($course) ? $course->long_description : '' }}</textarea>
-                            </div>
+    <div class="row mt-4">
+        <label for="" class="col-md-3">Long Description</label>
+        <div class="col-md-9">
+            <textarea name="long_description" id="" class="form-control ckeditor" placeholder=" long description">{{ isset($course) ? $course->long_description : '' }}</textarea>
+         </div>
                             
-                        </div>
+    </div>
                        
-                        <div class="row mt-4">
-                            <label for="" class="col-md-3">Status</label>
-                            <div class="col-md-9">
-                                <div class="material-switch">
-                                    <input id="someSwitchOptionLight" name="status" type="checkbox" {{ isset($course) && $course->status == 0 ? '' : 'checked' }} />
-                                    <label for="someSwitchOptionLight" class="label-light"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <label for="" class="col-md-3"></label>
-                            <div class="col-md-9">
-                                <input type="submit" class="btn btn-success" value="{{ isset($course) ? 'Update' : 'Create' }} Course ">
-                            </div>
-                        </div>
-                    </form>
-                </div>
+    <div class="row mt-4">
+        <label for="" class="col-md-3">Status</label>
+        <div class="col-md-9">
+            <div class="material-switch">
+                <input id="someSwitchOptionLight" name="status" type="checkbox" {{ isset($course) && $course->status == 0 ? '' : 'checked' }} />
+                <label for="someSwitchOptionLight" class="label-light"></label>
             </div>
+         </div>
+    </div>
+    <div class="row mt-4">
+        <label for="" class="col-md-3"></label>
+        <div class="col-md-9">
+            <input type="submit" class="btn btn-success" value="{{ isset($course) ? 'Update' : 'Create' }} Course ">
         </div>
     </div>
+</form>
+</div>
+</div>
+</div>
+</div>
 @endsection
 
 @push('script')

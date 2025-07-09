@@ -95,6 +95,13 @@
                        </div>
 
                        <div class="row mt-4">
+                            <label class="col-md-3">Tictok Link</label>
+                            <div class="col-md-9">
+                                <input type="text" name="tictok_link" class="form-control" placeholder="Tictok Link" value="{{ isset($contact) ? $contact->tictok_link: '' }}" />
+                            </div>
+                       </div>
+
+                       <div class="row mt-4">
                             <label class="col-md-3">Google Map Link</label>
                             <div class="col-md-9">
                                 <input type="text" name="google_map_link" class="form-control" placeholder="Google Map Link" value="{{ isset($contact) ? $contact->google_map_link: '' }}" />

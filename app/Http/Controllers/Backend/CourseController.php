@@ -77,6 +77,10 @@ class CourseController extends Controller
             if (file_exists($course->course_image)){
                 unlink($course->course_image);
             }
+
+             if (file_exists($course->instructor_image)){
+                unlink($course->instructor_image);
+            }
             $course->delete();
         }
         return redirect()->route('courses.index')->with('success','Course Delete Successfully');

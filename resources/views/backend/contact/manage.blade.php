@@ -26,6 +26,7 @@
                         <th>Linkedin Link</th>
                         <th>Youtube Link</th>
                         <th>Twitter Link</th>
+                        <th>Tictok Link</th>
                         <th>Google Map Link</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -44,7 +45,8 @@
                                 <td>{{ $contact->instagram_link  }}</td> 
                                 <td>{{ $contact->linkedin_link  }}</td> 
                                 <td>{{ $contact->youtube_link  }}</td> 
-                                <td>{{ $contact->twitter_link  }}</td> 
+                                <td>{{ $contact->twitter_link  }}</td>
+                                <td>{{ $contact->tictok_link  }}</td>  
                                 <td>{{ $contact->google_map_link  }}</td>  
                                 <td>{{ $contact->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">

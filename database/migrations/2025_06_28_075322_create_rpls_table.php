@@ -30,11 +30,13 @@ return new class extends Migration
             $table->string('installment1_amount');
             $table->string('installment2_amount');
             $table->string('instructor_name');
-            $table->string('instructor_designation');
-            $table->string('instructor_email_link');
-            $table->string('instructor_facebook_link');
-            $table->string('instructor_linkdin_link');
-            $table->string('instructor_twiter_link');
+            $table->text('instructor_image');
+            $table->text('instructor_description');
+            $table->text('instructor_designation');
+            $table->text('instructor_email_link');
+            $table->text('instructor_facebook_link');
+            $table->text('instructor_linkdin_link');
+            $table->text('instructor_twiter_link');
             $table->text('eligibility');
             $table->text('short_description');
             $table->text('long_description');
