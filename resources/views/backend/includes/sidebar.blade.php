@@ -51,6 +51,8 @@
                         <li><a href="{{route('assets.index')}}" class="slide-item">Asset</a></li>
                         <li><a href="{{route('statistics.index')}}" class="slide-item">Statistic</a></li>
                         <li><a href="{{route('student_reviews.index')}}" class="slide-item">Student Review</a></li>
+                         <li><a href="{{route('gallery_categories.index')}}" class="slide-item">Gallery Category</a></li>
+                        <li><a href="{{route('galleries.index')}}" class="slide-item">Gallery</a></li>
 
 
 

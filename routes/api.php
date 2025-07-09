@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ApiController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -49,6 +51,10 @@ Route::get('/rpl-info',[ApiController::class,'getRplInfo']);
 Route::get('/statistic-info',[ApiController::class,'getStatisticInfo']);
 
 Route::get('/courses/by-type', [ApiController::class, 'getCoursesByType']);
+
+Route::post('/visitor', [ApiController::class, 'store']);
+
+Route::get('/visitor/count', [ApiController::class, 'count']);
 
 
 

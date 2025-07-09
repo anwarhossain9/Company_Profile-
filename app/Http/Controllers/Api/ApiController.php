@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\About;
 use App\Models\Asset;
 use App\Models\Banner;
@@ -16,6 +17,7 @@ use App\Models\StudentReview;
 use App\Models\TeamMember;
 use App\Models\Rpl;
 use App\Models\Statistic;
+use App\Models\Visitor;
 
 
 class ApiController extends Controller
@@ -71,57 +73,57 @@ public function getAssetInfo()
     return response()->json($cleanedAssets);
 }
 
-public function getBannerInfo()
-{
-    $banners = Banner::all()->map(function ($banner) {
-        // Decode JSON array of images
-        $images = json_decode($banner->banner_image, true);
-
-        // Explode titles and descriptions into arrays
-        $titles = explode(',', $banner->banner_title);
-        $descriptions = explode(',', $banner->banner_description);
-
-        // Combine images, titles, and descriptions by index
-        $items = [];
-        foreach ($images as $index => $image) {
-            $items[] = [
-                'image_url' => asset($image),
-                'title' => $titles[$index] ?? null,
-                'description' => $descriptions[$index] ?? null,
-            ];
-        }
-
-        return [
-            'id' => $banner->id,
-            'status' => $banner->status,
-            'banners' => $items,
-            'created_at' => $banner->created_at,
-            'updated_at' => $banner->updated_at,
-        ];
-    });
-
-    return response()->json([
-        'success' => true,
-        'data' => $banners,
-    ]);
-}
-
 // public function getBannerInfo()
 // {
-//     $banners = Banner::all();
+//     $banners = Banner::all()->map(function ($banner) {
+//         // Decode JSON array of images
+//         $images = json_decode($banner->banner_image, true);
 
-//     $cleanedBanners = $banners->map(function($item) {
+//         // Explode titles and descriptions into arrays
+//         $titles = explode(',', $banner->banner_title);
+//         $descriptions = explode(',', $banner->banner_description);
+
+//         // Combine images, titles, and descriptions by index
+//         $items = [];
+//         foreach ($images as $index => $image) {
+//             $items[] = [
+//                 'image_url' => asset($image),
+//                 'title' => $titles[$index] ?? null,
+//                 'description' => $descriptions[$index] ?? null,
+//             ];
+//         }
+
 //         return [
-//             'banner_title'      => strip_tags($item->banner_title,'<b><i>'),
-//             'banner_image'      => $item->banner_image ? asset($item->banner_image) : null,
-//             'banner_description'=> strip_tags($item->banner_description,'<b><i>'),
-//             'status'            => $item->status,
-      
+//             'id' => $banner->id,
+//             'status' => $banner->status,
+//             'banners' => $items,
+//             'created_at' => $banner->created_at,
+//             'updated_at' => $banner->updated_at,
 //         ];
 //     });
 
-//     return response()->json($cleanedBanners);
+//     return response()->json([
+//         'success' => true,
+//         'data' => $banners,
+//     ]);
 // }
+
+public function getBannerInfo()
+{
+    $banners = Banner::all();
+
+    $cleanedBanners = $banners->map(function($item) {
+        return [
+            'banner_title'      => strip_tags($item->banner_title,'<b><i>'),
+            'banner_image'      => $item->banner_image ? asset($item->banner_image) : null,
+            'banner_description'=> strip_tags($item->banner_description,'<b><i>'),
+            'status'            => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedBanners);
+}
 
 public function getContactInfo()
 {
@@ -286,13 +288,15 @@ public function getLogoInfo()
 
     $cleanedLogos = $logos->map(function($item) {
         return [
-            'logo_image'=>$item->logo_image ? asset($item->logo_image) : null,
+            'logo_image1'=>$item->logo_image1 ? asset($item->logo_image1) : null,
+            'logo_image2'=>$item->logo_image2 ? asset($item->logo_image2) : null,
+
              'status'   => $item->status,
       
         ];
     });
 
-    return response()->json($cleanedlogos);
+    return response()->json($cleanedLogos);
 }
 
 
@@ -381,6 +385,44 @@ public function getTeamMemberInfo()
     return response()->json($cleanedStatistics);
 }
 
+ 
+
+public function store(Request $request)
+{
+    // $ip = $request->ip();
+    // if (!Visitor::where('ip_address', $ip)->exists()) {
+    //     Visitor::create(['ip_address' => $ip]);
+    // }
+    // return response()->json(['message' => 'Visitor recorded']);
+
+     Visitor::create([
+        'ip_address' => $request->ip(),
+    ]);
+
+    return response()->json(['message' => 'Visitor counted']);
+} 
+
+public function count()
+    {
+        // $count = Visitor::count();
+        // return response()->json(['visitor_count' => $count]);
+
+    //     return response()->json([
+    //     'visitor_count' => Visitor::count()
+    // ]);
+
+    $today = Carbon::today();
+
+    $total = Visitor::count();
+    $todayCount = Visitor::whereDate('created_at', $today)->count();
+
+    return response()->json([
+        'total_visitors' => $total,
+        'today_visitors' => $todayCount,
+    ]);
+    }
+
+    
 
 
 }

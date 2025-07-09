@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logos', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->text('logo_image1');
-            $table->text('logo_image2');
+            $table->unsignedBigInteger('gallery_category_id');
+            $table->string('gallery_title');
+            $table->text('gallery_image');
+            $table->text('description');
             $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logos');
+        Schema::dropIfExists('galleries');
     }
 };

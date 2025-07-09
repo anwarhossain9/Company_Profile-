@@ -70,8 +70,11 @@ class LogoController extends Controller
         $logo= Logo::where('id',$id)->first();
         if ($logo)
         {
-            if (file_exists($logo->logo_image)){
-                unlink($logo->logo_image);
+            if (file_exists($logo->logo_image1)){
+                unlink($logo->logo_image1);
+            }
+            if (file_exists($logo->logo_image2)){
+                unlink($logo->logo_image2);
             }
             $logo->delete();
         }

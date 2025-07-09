@@ -13,7 +13,8 @@ class Logo extends Model
 
     protected $fillable = [
         
-        'logo_image',
+        'logo_image1',
+        'logo_image2',
         'status'
         
     ];
@@ -22,7 +23,8 @@ class Logo extends Model
     {
        Logo::updateOrCreate(['id' => $id], [
             
-            'logo_image'   =>fileUpload($request->file('logo_image'), 'logo', isset($id) ? static::find($id)->logo_image : ''),
+            'logo_image1'   =>fileUpload($request->file('logo_image1'), 'logo', isset($id) ? static::find($id)->logo_image1 : ''),
+            'logo_image2'   =>fileUpload($request->file('logo_image2'), 'logo', isset($id) ? static::find($id)->logo_image2 : ''),
             'status'       => $request->status == 'on' ? 1 : 0,
         ]);
 }

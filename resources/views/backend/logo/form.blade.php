@@ -20,11 +20,22 @@
   
 
                         <div class="row mt-4">
-                            <label for="" class="col-md-3">Logo Image</label>
+                            <label for="" class="col-md-3">Logo Image Header</label>
                             <div class="col-md-9">
-                                <input type="file" name="logo_image" class="form-control" accept="image/*" id="imagez" />
+                                <input type="file" name="logo_image1" class="form-control" accept="image/*" id="imagez" />
                                 @if(isset($logo))
-                                    <img src="{{ asset($logo->logo_image) }}" alt="" style="height: 80px" />
+                                    <img src="{{ asset($logo->logo_image1) }}" alt="" style="height: 80px" />
+                                @endif
+                            </div>
+                            
+                        </div>
+
+                        <div class="row mt-4">
+                            <label for="" class="col-md-3">Logo Image Footer</label>
+                            <div class="col-md-9">
+                                <input type="file" name="logo_image2" class="form-control" accept="image/*" id="imagez" />
+                                @if(isset($logo))
+                                    <img src="{{ asset($logo->logo_image2) }}" alt="" style="height: 80px" />
                                 @endif
                             </div>
                             

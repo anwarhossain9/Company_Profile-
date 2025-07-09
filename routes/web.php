@@ -15,6 +15,9 @@ use App\Http\Controllers\Backend\StudentReviewController;
 use App\Http\Controllers\Backend\AssetController;
 use App\Http\Controllers\Backend\RplController;
 use App\Http\Controllers\Backend\StatisticController;
+use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\Backend\GalleryCategoryController;
+
 
 
 
@@ -93,4 +96,17 @@ Route::middleware([
 
     // statistics route
         Route::resource('statistics', StatisticController::class);
+
+
+    // galleries route
+        Route::resource('galleries', GalleryController::class);
+
+
+
+    // gallerie categories route
+        Route::resource('gallery_categories', GalleryCategoryController::class);
+
+
+
+
 });

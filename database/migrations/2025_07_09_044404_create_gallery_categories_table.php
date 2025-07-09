@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logos', function (Blueprint $table) {
+        Schema::create('gallery_categories', function (Blueprint $table) {
             $table->id();
-            $table->text('logo_image1');
-            $table->text('logo_image2');
+            $table->string('gallery_category_name');
+            $table->text('gallery_category_image');
             $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logos');
+        Schema::dropIfExists('gallery_categories');
     }
 };
