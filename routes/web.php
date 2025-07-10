@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\GalleryCategoryController;
 use App\Http\Controllers\Backend\AssetCategoryController;
 use App\Http\Controllers\Backend\ServiceCategoryController;
+use App\Http\Controllers\Backend\ServiceController;
 
 
 
@@ -114,6 +115,9 @@ Route::middleware([
 
    // service categories route
         Route::resource('service_categories', ServiceCategoryController::class);
+
+    // service categories route
+        Route::resource('services', ServiceController::class);
 
 
 });

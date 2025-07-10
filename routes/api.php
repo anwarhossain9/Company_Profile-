@@ -65,6 +65,8 @@ Route::get('/asset-category-info',[ApiController::class,'getAssetCategoryInfo'])
 
 Route::get('/service-category-info',[ApiController::class,'getServiceCategoryInfo']);
 
+Route::get('/services/category-wise', [ApiController::class, 'categoryWiseServices']);
+
 Route::post('/visitor', [ApiController::class, 'store']);
 
 Route::get('/visitor/count', [ApiController::class, 'count']);

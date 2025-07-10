@@ -205,6 +205,36 @@ public function categoryWiseCourses()
 }
 
 
+public function categoryWiseServices()
+{
+    $serviceCategories = ServiceCategory::with('services')->get();
+
+    foreach ($serviceCategories as $serviceCategory) {
+        foreach ($serviceCategory->services as $service) {
+            if ($service->service_image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($service->service_image, '/');
+                $service->service_image = asset($cleanPath);
+            } else {
+                $service->service_image = asset('default/no-image.png');
+            }
+
+            if ($service->image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($service->image, '/');
+                $service->image = asset($cleanPath);
+            } else {
+                $service->image = asset('default/no-image.png');
+            }
+        }
+    }
+
+    return response()->json([
+        'success' => true,
+        'data' => $serviceCategories
+    ]);
+}
+
 public function getCourseInfo()
 {
     $courses = Course::all();

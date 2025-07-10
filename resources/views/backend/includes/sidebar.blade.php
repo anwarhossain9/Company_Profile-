@@ -55,6 +55,8 @@
                         <li><a href="{{route('galleries.index')}}" class="slide-item">Gallery</a></li>
                         <li><a href="{{route('asset_categories.index')}}" class="slide-item">Asset Category</a></li>
                         <li><a href="{{route('service_categories.index')}}" class="slide-item">Service Category</a></li>
+                        <li><a href="{{route('services.index')}}" class="slide-item">Service</a></li>
+
 
 
 
