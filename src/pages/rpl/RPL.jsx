@@ -15,12 +15,12 @@ function RPL() {
 
   console.log(rplData)
   return (
-    <section className=' pb-6'>
+    <section className=' pb-6 '>
 
 
       <div className='px-4 '>
         <Title title="Recognition of Prior Learning (RPL)" subtitle="Your Skills, Your Future — Recognized Today!"></Title>
-        <div className='grid md:grid-cols-4 gap-4 bg-[#EEF3F9] md:p-4 p-2'>
+        <div className='grid md:grid-cols-4 gap-4 bg-[#EEF3F9] md:p-4 p-2 '>
 
           {
             rplData.map(rpl =>

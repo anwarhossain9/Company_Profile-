@@ -1,14 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function GalleyItem() {
+function GalleyItem({gallery_category_image,gallery_category_name}) {
+
+    
+
     return (
       <Link to={"/gallery-details"}>
           <div className="card bg-base-100 w-full shadow-md rounded-2xl overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 border border-transparent hover:border-[#57B87A]">
             <div
                 className="relative hero min-h-[250px] md:min-h-[300px] lg:min-h-[350px]"
                 style={{
-                    backgroundImage: "url(https://thumbs.dreamstime.com/b/woman-professional-photographer-photo-camera-woman-professional-photographer-photo-camera-outdoor-young-girl-102260585.jpg)",
+                    backgroundImage: `url(${gallery_category_image})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}
@@ -18,7 +21,7 @@ function GalleyItem() {
 
                 <div className="relative hero-content flex flex-col items-center justify-end text-center text-white p-4">
                     <h1 className="mb-3 text-2xl md:text-3xl lg:text-4xl font-extrabold drop-shadow">
-                        Event Title
+                       {gallery_category_name}
                     </h1>
 
                     {/* Badge or Label */}

@@ -8,6 +8,7 @@ import ReviewItem from "./reviewItem/ReviewItem";
 
 function StudentReview() {
   const [comments, loader] = useCommentLoader();
+  console.log("student comment",comments)
 
   if (loader) {
     return (
@@ -55,6 +56,7 @@ function StudentReview() {
                 image={comment.image}
                 name={comment.name}
                 review={comment.review}
+                rate = {comment.rate}
               />
             </div>
           ))}

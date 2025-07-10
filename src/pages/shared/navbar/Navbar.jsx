@@ -8,7 +8,7 @@ import nsda from "../../../assets/images/NSDA.png"
 
 function Navbar() {
 
-  const [courses, setCourses] = useState([]);
+
   const [regularCourses, loader] = useRegularDataLoader();
 
 
@@ -31,24 +31,23 @@ function Navbar() {
   const { data } = regularCourses
   const categories = data.map(dta => dta.course_category_name)
 
-// Build "All Courses" category by flattening all courses
-  //  const allCourses = data.flatMap(category => category.courses || []);
-
-  // Build categories array with "All Courses" at the beginning
-  // const categories = [
-  //   { course_category_name: 'All Courses', courses: allCourses },
-  //   ...data
-  // ];
-
-
-
   const courseItems =
     <>
+      <li>
+        <Link className="text-[17px]" to="/all-regular-courses">
+          All Regular Courses
+        </Link>
+      </li>
       {
-        categories.map(category => <li><Link className="text-[17px]" to={`/${category}`} state={{ category: category }}>{category}</Link></li>)
+        categories.map(category =>
+          <li key={category}>
+            <Link className="text-[17px]" to={`/${category}`} state={{ category }}>
+              {category}
+            </Link>
+          </li>)
       }
     </>
-    ;
+
   return (
 
     <section className="bg-[#0056D2] shadow-sm sticky top-0 z-50">

@@ -56,7 +56,7 @@ function Partners() {
       <Slider {...settings}>
         {allPartners.map((img, index) => (
           <div key={index} className="px-2">
-            <div className="bg-white rounded-xl border border-[#0056D2] shadow-md p-4 h-full flex items-center justify-center hover:shadow-xl transition-shadow duration-300">
+            <div className="bg-white rounded-xl border-2 border-[#6FCF97] shadow-md p-4 h-full flex items-center justify-center hover:shadow-xl transition-shadow duration-300">
               <img
                 src={img.partner_image}
                 alt={"abc"}

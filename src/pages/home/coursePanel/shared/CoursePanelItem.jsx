@@ -3,9 +3,9 @@ import { FaListOl } from 'react-icons/fa'
 
 function CoursePanelItem({title}) {
   return (
-    <div className=' py-2 card bg-[#6FCF97]  shadow-sm px-1  '>
+    <div className=' py-4 card border border-[#6FCF97] bg-white shadow-sm px-1  '>
        <span className='flex  justify-center items-center gap-2'>
-        <FaListOl className='text-white text-lg' /> <h1 className='text-white text-base'>{title}</h1>
+        <FaListOl className='' /> <h1 className=' text-base'>{title}</h1>
        </span>
     </div>
   )

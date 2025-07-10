@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "category": "Web Development",
+    "courseTitle": "Full Stack Web Development",
+    "duration": "6 Months",
+    "description": "Learn front-end and back-end development using HTML, CSS, JavaScript, React, Node.js, and MongoDB."
+  },
+  {
+    "id": 2,
+    "category": "Graphic Design",
+    "courseTitle": "Professional Graphic Design",
+    "duration": "3 Months",
+    "description": "Master Adobe Photoshop, Illustrator, and InDesign to create professional graphics and layouts."
+  },
+  {
+    "id": 3,
+    "category": "Digital Marketing",
+    "courseTitle": "Digital Marketing Masterclass",
+    "duration": "4 Months",
+    "description": "Comprehensive training on SEO, social media marketing, Google Ads, and email marketing."
+  },
+  {
+    "id": 4,
+    "category": "Cyber Security",
+    "courseTitle": "Cyber Security Fundamentals",
+    "duration": "3 Months",
+    "description": "Understand ethical hacking, system security, and network protection strategies."
+  },
+  {
+    "id": 5,
+    "category": "Mobile App Development",
+    "courseTitle": "Android App Development with Kotlin",
+    "duration": "5 Months",
+    "description": "Build native Android applications using Kotlin, Android Studio, and Firebase integration."
+  }
+]

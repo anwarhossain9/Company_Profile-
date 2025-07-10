@@ -69,7 +69,7 @@ function Footer() {
 
               </nav>
             </div>
-            <div className="mt-6 md:mt-2 bg-gray-200 rounded">
+            <div className="mt-6 md:mt-2 bg-white rounded">
               <img className="h-[30px] mx-auto" src={payment} alt="" />
             </div>
           </div>

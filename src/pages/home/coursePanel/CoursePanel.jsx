@@ -50,12 +50,12 @@ function CoursePanel() {
 
   // Build categories array with "All Courses" at the beginning
   const categories = [
-    { course_category_name: 'All Courses', courses: allCourses },
+    { course_category_name: 'All Regular Courses', courses: allCourses },
     ...data
   ];
 
   return (
-    <section className=' bg-[#EEF3F9]'>
+    <section className=' bg-[#]'>
       <div className='py-6 px-2 md:px-4 mx-auto'>
         <Title title="COURSES FROM ALL THE FIELDS" subtitle="Find all of Our Courses" />
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
@@ -69,7 +69,7 @@ function CoursePanel() {
             </div>
           </TabList>
 
-          <div className='px-2 md:px-4 md:py-6 py-4 bg-[#F9FAFB]'>
+          <div className='px-2 md:px-4 md:py-6 py-4 bg-[#EEF3F9]'>
             {categories.map((category, catIdx) => (
               <TabPanel key={catIdx} className=" ">
                 <div className='grid md:grid-cols-4 gap-4 '>

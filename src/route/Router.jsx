@@ -15,6 +15,7 @@ import Gallery from "../pages/gallery/Gallery";
 import AssectProject from "../pages/assectProject/AssectProject";
 import AssectProjectDetails from "../pages/assectProject/assectProjectDetails/AssectProjectDetails";
 import GalleryDetails from "../pages/gallery/galleryDetails/GalleryDetails";
+import AllRegularCourses from "../pages/courses/allRegularCourses/AllRegularCourses";
 
 
 
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       }, {
         path: '/:category/:details',
         element: <CourseDetails></CourseDetails>
+      }, {
+      }, {
+        path: '/all-regular-courses',
+        element: <AllRegularCourses></AllRegularCourses>
       }, {
         path: 'gallery',
         element: <Gallery></Gallery>
