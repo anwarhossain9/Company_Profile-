@@ -374,7 +374,6 @@ public function getStudentReviewInfo()
 
     $cleanedStudentReviews = $studentReviews->map(function($item) {
         return [
-             'company_dream' => strip_tags($item->company_dream,'<b><i>'),
              'image'         =>$item->image ? asset($item->image) : null,
              'name'          => strip_tags($item->name,'<b><i>'),
              'rate'          =>$item->rate,

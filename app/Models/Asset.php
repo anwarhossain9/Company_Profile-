@@ -38,4 +38,11 @@ class Asset extends Model
             'status'              => $request->status == 'on' ? 1 : 0
         ]);
 }
+
+public function assetCategory()
+    {
+        return $this->belongsTo(AssetCategory::class);
+    }
+
+
 }

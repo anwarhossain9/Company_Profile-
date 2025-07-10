@@ -106,6 +106,24 @@
 </div>
 
 <div class="row mt-4">
+    <label class="col-md-3">Instructor Description</label>
+    <div class="col-md-9">
+       <textarea name="instructor_description" class="form-control" rows="4" placeholder="Instructor Description">{{ isset($course) ? $course->instructor_description: '' }}</textarea>
+</div>
+</div>
+
+<div class="row mt-4">
+    <label for="" class="col-md-3">Instructor Image</label>
+    <div class="col-md-9">
+        <input type="file" name="instructor_image" class="form-control" accept="image/*" id="imagez" />
+        @if(isset($course))
+            <img src="{{ asset($course->instructor_image) }}" alt="" style="height: 80px" />
+         @endif
+    </div>
+                            
+</div>
+
+<div class="row mt-4">
     <label class="col-md-3">Instructor Designation</label>
     <div class="col-md-9"><input type="text" name="instructor_designation" class="form-control" placeholder="Instructor Designation" value="{{ isset($rpl) ? $rpl->instructor_designation: '' }}"/>
 </div>

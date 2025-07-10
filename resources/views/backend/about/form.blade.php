@@ -109,7 +109,7 @@
                        <div class="row mt-4">
                             <label class="col-md-3">Ceo Designation</label>
                             <div class="col-md-9">
-                                <input type="text" name="ceo_designation" class="form-control" placeholder="Ceo Name" value="{{ isset($about) ? $about->ceo_designation: '' }}" />
+                                <input type="text" name="ceo_designation" class="form-control" placeholder="Ceo Designation" value="{{ isset($about) ? $about->ceo_designation: '' }}" />
                             </div>
                        </div>
 
@@ -132,7 +132,7 @@
                             <label for="" class="col-md-3">Ceo's Word</label>
                            
                             <div class="col-md-9">
-                                <textarea name="ceo_word" id="" class="form-control ckeditor" placeholder=" about description">{{ isset($about) ? $about->ceo_word : '' }}</textarea>
+                                <textarea name="ceo_word" id="" class="form-control ckeditor" placeholder=" Ceo's Word">{{ isset($about) ? $about->ceo_word : '' }}</textarea>
                             </div>
                             
                         </div>
@@ -141,14 +141,14 @@
                           <div class="row mt-4">
                             <label class="col-md-3">Director Name</label>
                             <div class="col-md-9">
-                                <input type="text" name="director_name" class="form-control" placeholder="Ceo Name" value="{{ isset($about) ? $about->director_name: '' }}" />
+                                <input type="text" name="director_name" class="form-control" placeholder="Director Name" value="{{ isset($about) ? $about->director_name: '' }}" />
                             </div>
                        </div>
 
                        <div class="row mt-4">
                             <label class="col-md-3">Director Designation</label>
                             <div class="col-md-9">
-                                <input type="text" name="director_designation" class="form-control" placeholder="Ceo Name" value="{{ isset($about) ? $about->director_designation: '' }}" />
+                                <input type="text" name="director_designation" class="form-control" placeholder="Director Designation" value="{{ isset($about) ? $about->director_designation: '' }}" />
                             </div>
                        </div>
 

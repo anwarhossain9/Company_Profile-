@@ -18,7 +18,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://test.dcitinstitute.com.bd'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
