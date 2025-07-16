@@ -67,6 +67,10 @@ Route::get('/service-category-info',[ApiController::class,'getServiceCategoryInf
 
 Route::get('/services/category-wise', [ApiController::class, 'categoryWiseServices']);
 
+Route::get('/industrial-attachment-category-info',[ApiController::class,'getIndustrialAttachmentCategoryInfo']);
+
+Route::get('/industrial-attachments/category-wise', [ApiController::class, 'categoryWiseIndustrialAttachments']);
+
 Route::post('/visitor', [ApiController::class, 'store']);
 
 Route::get('/visitor/count', [ApiController::class, 'count']);

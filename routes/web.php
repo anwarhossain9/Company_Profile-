@@ -20,6 +20,8 @@ use App\Http\Controllers\Backend\GalleryCategoryController;
 use App\Http\Controllers\Backend\AssetCategoryController;
 use App\Http\Controllers\Backend\ServiceCategoryController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\IndustrialAttachmentCategoryController;
+use App\Http\Controllers\Backend\IndustrialAttachmentController;
 
 
 
@@ -116,8 +118,15 @@ Route::middleware([
    // service categories route
         Route::resource('service_categories', ServiceCategoryController::class);
 
-    // service categories route
+    // service  route
         Route::resource('services', ServiceController::class);
+
+
+    // industrial attachment categories route
+        Route::resource('industrial_attachment_categories', IndustrialAttachmentCategoryController::class);
+
+    // industrial attachment route
+        Route::resource('industrial_attachments', IndustrialAttachmentController::class);
 
 
 });

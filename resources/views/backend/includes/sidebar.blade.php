@@ -48,12 +48,14 @@
                         <li><a href="{{route('contacts.index')}}" class="slide-item">Contact</a></li>
                         <li><a href="{{route('logos.index')}}" class="slide-item">Logo</a></li>
                         <li><a href="{{route('abouts.index')}}" class="slide-item">About</a></li>
+                        <li><a href="{{route('asset_categories.index')}}" class="slide-item">Asset Category</a></li>
                         <li><a href="{{route('assets.index')}}" class="slide-item">Asset</a></li>
                         <li><a href="{{route('statistics.index')}}" class="slide-item">Statistic</a></li>
                         <li><a href="{{route('student_reviews.index')}}" class="slide-item">Student Review</a></li>
                         <li><a href="{{route('gallery_categories.index')}}" class="slide-item">Gallery Category</a></li>
                         <li><a href="{{route('galleries.index')}}" class="slide-item">Gallery</a></li>
-                        <li><a href="{{route('asset_categories.index')}}" class="slide-item">Asset Category</a></li>
+                        <li><a href="{{route('industrial_attachment_categories.index')}}" class="slide-item">Industrial Attachment Category</a></li>
+                        <li><a href="{{route('industrial_attachments.index')}}" class="slide-item">Industrial Attachment</a></li>
                         <li><a href="{{route('service_categories.index')}}" class="slide-item">Service Category</a></li>
                         <li><a href="{{route('services.index')}}" class="slide-item">Service</a></li>
 

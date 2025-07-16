@@ -22,7 +22,8 @@ use App\Models\Visitor;
 use App\Models\GalleryCategory;
 use App\Models\Gallery;
 use App\Models\ServiceCategory;
-
+use App\Models\IndustrialAttachment;
+use App\Models\IndustrialAttachmentCategory;
 
 class ApiController extends Controller
 {
@@ -512,6 +513,13 @@ public function categoryWiseGalleries()
     $gallerycategories = GalleryCategory::with('galleries')->get();
 
     foreach ($galleryCategories as $galleryCategory) {
+        if ($galleryCategory->gallery_category_image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($galleryCategory->gallery_category_image, '/');
+                $galleryCategory->gallery_category_image = asset($cleanPath);
+            } else {
+               $galleryCategory->gallery_category_image = asset('default/no-image.png');
+            }
         foreach ($galleryCategory->galleries as $gallery) {
             if ($gallery->gallery_image) {
                 // Ensure there's no leading slash
@@ -584,6 +592,52 @@ public function categoryWiseAssets()
     return response()->json([
         'success' => true,
         'data' => $assetCategories
+    ]);
+}
+
+
+public function getIndustrialAttachmentCategoryInfo()
+{
+    $industrialAttachmentCategories = IndustrialAttachmentCategory::all();
+
+    $cleanedIndustrialAttachmentCategories = $industrialAttachmentCategories->map(function($item) {
+        return [
+             'industrial_attachment_category_name' => strip_tags($item->industrial_attachment_category_name,'<b><i>'),
+             'status'                              => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedIndustrialAttachmentCategories);
+}
+
+public function categoryWiseIndustrialAttachments()
+{
+    $industrialAttachmentCategories = IndustrialAttachmentCategory::with('industrialAttachments')->get();
+
+    foreach ($industrialAttachmentCategories as $industrialAttachmentCategory) {
+        foreach ($industrialAttachmentCategory->industrialAttachments as $industrialAttachment) {
+            if ($industrialAttachment->industrial_attachment_course_image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($industrialAttachment->industrial_attachment_course_image, '/');
+                $industrialAttachment->industrial_attachment_course_image = asset($cleanPath);
+            } else {
+                $industrialAttachment->industrial_attachment_course_image = asset('default/no-image.png');
+            }
+
+            if ($industrialAttachment->instructor_image) {
+                // Ensure there's no leading slash
+                $cleanPath = ltrim($industrialAttachment->instructor_image, '/');
+                $industrialAttachment->instructor_image = asset($cleanPath);
+            } else {
+                $industrialAttachment->instructor_image = asset('default/no-image.png');
+            }
+        }
+    }
+
+    return response()->json([
+        'success' => true,
+        'data' => $industrialAttachmentCategories
     ]);
 }
 
