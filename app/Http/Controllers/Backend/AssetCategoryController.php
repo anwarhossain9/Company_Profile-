@@ -68,7 +68,9 @@ class AssetCategoryController extends Controller
     {
         $assetCategory= AssetCategory::where('id',$id)->first();
         if ($assetCategory)
-        {
+        {    if (file_exists($assetCategory->asset_category_image)){
+                unlink($assetCategory->asset_category_image);
+            }
             $assetCategory->delete();
         }
         return redirect()->route('asset_categories.index')->with('success','Asset Category Delete Successfully');

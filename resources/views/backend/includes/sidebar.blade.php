@@ -56,8 +56,14 @@
                         <li><a href="{{route('galleries.index')}}" class="slide-item">Gallery</a></li>
                         <li><a href="{{route('industrial_attachment_categories.index')}}" class="slide-item">Industrial Attachment Category</a></li>
                         <li><a href="{{route('industrial_attachments.index')}}" class="slide-item">Industrial Attachment</a></li>
-                        <li><a href="{{route('service_categories.index')}}" class="slide-item">Service Category</a></li>
                         <li><a href="{{route('services.index')}}" class="slide-item">Service</a></li>
+                        <li><a href="{{route('service_cards.index')}}" class="slide-item">Service Card</a></li>
+                        <li><a href="{{route('latest_events.index')}}" class="slide-item">Latest Event</a></li>
+                        <li><a href="{{route('achievements.index')}}" class="slide-item">Achievement</a></li>
+                        <li><a href="{{route('facilities.index')}}" class="slide-item">Facility</a></li>
+                        <li><a href="{{route('nsda_courses.index')}}" class="slide-item">Nsda Course</a></li>
+
+
 
 
 

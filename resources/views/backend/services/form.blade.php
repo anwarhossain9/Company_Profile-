@@ -17,22 +17,12 @@
                             @method('put')
                         @endif
 
-
-                        <div class="row mt-3">
-
-      <label for="" class="col-md-3"> Service Category Name</label>
-      <div class="col-md-9">
-          <select name="service_category_id" class=" form-control " data-toggle="select"
-              data-placeholder="Choose ...">
-              <option value="">Select a Service Category</option>
-              @foreach ($serviceCategories as $serviceCategory)
-                  <option value="{{ $serviceCategory->id }}"
-                      {{ $errors->any() ? old('service_category_id') : (isset($service) && $service->service_category_id == $serviceCategory->id ? 'selected' : '') }}>
-                      {{ $serviceCategory->service_category_name }}</option>
-              @endforeach
-          </select>
-      </div>
-  </div>
+                   <div class="row mt-4">
+                            <label class="col-md-3">Service Title</label>
+                            <div class="col-md-9">
+                                <input type="text" name="service_title" class="form-control" placeholder="Service Title" value="{{ isset($service) ? $service->service_title: '' }}" />
+                            </div>
+                       </div>
 
   
 
@@ -70,32 +60,8 @@
                             
                         </div>
 
-                         <div class="row mt-4">
-                            <label class="col-md-3">Service Title</label>
-                            <div class="col-md-9">
-                                <input type="text" name="service_title" class="form-control" placeholder="Service Title" value="{{ isset($service) ? $service->service_title: '' }}" />
-                            </div>
-                       </div>
-
-                           <div class="row mt-4">
-                            <label for="" class="col-md-3">Service Image</label>
-                            <div class="col-md-9">
-                                <input type="file" name="service_image" class="form-control" accept="image/*" id="imagez" />
-                                @if(isset($service))
-                                    <img src="{{ asset($service->service_image) }}" alt="" style="height: 80px" />
-                                @endif
-                            </div>
-                            
-                        </div>
-
-                        <div class="row mt-4">
-                            <label for="" class="col-md-3">Service Description</label>
-                           
-                            <div class="col-md-9">
-                                <textarea name="service_description" id="" class="form-control ckeditor" placeholder=" service description">{{ isset($service) ? $service->service_description : '' }}</textarea>
-                            </div>
-                            
-                        </div>
+                         
+                          
 
                         <div class="row mt-4">
                             <label for="" class="col-md-3">Note</label>

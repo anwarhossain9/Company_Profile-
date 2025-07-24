@@ -68,7 +68,9 @@ class CourseCategoryController extends Controller
     {
         $courseCategory= CourseCategory::where('id',$id)->first();
         if ($courseCategory)
-        {
+        {   if (file_exists($courseCategory->course_category_image)){
+                unlink($courseCategory->course_category_image);
+            }
             $courseCategory->delete();
         }
         return redirect()->route('course_categories.index')->with('success','Course Category Delete Successfully');

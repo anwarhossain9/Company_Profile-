@@ -26,6 +26,18 @@
                             </div>
                        </div>
 
+                       <div class="row mt-4">
+                         <label for="" class="col-md-3"> Course Category Image</label>
+                       <div class="col-md-9">
+                          <input type="file" name="course_category_image" class="form-control" accept="image/*" id="imagez" />
+                       @if(isset($courseCategory))
+                          <img src="{{ asset($courseCategory->course_category_image) }}" alt="" style="height: 80px" />
+                        @endif
+                      </div>
+                            
+                      </div>
+
+
                         <div class="row mt-4">
                             <label for="" class="col-md-3">Status</label>
                             <div class="col-md-9">

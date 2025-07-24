@@ -21,9 +21,13 @@ use App\Models\Statistic;
 use App\Models\Visitor;
 use App\Models\GalleryCategory;
 use App\Models\Gallery;
-use App\Models\ServiceCategory;
+use App\Models\Service;
 use App\Models\IndustrialAttachment;
 use App\Models\IndustrialAttachmentCategory;
+use App\Models\Achievement;
+use App\Models\LatestEvent;
+use App\Models\Facility;
+use App\Models\NsdaCourse;
 
 class ApiController extends Controller
 {
@@ -79,6 +83,40 @@ public function getAssetInfo()
     });
 
     return response()->json($cleanedAssets);
+}
+
+
+public function getAchievementInfo()
+{
+    $achievements = Achievement::all();
+
+    $cleanedAchievements = $achievements->map(function($item) {
+        return [
+             'achievement_title'        =>$item->achievement_title,
+             'achievement_description'  =>strip_tags($item->achievement_description,'<b><i>'),
+             'achievement_image'        =>$item->achievement_image ? asset($item->achievement_image) : null,     
+             'status'                   =>$item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedAchievements);
+}
+
+
+public function getLatestEventInfo()
+{
+    $latestEvents = LatestEvent::all();
+
+    $cleanedLatestEvents = $latestEvents->map(function($item) {
+        return [
+             'latest_event'       =>$item->latest_event,
+             'status'             =>$item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedLatestEvents);
 }
 
 // public function getBannerInfo()
@@ -166,8 +204,9 @@ public function getCourseCategoryInfo()
 
     $cleanedcourseCategories = $courseCategories->map(function($item) {
         return [
-             'course_category_name' => strip_tags($item->course_category_name,'<b><i>'),
-             'status'               => $item->status,
+             'course_category_name'         => strip_tags($item->course_category_name,'<b><i>'),
+             'course_category_image'        =>$item->course_category_image ? asset($item->course_category_image) : null,     
+             'status'                       => $item->status,
       
         ];
     });
@@ -206,33 +245,31 @@ public function categoryWiseCourses()
 }
 
 
-public function categoryWiseServices()
+
+
+
+
+public function serviceWiseServiceCards()
 {
-    $serviceCategories = ServiceCategory::with('services')->get();
+    $services = Service::with('serviceCards')->get();
 
-    foreach ($serviceCategories as $serviceCategory) {
-        foreach ($serviceCategory->services as $service) {
-            if ($service->service_image) {
+    foreach ($services as $service) {
+        foreach ($service->serviceCards as $serviceCard) {
+            if ($serviceCard->service_image) {
                 // Ensure there's no leading slash
-                $cleanPath = ltrim($service->service_image, '/');
-                $service->service_image = asset($cleanPath);
+                $cleanPath = ltrim($serviceCard->service_image, '/');
+                $serviceCard->service_image = asset($cleanPath);
             } else {
-                $service->service_image = asset('default/no-image.png');
+                $serviceCard->service_image = asset('default/no-image.png');
             }
 
-            if ($service->image) {
-                // Ensure there's no leading slash
-                $cleanPath = ltrim($service->image, '/');
-                $service->image = asset($cleanPath);
-            } else {
-                $service->image = asset('default/no-image.png');
-            }
+    
         }
     }
 
     return response()->json([
         'success' => true,
-        'data' => $serviceCategories
+        'data' => $services
     ]);
 }
 
@@ -330,6 +367,53 @@ public function getRplInfo()
     });
 
     return response()->json($cleanedRpls);
+}
+
+
+public function getNsdaCourseInfo()
+{
+    $nsdaCourses = NsdaCourse::all();
+
+    $cleanedNsdaCourses = $nsdaCourses->map(function($item) {
+        return [
+            'batch_no'                      => strip_tags($item->batch_no,'<b><i>'),
+            'nsda_subject_name'             => strip_tags($item->nsda_subject_name,'<b><i>'),
+            'nsda_image'                    => $item->nsda_image ? asset($item->nsda_image) : null,
+            'starts_date'                   => strip_tags($item->starts_date,'<b><i>'),
+            'deadline'                      => strip_tags($item->deadline,'<b><i>'),
+            'duration'                      => strip_tags($item->duration,'<b><i>'),
+            'class_per_week'                => strip_tags($item->class_per_week,'<b><i>'),
+            'previous_price'                => strip_tags($item->previous_price,'<b><i>'),
+            'current_price'                 => strip_tags($item->current_price,'<b><i>'),
+            'total_class'                   => strip_tags($item->total_class,'<b><i>'),
+            'total_hours'                   => strip_tags($item->total_hours,'<b><i>'),
+            'available_seat'                => strip_tags($item->available_seat,'<b><i>'),
+            'schedule'                      => strip_tags($item->schedule,'<b><i>'),
+            'venue'                         => strip_tags($item->venue,'<b><i>'),
+            'installment1_amount'           => strip_tags($item->installment1_amount,'<b><i>'),
+            'installment2_amount'           => strip_tags($item->installment2_amount,'<b><i>'),
+            'instructor_name'               => strip_tags($item->instructor_name,'<b><i>'),
+            'instructor_image'              => $item->instructor_image ? asset($item->instructor_image) : null,
+            'instructor_description'        => strip_tags($item->instructor_description,'<b><i>'),
+            'instructor_designation'        => strip_tags($item->instructor_designation,'<b><i>'),
+            'instructor_email_link'         => strip_tags($item->instructor_email_link,'<b><i>'),
+            'instructor_facebook_link'      => strip_tags($item->instructor_facebook_link,'<b><i>'),
+            'instructor_linkdin_link'       => strip_tags($item->instructor_linkdin_link,'<b><i>'),
+            'instructor_twiter_link'        => strip_tags($item->instructor_twiter_link,'<b><i>'),
+            'eligibility'                   => strip_tags($item->eligibility,'<b><i>'),
+            'short_description'             => strip_tags($item->short_description,'<b><i>'),
+            'long_description'              => strip_tags($item->long_description,'<b><i>'),
+            'curriculum'                    => strip_tags($item->curriculum,'<b><i>'),
+            'faqs'                          => strip_tags($item->faqs,'<b><i>'),
+            'reason_of_choosing_this_nsda'  => strip_tags($item->reason_of_choosing_this_nsda,'<b><i>'),
+            'job_sectors_title'             => strip_tags($item->job_sectors_title,'<b><i>'),
+            'job_sectors_description'       => strip_tags($item->job_sectors_description,'<b><i>'),
+            'status'                        => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedNsdaCourses);
 }
 
 
@@ -545,7 +629,8 @@ public function getAssetCategoryInfo()
 
     $cleanedAssetCategories = $assetCategories->map(function($item) {
         return [
-             'asset_category_name' => $item->asset_category_name,
+             'asset_category_name'  => $item->asset_category_name,
+             'asset_category_image' =>$item->asset_category_image ? asset($item->asset_category_image) : null,     
              'status'               => $item->status,
       
         ];
@@ -555,14 +640,14 @@ public function getAssetCategoryInfo()
 }
    
 
-public function getServiceCategoryInfo()
+public function getServiceInfo()
 {
-    $serviceCategories = ServiceCategory::all();
+    $services = Service::all();
 
-    $cleanedServiceCategories = $serviceCategories->map(function($item) {
+    $cleanedServices = $services->map(function($item) {
         return [
              'service_category_name' => $item->service_category_name,
-             'status'               => $item->status,
+             'status'                => $item->status,
       
         ];
     });
@@ -570,6 +655,22 @@ public function getServiceCategoryInfo()
     return response()->json($cleanedServiceCategories);
 }
 
+public function getFacilityInfo()
+{
+    $facilities = Facility::all();
+
+    $cleanedFacilities = $facilities->map(function($item) {
+        return [
+             'facility_title'       => $item->facility_title,
+             'facility_image'      => $item->facility_image ? asset($item->facility_image) : null,
+             'facility_description' => $item->facility_description,
+             'status'               => $item->status,
+      
+        ];
+    });
+
+    return response()->json($cleanedFacilities);
+}
 
 public function categoryWiseAssets()
 {

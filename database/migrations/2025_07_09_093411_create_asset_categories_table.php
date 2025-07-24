@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('asset_categories', function (Blueprint $table) {
             $table->id();
             $table->string('asset_category_name');
+            $table->text('asset_category_image');
             $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();

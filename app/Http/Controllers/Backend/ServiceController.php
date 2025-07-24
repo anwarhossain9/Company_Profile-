@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
-use App\Models\ServiceCategory;
+
 
 
 class ServiceController extends Controller
@@ -16,7 +16,7 @@ class ServiceController extends Controller
     public function index()
     {
         return view('backend.services.manage',[
-            'serviceCategories' =>ServiceCategory::all(),
+    
             'services'=>Service::all()]);
     }
 
@@ -25,9 +25,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('backend.services.form',[
-            'serviceCategories' =>ServiceCategory::all(),
-        ]);
+        return view('backend.services.form');
     }
 
     /**
@@ -35,7 +33,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        Service::saveOrUpdateservice($request);
+        Service::saveOrUpdateService($request);
         return redirect()->route('services.index')->with('success','Service Create Successfully');
     }
 
@@ -53,7 +51,6 @@ class ServiceController extends Controller
     public function edit(string $id)
     {
         return view('backend.services.form',[
-            'serviceCategories' =>ServiceCategory::all(),
             'service'           => Service::where('id',$id)->first(),
         ]);
     }
@@ -63,7 +60,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        Service::saveOrUpdateservice($request,$id);
+        Service::saveOrUpdateService($request,$id);
         return redirect()->route('services.index')->with('success','Service Update Successfully');
     }
 

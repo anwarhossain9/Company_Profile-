@@ -12,13 +12,10 @@ class Service extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'service_category_id',
         'service_provider_name',
+        'service_title',
         'description',
         'image',
-        'service_image',
-        'service_title',
-        'service_description',
         'note',
         'status'
         
@@ -27,13 +24,10 @@ class Service extends Model
      public static function saveOrUpdateService($request, $id = null)
     {
        Service::updateOrCreate(['id' => $id], [
-            'service_category_id'   => $request->service_category_id,
             'service_provider_name' => $request->service_provider_name,
+            'service_title'         => $request->service_title,
             'description'           =>$request->description,
             'image'                 =>fileUpload($request->file('image'), 'studentReview', isset($id) ? static::find($id)->image : ''),
-            'service_image'         =>fileUpload($request->file('service_image'), 'service', isset($id) ? static::find($id)->service_image : ''),
-            'service_title'         => $request->service_title,
-            'service_description'   => $request->service_description,
             'note'                  => $request->note,
             'status'                => $request->status == 'on' ? 1 : 0,
         ]);
@@ -44,5 +38,10 @@ public function serviceCategory()
         return $this->belongsTo(ServiceCategory::class);
     }
 
+
+    public function serviceCards()
+    {
+        return $this->hasMany(ServiceCard::class);
+    }
 
 }

@@ -15,12 +15,10 @@
                     <table class="table" id="file-datatable">
                         <thead>
                         <th>#</th>
-                        <th>Service Category Name</th>
+                        <th>Service Title</th>
                         <th>Description</th>
                         <th>Image</th>
-                        <th>Service Image</th>
-                        <th>Service Title</th>
-                        <th>Service Description</th>
+                        <th>Service Provider Name</th>
                         <th>Note</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -29,12 +27,10 @@
                         @foreach($services as $service)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $service->serviceCategory->service_category_name ?? ''}}</td>
-                                <td>{{ $service->service_provider_name }}</td>
+                                <td>{{ $service->service_title }}</td>
+                                <td>{!! $service->description !!}</td>
                                 <td><img src="{{ asset($service->image )}}" alt="" style="height: 60px"></td>
-                                <td><img src="{{ asset($service->service_image )}}" alt="" style="height: 60px"></td>
-                                <td>{{ $service->service_title }}</td> 
-                                <td>{!! $service->service_description !!}</td> 
+                                <td>{{ $service->service_provider_name }}</td>
                                 <td>{!! $service->note !!}</td> 
                                 <td>{{ $service->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">

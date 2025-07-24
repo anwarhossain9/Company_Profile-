@@ -60,12 +60,12 @@ Route::get('/gallaries/category-wise', [ApiController::class, 'categoryWiseGalle
 
 Route::get('/assets/category-wise', [ApiController::class, 'categoryWiseAssets']);
 
-
 Route::get('/asset-category-info',[ApiController::class,'getAssetCategoryInfo']);
 
-Route::get('/service-category-info',[ApiController::class,'getServiceCategoryInfo']);
+Route::get('/service-info',[ApiController::class,'getServiceInfo']);
 
-Route::get('/services/category-wise', [ApiController::class, 'categoryWiseServices']);
+
+Route::get('/services/service-card', [ApiController::class, 'serviceWiseServiceCards']);
 
 Route::get('/industrial-attachment-category-info',[ApiController::class,'getIndustrialAttachmentCategoryInfo']);
 
@@ -74,6 +74,21 @@ Route::get('/industrial-attachments/category-wise', [ApiController::class, 'cate
 Route::post('/visitor', [ApiController::class, 'store']);
 
 Route::get('/visitor/count', [ApiController::class, 'count']);
+
+Route::get('/achievement-info',[ApiController::class,'getAchievementInfo']);
+
+
+Route::get('/latest-event-info',[ApiController::class,'getLatestEventInfo']);
+
+Route::get('/facility-info',[ApiController::class,'getFacilityInfo']);
+
+Route::get('/nsda-course-info',[ApiController::class,'getNsdaCourseInfo']);
+
+
+
+
+
+
 
 
 

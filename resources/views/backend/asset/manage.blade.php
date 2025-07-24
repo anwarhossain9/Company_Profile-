@@ -1,6 +1,6 @@
 @extends('backend.master')
 
-@section('title', 'Manage asset')
+@section('title', 'Manage Asset')
 
 @section('body')
 
@@ -20,9 +20,40 @@
                         <th>Asset category Name</th>
                         <th>Top Image</th>
                         <th>Title</th>
-                        <th>Short Description</th>
+                        <th>Asset Short Description</th>
                         <th>Occupation Name</th>
                         <th>Registration Link</th>
+                        <th>Batch No</th>
+                        <th>Asset Occupation Image</th>
+                        <th>Starts Date</th>
+                        <th>Deadline</th>
+                        <th>Duration</th>
+                        <th>Class Per Week</th>
+                        <th>Previous Price</th>
+                        <th>Current Price</th>
+                        <th>Total Class</th>
+                        <th>Total Hours</th>
+                        <th>Available Seat</th>
+                        <th>Schedule</th>
+                        <th>Venue</th>
+                        <th>Installment 1 Amount</th>
+                        <th>Installment 2 Amount</th>
+                        <th>Instructor Name</th>
+                        <th>Instructor Image</th>
+                        <th>Instructor Description</th>
+                        <th>Instructor Designation</th>
+                        <th>Instructor Email Link</th>
+                        <th>Instructor Facebook Link</th>
+                        <th>Instructor Linkdin Link</th>
+                        <th>Instructor Twiter Link</th>
+                        <th>Eligibility</th>
+                        <th>Short Description</th>
+                        <th>Long Description</th>
+                        <th>curriculum</th>
+                        <th>Faqs</th>
+                        <th>Reason Of choosing this Course</th>
+                        <th>Job Sectors Title</th>
+                        <th>Job Sectors Description</th>
                         <th>Benfits & Conditions</th>
                         <th>Necessary Documents</th>
                         <th>Status</th>
@@ -35,9 +66,40 @@
                                 <td>{{ $asset->assetCategory->asset_category_name ?? ''}}</td>
                                 <td><img src="{{ asset($asset->top_image )}}" alt="" style="height: 60px"></td>
                                 <td>{{ $asset->title }}</td> 
-                                <td>{!! $asset->short_description !!}</td> 
+                                <td>{!! $asset->short_description_asset !!}</td> 
                                 <td>{{ $asset->occupation_name }}</td> 
                                 <td>{{ $asset->registration_link}}</td>
+                                <td>{{ $asset->batch_no }}</td>
+                                <td><img src="{{ asset($asset->asset_occupation_image )}}" alt="" style="height: 60px"></td>
+                                <td>{{ $asset->starts_date }}</td>
+                                <td>{{ $asset->deadline }}</td>
+                                <td>{{ $asset->duration }}</td> 
+                                <td>{{ $asset->class_per_week }}</td> 
+                                <td>{{ $asset->previous_price }}</td> 
+                                <td>{{ $asset->current_price }}</td> 
+                                <td>{{ $asset->total_class }}</td> 
+                                <td>{{ $asset->total_hours }}</td> 
+                                <td>{{ $asset->available_seat }}</td> 
+                                <td>{{ $asset->schedule }}</td> 
+                                <td>{{ $asset->venue }}</td> 
+                                <td>{{ $asset->installment1_amount }}</td> 
+                                <td>{{ $asset->installment2_amount }}</td> 
+                                <td>{{ $asset->instructor_name }}</td>
+                                <td><img src="{{ asset($asset->instructor_image )}}" alt="" style="height: 60px"></td>
+                                <td>{!! $asset->instructor_description !!}</td>
+                                <td>{{ $asset->instructor_designation }}</td>
+                                <td>{{ $asset->instructor_email_link}}</td>  
+                                <td>{{ $asset->instructor_facebook_link}}</td> 
+                                <td>{{ $asset->instructor_linkdin_link}}</td> 
+                                <td>{{ $asset->instructor_twiter_link}}</td> 
+                                <td>{!! $asset->eligibility !!}</td>
+                                <td>{!! $asset->short_description !!}</td>
+                                <td>{!! $asset->long_description !!}</td> 
+                                <td>{!! $asset->curriculum !!}</td> 
+                                <td>{!! $asset->faqs !!}</td> 
+                                <td>{!! $asset->reason_of_choosing_this_course !!}</td> 
+                                <td>{{ $asset->job_sectors_title }}</td> 
+                                <td>{!! $asset->job_sectors_description !!}</td> 
                                 <td>{!! $asset->benefits_conditions!!}</td>
                                 <td>{!! $asset->necessary_documents!!}</td> 
                                 <td>{{ $asset->status == 1 ? 'Published' : 'Unpublished' }}</td>

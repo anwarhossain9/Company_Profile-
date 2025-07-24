@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service_categories', function (Blueprint $table) {
+        Schema::create('latest_events', function (Blueprint $table) {
             $table->id();
-            $table->string('service_category_name');
+            $table->text('latest_event');
             $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service_categories');
+        Schema::dropIfExists('latest_events');
     }
 };

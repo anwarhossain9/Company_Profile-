@@ -16,6 +16,7 @@
                         <thead>
                         <th>#</th>
                         <th>Asset Category Name</th>
+                        <th>Asset Category Image</th>
                         <th>Status</th>
                         <th>Action</th>
                         </thead>
@@ -23,7 +24,8 @@
                         @foreach($assetCategories as $assetCategory)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $assetCategory->asset_category_name }}</td> 
+                                <td>{{ $assetCategory->asset_category_name }}</td>
+                                <td><img src="{{ asset($assetCategory->asset_category_image )}}" alt="" style="height: 60px"></td>
                                 <td>{{ $assetCategory->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('asset_categories.edit', $assetCategory->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

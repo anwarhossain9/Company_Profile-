@@ -23,9 +23,9 @@
 <!-- Switcher-->
 
 <!-- GLOBAL-LOADER -->
-<div id="global-loader">
+<!-- <div id="global-loader">
     <img src="{{ asset('/') }}backend/assets/images/loader.svg" class="loader-img" alt="Loader">
-</div>
+</div> -->
 <!-- /GLOBAL-LOADER -->
 
 <!-- PAGE -->

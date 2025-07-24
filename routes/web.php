@@ -20,8 +20,13 @@ use App\Http\Controllers\Backend\GalleryCategoryController;
 use App\Http\Controllers\Backend\AssetCategoryController;
 use App\Http\Controllers\Backend\ServiceCategoryController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\ServiceCardController;
 use App\Http\Controllers\Backend\IndustrialAttachmentCategoryController;
 use App\Http\Controllers\Backend\IndustrialAttachmentController;
+use App\Http\Controllers\Backend\AchievementController;
+use App\Http\Controllers\Backend\LatestEventController;
+use App\Http\Controllers\Backend\FacilityController;
+use App\Http\Controllers\Backend\NsdaCourseController;
 
 
 
@@ -115,18 +120,30 @@ Route::middleware([
         Route::resource('asset_categories', AssetCategoryController::class);
 
 
-   // service categories route
-        Route::resource('service_categories', ServiceCategoryController::class);
 
     // service  route
         Route::resource('services', ServiceController::class);
 
-
+    // service card  route
+        Route::resource('service_cards', ServiceCardController::class); 
     // industrial attachment categories route
         Route::resource('industrial_attachment_categories', IndustrialAttachmentCategoryController::class);
 
     // industrial attachment route
         Route::resource('industrial_attachments', IndustrialAttachmentController::class);
+    
+    // latest event route
+        Route::resource('latest_events', LatestEventController::class);
 
+    // achievement route
+        Route::resource('achievements', AchievementController::class);
+
+
+    // achievement route
+        Route::resource('nsda_courses', NsdaCourseController::class);
+
+
+   // achievement route
+        Route::resource('facilities', FacilityController::class);
 
 });

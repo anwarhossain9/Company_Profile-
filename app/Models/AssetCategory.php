@@ -12,13 +12,15 @@ class AssetCategory extends Model
     use SoftDeletes;
     protected $fillable = [
         'asset_category_name',
+        'asset_category_image',
         'status'
     ];
 
     public static function saveOrUpdateAssetCategory($request, $id = null)
     {
         AssetCategory::updateOrCreate(['id' => $id], [
-            'asset_category_name' => $request->asset_category_name,
+            'asset_category_name'  => $request->asset_category_name,
+            'asset_category_image' => fileUpload($request->file('asset_category_image'), 'asset-category', isset($id) ? static::find($id)->asset_category_image : ''),
             'status'               => $request->status == 'on' ? 1 : 0,
         ]);
 }

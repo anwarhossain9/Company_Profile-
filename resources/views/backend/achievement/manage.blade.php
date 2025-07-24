@@ -1,33 +1,37 @@
 @extends('backend.master')
 
-@section('title', 'Manage Service Category')
+@section('title', 'Manage achievement')
 
 @section('body')
     <div class="row mt-5">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-light">
-                    <h3>Manage Service Category</h3>
-                    <a href="{{ route('service_categories.create') }}" class="btn btn-success btn-sm position-absolute me-5" style="right: 0"><i class="fa fa-plus-circle"></i></a>
+                    <h3>Manage achievement</h3>
+                    <a href="{{ route('achievements.create') }}" class="btn btn-success btn-sm position-absolute me-5" style="right: 0"><i class="fa fa-plus-circle"></i></a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive export-table">
                     <table class="table" id="file-datatable">
                         <thead>
                         <th>#</th>
-                        <th>service Category Name</th>
+                        <th> Achievement Image</th>
+                        <th>Achievement Title</th>
+                        <th>Achievement Description</th>
                         <th>Status</th>
                         <th>Action</th>
                         </thead>
                         <tbody> 
-                        @foreach($serviceCategories as $serviceCategory)
+                        @foreach($achievements as $achievement)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $serviceCategory->service_category_name }}</td> 
-                                <td>{{ $serviceCategory->status == 1 ? 'Published' : 'Unpublished' }}</td>
+                                <td><img src="{{ asset($achievement->achievement_image )}}" alt="" style="height: 60px"></td>
+                                <td>{{ $achievement->achievement_title }}</td>
+                                <td>{!! $achievement->achievement_description !!}</td> 
+                                <td>{{ $achievement->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
-                                    <a href="{{ route('service_categories.edit', $serviceCategory->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                    <form action="{{ route('service_categories.destroy', $serviceCategory->id) }}" method="post" id="deleteItem">
+                                    <a href="{{ route('achievements.edit', $achievement->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('achievements.destroy', $achievement->id) }}" method="post" id="deleteItem">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-sm btn-danger ms-1 delete-item"><i class="fa fa-trash"></i></button>

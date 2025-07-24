@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('service_category_id');
             $table->string('service_provider_name');
+            $table->string('service_title');
             $table->text('description');
             $table->text('image');
-            $table->text('service_image');
-            $table->text('service_title');
-            $table->text('service_description');
             $table->text('note');
             $table->tinyInteger('status')->default(0);
             $table->softDeletes();

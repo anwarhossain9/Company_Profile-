@@ -79,6 +79,14 @@ class AssetController extends Controller
             if (file_exists($asset->top_image)){
                 unlink($asset->top_image);
             }
+
+            if (file_exists($asset->asset_occupation_image)){
+                unlink($asset->asset_occupation_image);
+            }
+
+            if (file_exists($asset->instructor_image)){
+                unlink($asset->instructor_image);
+            }
             $asset->delete();
         }
         return redirect()->route('assets.index')->with('success','Asset Delete Successfully');
